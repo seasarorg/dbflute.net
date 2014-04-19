@@ -16,7 +16,9 @@
 package org.seasar.dbflute.net.migration.tools;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.seasar.dbflute.net.migration.MigrationExample;
 import org.seasar.dbflute.net.migration.unit.UnitContainerTestCase;
@@ -47,6 +49,40 @@ public class ToolsMigrationFromJavaTest extends UnitContainerTestCase {
     }
 
     protected static class MigrationFileLineHandler implements FileLineHandler {
+
+        // ===================================================================================
+        //                                                                          Definition
+        //                                                                          ==========
+        protected static final Map<String, String> _toCapCamelWordMap;
+        static {
+            Map<String, String> map = DfCollectionUtil.newLinkedHashMap();
+            map.put("dbflute", "DBFlute");
+            map.put("outsidesql", "OutsideSql");
+            _toCapCamelWordMap = Collections.unmodifiableMap(map);
+        }
+
+        protected static final List<String> _defaultUsingList;
+        static {
+            List<String> list = DfCollectionUtil.newArrayList();
+            list.add("System");
+            _defaultUsingList = list;
+        }
+
+        protected static final Map<String, String> _basicClassElementReplaceMap;
+        static {
+            Map<String, String> map = DfCollectionUtil.newLinkedHashMap();
+            map.put("static final ", "static readonly ");
+            map.put("public final ", "public readonly ");
+            map.put("protected final ", "protected readonly ");
+            map.put("private final ", "private readonly ");
+            map.put("boolean ", "bool ");
+            map.put("Integer ", "int? ");
+            _basicClassElementReplaceMap = Collections.unmodifiableMap(map);
+        }
+
+        // ===================================================================================
+        //                                                                           Attribute
+        //                                                                           =========
         protected boolean _copyrightArea;
         protected List<String> _copyrightList = DfCollectionUtil.newArrayList();
         protected String _packageName;
@@ -56,6 +92,9 @@ public class ToolsMigrationFromJavaTest extends UnitContainerTestCase {
         protected boolean _classElementArea;
         protected List<String> _classElementList = DfCollectionUtil.newArrayList();
 
+        // ===================================================================================
+        //                                                                       Line Handling
+        //                                                                       =============
         public void handle(String line) {
             if (_packageName == null && line.equals("/*")) {
                 _copyrightList.add(line);
@@ -89,43 +128,118 @@ public class ToolsMigrationFromJavaTest extends UnitContainerTestCase {
             }
         }
 
+        // ===================================================================================
+        //                                                                        to C# String
+        //                                                                        ============
         public String toCSharpString() {
             StringBuilder sb = new StringBuilder();
             for (String line : _copyrightList) {
                 sb.append(line).append(ln());
             }
-            for (String importClass : _importList) {
-                // #pending inner class handling
-                String packageOnlyImport = Srl.substringLastFront(importClass, ".");
-                sb.append("using ").append(toUpperDotString(packageOnlyImport)).append(";").append(ln());
+            List<String> defaultusinglist = _defaultUsingList;
+            for (String defaultUsing : defaultusinglist) {
+                sb.append("using ").append(defaultUsing).append(";").append(ln());
             }
-            if (!_importList.isEmpty()) {
-                sb.append(ln());
-            }
+            buildUsingClause(sb);
+            sb.append(ln());
             sb.append("namespace ").append(toUpperDotString(_packageName)).append(" {").append(ln());
             sb.append(ln());
             for (String line : _classCommentList) {
                 sb.append(line).append(ln()); // #pending to CSharp comment
             }
             for (String line : _classElementList) {
-                sb.append(line).append(ln()); // #pending many many convert
+                sb.append(convertClassElement(line)).append(ln()); // #pending many many convert
             }
             sb.append(ln());
             sb.append("}");
             return sb.toString();
         }
 
-        protected String toUpperDotString(String dotString) { // #review needs upper?
-            List<String> tokenList = Srl.splitList(dotString, ".");
+        // ===================================================================================
+        //                                                                    Namespace/Import
+        //                                                                    ================
+        private void buildUsingClause(StringBuilder sb) {
+            for (String importClass : _importList) {
+                String work = importClass;
+                if (work.startsWith("java.")) {
+                    continue;
+                }
+                if (work.startsWith("org.seasar.dbflute.")) {
+                    work = replace(work, "org.seasar.dbflute.", "dbflute.");
+                }
+                if (work.startsWith("org.dbflute.")) {
+                    work = replace(work, "org.dbflute.", "dbflute.");
+                }
+                // remove class name and inner class name,
+                // and convert to upper tokens
+                work = toUpperDotString(removeUpperToken(work));
+                sb.append("using ").append(work).append(";").append(ln());
+            }
+        }
+
+        protected String removeUpperToken(String dotString) {
+            List<String> tokenList = splitList(dotString, ".");
+            StringBuilder sb = new StringBuilder();
+            for (String token : tokenList) {
+                if (Srl.isInitUpperCase(token)) {
+                    continue;
+                }
+                if (sb.length() > 0) {
+                    sb.append(".");
+                }
+                sb.append(token);
+            }
+            return sb.toString();
+        }
+
+        protected String toUpperDotString(String dotString) {
+            List<String> tokenList = splitList(dotString, ".");
             StringBuilder sb = new StringBuilder();
             for (String token : tokenList) {
                 if (sb.length() > 0) {
                     sb.append(".");
                 }
-                sb.append(Srl.initCap(token));
+                sb.append(initCap(replaceBy(token, _toCapCamelWordMap)));
             }
             return sb.toString();
-            // #pending outsidesql to OutsideSql?
+        }
+
+        // ===================================================================================
+        //                                                                       Class Element
+        //                                                                       =============
+        protected String convertClassElement(String line) {
+            String work = line;
+            if (work.trim().startsWith("for ") && line.contains(" : ")) {
+                work = replace(work, "for ", "foreach ");
+                work = replace(work, " : ", " in ");
+            }
+            if (work.contains(" instanceof ")) {
+                work = replace(work, " instanceof ", " is ");
+            }
+            return doConvertClassElementBasic(work);
+        }
+
+        protected String doConvertClassElementBasic(String line) {
+            return replaceBy(line, _basicClassElementReplaceMap);
+        }
+
+        // ===================================================================================
+        //                                                                      General Helper
+        //                                                                      ==============
+        protected List<String> splitList(String str, String delimiter) {
+            return Srl.splitList(str, delimiter);
+        }
+
+        protected String replace(String str, String fromStr, String toStr) {
+            return Srl.replace(str, fromStr, toStr);
+        }
+
+        protected String replaceBy(String str, Map<String, String> fromToMap) {
+            return Srl.replaceBy(str, fromToMap);
+        }
+
+        protected String initCap(String str) {
+            return Srl.initCap(str);
         }
 
         protected String ln() {

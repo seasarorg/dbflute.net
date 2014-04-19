@@ -16,7 +16,10 @@
 package org.seasar.dbflute.net.migration;
 
 import java.util.Date;
+import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.seasar.dbflute.helper.HandyDate;
 import org.seasar.dbflute.util.DfTypeUtil;
 
@@ -25,13 +28,28 @@ import org.seasar.dbflute.util.DfTypeUtil;
  */
 public class MigrationExample {
 
+    private static final Log LOG = LogFactory.getLog(MigrationExample.class);
+
+    protected static final String KEY = "foo";
+
+    protected Object _object;
     protected String _string;
-    protected int _primitiveInt;
-    protected boolean _primitiveBoolean;
+    protected Integer _integer;
+    protected Long _long;
     protected Date _utilDate;
+    protected int _primitiveInt;
+    protected long _primitiveLong;
+    protected boolean _primitiveBoolean;
+    protected List<String> _stringList;
 
     public void publicMethodNoReturnNoArg() {
         _utilDate = new HandyDate("2014-04-18").getDate();
+        for (String string : _stringList) {
+            LOG.debug(string);
+        }
+        if (_object instanceof String) {
+            LOG.debug("foo");
+        }
     }
 
     @Override
