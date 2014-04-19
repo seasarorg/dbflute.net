@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A959B3EF-893D-4812-A103-ECB3FF64F061}</ProjectGuid>
+    <ProjectGuid>{ED593611-4A0D-48E1-9C82-3D1883C56917}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DBFluteRuntime</RootNamespace>
