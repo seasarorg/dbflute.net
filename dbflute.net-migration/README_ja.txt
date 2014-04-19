@@ -45,8 +45,9 @@ contains(), endsWith(), equals(), equalsIgnoreCase(), hashCode(), indexOf(), las
 DBFlute
  |-JavaLike
  |  |-Extensions
- |  |-Collections
- |  |-JDBC
+ |  |-Lang
+ |  |-Sql
+ |  |-Util
  |
  |-(その他、Javaと同じ)
 

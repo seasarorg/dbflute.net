@@ -25,8 +25,9 @@ M2EなどのMaven管理ができる環境が整っていればビルドするこ
 DBFlute
  |-JavaLike
  |  |-Extensions
- |  |-Collections
- |  |-JDBC
+ |  |-Lang
+ |  |-Sql
+ |  |-Util
  |
  |-(その他、Javaと同じ)
 
