@@ -17,7 +17,7 @@ package org.seasar.dbflute.net.migration.tools;
 
 import java.io.File;
 
-import org.seasar.dbflute.net.migration.MigrationExample;
+import org.seasar.dbflute.net.migration.example.MigrationExample;
 import org.seasar.dbflute.net.migration.tools.handler.MigrationFileLineHandler;
 import org.seasar.dbflute.net.migration.unit.UnitContainerTestCase;
 import org.seasar.dbflute.unit.core.policestory.javaclass.PoliceStoryJavaClassHandler;
@@ -26,6 +26,13 @@ import org.seasar.dbflute.unit.core.policestory.javaclass.PoliceStoryJavaClassHa
  * @author jflute
  */
 public class ToolsMigrationFromJavaTest extends UnitContainerTestCase {
+
+    @Override
+    protected boolean isUseRuntimeDirectPoliceStory() {
+        // #pending not yet, uses example test for now
+        //return true;
+        return false;
+    }
 
     public void test_making() throws Exception {
         policeStoryOfJavaClassChase(new PoliceStoryJavaClassHandler() {

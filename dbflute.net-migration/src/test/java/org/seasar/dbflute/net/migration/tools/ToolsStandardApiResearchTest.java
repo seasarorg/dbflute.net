@@ -22,7 +22,6 @@ import java.util.TreeSet;
 
 import org.seasar.dbflute.net.migration.tools.handler.MigrationFileLineHandler;
 import org.seasar.dbflute.net.migration.unit.UnitContainerTestCase;
-import org.seasar.dbflute.unit.core.policestory.PoliceStory;
 import org.seasar.dbflute.unit.core.policestory.javaclass.PoliceStoryJavaClassHandler;
 
 /**
@@ -31,9 +30,8 @@ import org.seasar.dbflute.unit.core.policestory.javaclass.PoliceStoryJavaClassHa
 public class ToolsStandardApiResearchTest extends UnitContainerTestCase {
 
     @Override
-    protected PoliceStory createPoliceStory() {
-        File workspaceDir = getProjectDir().getParentFile().getParentFile();
-        return new PoliceStory(this, new File(workspaceDir + "/dbflute/dbflute-runtime/"));
+    protected boolean isUseRuntimeDirectPoliceStory() {
+        return true;
     }
 
     public void test_research() throws Exception {
@@ -42,7 +40,7 @@ public class ToolsStandardApiResearchTest extends UnitContainerTestCase {
             public void handle(File srcFile, Class<?> clazz) {
                 MigrationFileLineHandler handler = new MigrationFileLineHandler();
                 readLine(srcFile, "UTF-8", handler);
-                List<String> importList = handler.getImportList();
+                List<String> importList = handler.toJavaInfo().getImportList();
                 for (String importClass : importList) {
                     if (importClass.startsWith("java")) {
                         standardApiSet.add(importClass);

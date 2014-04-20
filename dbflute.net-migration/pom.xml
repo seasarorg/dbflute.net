@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.seasar.dbflute</groupId>
-	<artifactId>dbflute-spring-example</artifactId>
+	<artifactId>dbflute.net-migration</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>DBFlute Spring Example</name>
-	<description>The example project for Spring Framework and DBFlute</description>
+	<name>DBFlute.NET Migration</name>
+	<description>The migration project for DBFlute.NET (from Java)</description>
 	<url>http://dbflute.seasar.org/</url>
 	<inceptionYear>2006</inceptionYear>
 
