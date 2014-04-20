@@ -49,11 +49,21 @@ namespace DBFluteRuntimeTransplant
         /// <summary>
         /// C#ファイルに変換
         /// </summary>
-        /// <param name="path"></param>
-        private static void ExchangeSource(string path)
+        /// <param name="javaFilePath"></param>
+        private static void ExchangeSource(string javaFilePath)
         {
+            if (!javaFilePath.EndsWith(".java"))
+            {
+                // javaファイル以外は削除
+                File.Delete(javaFilePath);
+                return;
+            }
             // javaファイルの拡張子を.csに変換
             // 各予約語の変換
+
+            // 拡張子をC#ファイルに変換
+            string csFilePath = javaFilePath.Remove(javaFilePath.Length - 5) + ".cs";
+            File.Move(javaFilePath, csFilePath);
         }
 
 
