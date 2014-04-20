@@ -82,6 +82,8 @@ java.io.StringReader
 java.io.StringWriter
 java.io.UnsupportedEncodingException
 java.io.Writer
+java.lang.Iterable                             OK
+java.lang.String string(C#)+拡張メソッドで対応 #pending 未対応メソッドはNotSupportedException
 java.lang.reflect.Array
 java.lang.reflect.Constructor
 java.lang.reflect.Field
@@ -131,18 +133,18 @@ java.text.SimpleDateFormat
 java.util.ArrayList
 java.util.Arrays
 java.util.Calendar
-java.util.Collection
+java.util.Collection                          OK
 java.util.Collections
 java.util.Comparator
 java.util.Date
 java.util.GregorianCalendar
 java.util.HashMap
 java.util.HashSet
-java.util.Iterator
+java.util.Iterator                            OK
 java.util.LinkedHashMap
 java.util.LinkedHashSet
-java.util.List
-java.util.ListIterator
+java.util.List                                OK
+java.util.ListIterator                        OK
 java.util.Locale
 java.util.Map
 java.util.Map.Entry
