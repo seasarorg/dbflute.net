@@ -16,30 +16,44 @@
 package org.seasar.dbflute.net.migration.tools;
 
 import java.io.File;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
-import org.seasar.dbflute.net.migration.MigrationExample;
 import org.seasar.dbflute.net.migration.tools.handler.MigrationFileLineHandler;
 import org.seasar.dbflute.net.migration.unit.UnitContainerTestCase;
+import org.seasar.dbflute.unit.core.policestory.PoliceStory;
 import org.seasar.dbflute.unit.core.policestory.javaclass.PoliceStoryJavaClassHandler;
 
 /**
  * @author jflute
  */
-public class ToolsMigrationFromJavaTest extends UnitContainerTestCase {
+public class ToolsStandardApiResearchTest extends UnitContainerTestCase {
 
-    public void test_making() throws Exception {
+    @Override
+    protected PoliceStory createPoliceStory() {
+        File workspaceDir = getProjectDir().getParentFile().getParentFile();
+        return new PoliceStory(this, new File(workspaceDir + "/dbflute/dbflute-runtime/"));
+    }
+
+    public void test_research() throws Exception {
+        final Set<String> standardApiSet = new TreeSet<String>();
         policeStoryOfJavaClassChase(new PoliceStoryJavaClassHandler() {
             public void handle(File srcFile, Class<?> clazz) {
-                if (clazz.equals(MigrationExample.class)) { // #pending
-                    migrateToCSharp(srcFile, clazz);
+                MigrationFileLineHandler handler = new MigrationFileLineHandler();
+                readLine(srcFile, "UTF-8", handler);
+                List<String> importList = handler.getImportList();
+                for (String importClass : importList) {
+                    if (importClass.startsWith("java")) {
+                        standardApiSet.add(importClass);
+                    }
                 }
             }
         });
-    }
-
-    protected void migrateToCSharp(File srcFile, Class<?> clazz) {
-        MigrationFileLineHandler handler = new MigrationFileLineHandler();
-        readLine(srcFile, "UTF-8", handler);
-        log(ln() + handler.toCSharpString()); // #pending
+        StringBuilder sb = new StringBuilder();
+        for (String standardApi : standardApiSet) {
+            sb.append(ln()).append(standardApi);
+        }
+        log(sb.toString());
     }
 }
