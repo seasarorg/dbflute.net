@@ -27,6 +27,11 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
     }
 
     // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
+    protected boolean _foundOverride;
+
+    // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
     public CSharpClassContentsBuilder(JavaInfo javaInfo) {
@@ -49,7 +54,10 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
 
     protected void doBuildClassElementClause(StringBuilder sb) {
         for (String line : _javaInfo.getClassElementList()) {
-            sb.append(convertClassElement(line)).append(ln());
+            final String classElement = convertClassElement(line);
+            if (classElement != null) {
+                sb.append(classElement).append(ln());
+            }
         }
     }
 
@@ -58,22 +66,40 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
     //                                                                     ===============
     protected String convertClassElement(String line) {
         String work = line;
+        work = doConvertOverride(line, work);
         work = doConvertForeach(line, work);
-        work = doConvertInstanceOf(work);
-        return doConvertBasicElement(work);
+        work = doConvertInstanceOf(line, work);
+        return doConvertBasicElement(line, work);
     }
 
-    protected String doConvertForeach(String line, String work) {
-        if (work.trim().startsWith("for ") && line.contains(" : ")) {
-            work = replace(work, "for ", "foreach ");
-            work = replace(work, " : ", " in ");
+    protected String doConvertOverride(String line, String work) {
+        if (work != null && work.trim().startsWith("@Override")) {
+            _foundOverride = true;
+            return null;
+        } else {
+            if (_foundOverride && isMethodLine(line)) {
+                _foundOverride = false;
+                return replace(replace(work, "public ", "public override "), "protected ", "protected override ");
+            }
         }
         return work;
     }
 
-    protected String doConvertInstanceOf(String work) {
-        if (work.contains(" instanceof ")) {
-            work = replace(work, " instanceof ", " is ");
+    protected boolean isMethodLine(String line) {
+        final String trimmed = line.trim();
+        return trimmed.startsWith("p") && trimmed.contains("(") && trimmed.endsWith(") {");
+    }
+
+    protected String doConvertForeach(String line, String work) {
+        if (work != null && work.trim().startsWith("for ") && line.contains(" : ")) {
+            return replace(replace(work, "for ", "foreach "), " : ", " in ");
+        }
+        return work;
+    }
+
+    protected String doConvertInstanceOf(String line, String work) {
+        if (work != null && work.contains(" instanceof ")) {
+            return replace(work, " instanceof ", " is ");
         }
         return work;
     }
@@ -81,7 +107,10 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
     // -----------------------------------------------------
     //                                                 Basic
     //                                                 -----
-    protected String doConvertBasicElement(String line) {
-        return replaceBy(line, _basicClassElementReplaceMap);
+    protected String doConvertBasicElement(String line, String work) {
+        if (work == null) {
+            return null;
+        }
+        return replaceBy(work, _basicClassElementReplaceMap);
     }
 }
