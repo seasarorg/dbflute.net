@@ -46,6 +46,8 @@
     <Compile Include="JavaLike\Util\Iterator.cs" />
     <Compile Include="JavaLike\Util\List.cs" />
     <Compile Include="JavaLike\Util\ListIterator.cs" />
+    <Compile Include="JavaLike\Util\Map.cs" />
+    <Compile Include="JavaLike\Util\Set.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
