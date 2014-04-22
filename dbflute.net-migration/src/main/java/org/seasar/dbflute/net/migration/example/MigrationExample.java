@@ -26,7 +26,7 @@ import org.seasar.dbflute.util.DfTypeUtil;
 /**
  * @author jflute
  */
-public class MigrationExample {
+public class MigrationExample extends Object {
 
     private static final Log LOG = LogFactory.getLog(MigrationExample.class);
 

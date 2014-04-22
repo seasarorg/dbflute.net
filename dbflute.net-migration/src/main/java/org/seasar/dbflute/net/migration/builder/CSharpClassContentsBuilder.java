@@ -66,38 +66,53 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
     //                                                                     ===============
     protected String convertClassElement(String line) {
         String work = line;
-        work = doConvertOverride(line, work);
-        work = doConvertForeach(line, work);
-        work = doConvertInstanceOf(line, work);
-        return doConvertBasicElement(line, work);
-    }
-
-    protected String doConvertOverride(String line, String work) {
-        if (work != null && work.trim().startsWith("@Override")) {
+        if (isClassDefinitionLine(line)) {
+            work = doConvertExtends(work);
+        } else if (isOverrideAnnotationLine(line)) {
             _foundOverride = true;
             return null;
-        } else {
-            if (_foundOverride && isMethodLine(line)) {
-                _foundOverride = false;
-                return replace(replace(work, "public ", "public override "), "protected ", "protected override ");
+        } else if (isMethodLine(line)) {
+            if (_foundOverride) {
+                work = doConvertMethodOverride(work);
             }
+        } else if (isForeachLine(line)) {
+            work = doConvertForeach(work);
         }
-        return work;
+        work = doConvertInstanceOf(work);
+        return doConvertBasicElement(work);
+    }
+
+    protected boolean isClassDefinitionLine(String line) {
+        return line != null && line.startsWith("public ") && line.endsWith(" {");
+    }
+
+    protected String doConvertExtends(String work) {
+        return replace(work, " extends ", " : ");
+    }
+
+    protected String doConvertMethodOverride(String work) {
+        return replace(replace(work, "public ", "public override "), "protected ", "protected override ");
+    }
+
+    protected boolean isOverrideAnnotationLine(String line) {
+        return line != null && line.trim().startsWith("@Override");
     }
 
     protected boolean isMethodLine(String line) {
         final String trimmed = line.trim();
-        return trimmed.startsWith("p") && trimmed.contains("(") && trimmed.endsWith(") {");
+        final boolean indent = line.length() > trimmed.length();
+        return indent && trimmed.startsWith("p") && trimmed.contains("(") && trimmed.endsWith(") {");
     }
 
-    protected String doConvertForeach(String line, String work) {
-        if (work != null && work.trim().startsWith("for ") && line.contains(" : ")) {
-            return replace(replace(work, "for ", "foreach "), " : ", " in ");
-        }
-        return work;
+    protected boolean isForeachLine(String line) {
+        return line != null && line.trim().startsWith("for ") && line.contains(" : ");
     }
 
-    protected String doConvertInstanceOf(String line, String work) {
+    protected String doConvertForeach(String work) {
+        return replace(replace(work, "for ", "foreach "), " : ", " in ");
+    }
+
+    protected String doConvertInstanceOf(String work) {
         if (work != null && work.contains(" instanceof ")) {
             return replace(work, " instanceof ", " is ");
         }
@@ -107,7 +122,7 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
     // -----------------------------------------------------
     //                                                 Basic
     //                                                 -----
-    protected String doConvertBasicElement(String line, String work) {
+    protected String doConvertBasicElement(String work) {
         if (work == null) {
             return null;
         }
