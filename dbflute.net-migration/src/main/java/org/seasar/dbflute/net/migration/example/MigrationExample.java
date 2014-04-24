@@ -15,6 +15,7 @@
  */
 package org.seasar.dbflute.net.migration.example;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +27,10 @@ import org.seasar.dbflute.util.DfTypeUtil;
 /**
  * @author jflute
  */
-public class MigrationExample {
+public class MigrationExample extends Object implements Serializable {
+
+    /** Serial Version UID. */
+    private static final long serialVersionUID = 1L;
 
     private static final Log LOG = LogFactory.getLog(MigrationExample.class);
 
