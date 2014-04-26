@@ -130,12 +130,12 @@ java.text.DecimalFormat
 java.text.DecimalFormatSymbols
 java.text.ParseException
 java.text.SimpleDateFormat
-java.util.ArrayList
-java.util.Arrays
+java.util.ArrayList                           OK
+java.util.Arrays                              OK
 java.util.Calendar
 java.util.Collection                          OK
 java.util.Collections
-java.util.Comparator
+java.util.Comparator                          OK
 java.util.Date
 java.util.GregorianCalendar
 java.util.HashMap
@@ -146,10 +146,10 @@ java.util.LinkedHashSet
 java.util.List                                OK
 java.util.ListIterator                        OK
 java.util.Locale
-java.util.Map
-java.util.Map.Entry
+java.util.Map                                 OK
+java.util.Map.Entry                           OK
 java.util.Properties
-java.util.Set
+java.util.Set                                 OK
 java.util.SortedSet
 java.util.Stack
 java.util.StringTokenizer
