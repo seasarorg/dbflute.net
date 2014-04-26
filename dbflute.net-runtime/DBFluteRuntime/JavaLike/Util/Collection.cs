@@ -1,5 +1,6 @@
 ﻿using DBFluteRuntime.JavaLike.Lang;
 using System;
+using System.Collections.Generic;
 
 namespace DBFluteRuntime.JavaLike.Util
 {
@@ -102,7 +103,7 @@ namespace DBFluteRuntime.JavaLike.Util
     /// * @see	    AbstractCollection
     /// * @since 1.2
     /// </remarks>
-    public interface Collection<E> : Iterable<E>
+    public interface Collection<E> : Iterable<E>, IEnumerable<E>
     {
         // Query Operations
 
@@ -210,7 +211,7 @@ namespace DBFluteRuntime.JavaLike.Util
          *         this collection
          * @throws NullPointerException if the specified array is null
          */
-        T[] toArray<T>(T[] a);
+        object[] toArray(object[] a);
 
         // Modification Operations
 
@@ -287,7 +288,7 @@ namespace DBFluteRuntime.JavaLike.Util
          *         elements (optional), or if the specified collection is null
          * @see    #contains(Object)
          */
-        bool containsAll<T>(Collection<T> c);
+        bool containsAll(Collection<object> c);
 
         /**
          * Adds all of the elements in the specified collection to this collection
@@ -335,7 +336,7 @@ namespace DBFluteRuntime.JavaLike.Util
          * @see #remove(Object)
          * @see #contains(Object)
          */
-        bool removeAll<T>(Collection<T> c);
+        bool removeAll(Collection<object> c);
 
         /**
          * Retains only the elements in this collection that are contained in the
@@ -356,7 +357,7 @@ namespace DBFluteRuntime.JavaLike.Util
          * @see #remove(Object)
          * @see #contains(Object)
          */
-        bool retainAll<T>(Collection<T> c);
+        bool retainAll(Collection<object> c);
 
         /**
          * Removes all of the elements from this collection (optional operation).
@@ -369,57 +370,5 @@ namespace DBFluteRuntime.JavaLike.Util
 
 
         // Comparison and hashing
-
-        /**
-         * Compares the specified object with this collection for equality. <p>
-         *
-         * While the <tt>Collection</tt> interface adds no stipulations to the
-         * general contract for the <tt>Object.equals</tt>, programmers who
-         * implement the <tt>Collection</tt> interface "directly" (in other words,
-         * create a class that is a <tt>Collection</tt> but is not a <tt>Set</tt>
-         * or a <tt>List</tt>) must exercise care if they choose to override the
-         * <tt>Object.equals</tt>.  It is not necessary to do so, and the simplest
-         * course of action is to rely on <tt>Object</tt>'s implementation, but
-         * the implementor may wish to implement a "value comparison" in place of
-         * the default "reference comparison."  (The <tt>List</tt> and
-         * <tt>Set</tt> interfaces mandate such value comparisons.)<p>
-         *
-         * The general contract for the <tt>Object.equals</tt> method states that
-         * equals must be symmetric (in other words, <tt>a.equals(b)</tt> if and
-         * only if <tt>b.equals(a)</tt>).  The contracts for <tt>List.equals</tt>
-         * and <tt>Set.equals</tt> state that lists are only equal to other lists,
-         * and sets to other sets.  Thus, a custom <tt>equals</tt> method for a
-         * collection class that implements neither the <tt>List</tt> nor
-         * <tt>Set</tt> interface must return <tt>false</tt> when this collection
-         * is compared to any list or set.  (By the same logic, it is not possible
-         * to write a class that correctly implements both the <tt>Set</tt> and
-         * <tt>List</tt> interfaces.)
-         *
-         * @param o object to be compared for equality with this collection
-         * @return <tt>true</tt> if the specified object is equal to this
-         * collection
-         *
-         * @see Object#equals(Object)
-         * @see Set#equals(Object)
-         * @see List#equals(Object)
-         */
-        bool equals(Object o);
-
-        /**
-         * Returns the hash code value for this collection.  While the
-         * <tt>Collection</tt> interface adds no stipulations to the general
-         * contract for the <tt>Object.hashCode</tt> method, programmers should
-         * take note that any class that overrides the <tt>Object.equals</tt>
-         * method must also override the <tt>Object.hashCode</tt> method in order
-         * to satisfy the general contract for the <tt>Object.hashCode</tt>method.
-         * In particular, <tt>c1.equals(c2)</tt> implies that
-         * <tt>c1.hashCode()==c2.hashCode()</tt>.
-         *
-         * @return the hash code value for this collection
-         *
-         * @see Object#hashCode()
-         * @see Object#equals(Object)
-         */
-        int hashCode();
     }
 }
