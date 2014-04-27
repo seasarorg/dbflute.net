@@ -6,12 +6,15 @@ namespace DBFluteRuntime.JavaLike.Lang
     /// </summary>
     public sealed class boolean
     {
+        public static readonly boolean BOOLEAN_TRUE = new boolean(true);
+        public static readonly boolean BOOLEAN_FALSE = new boolean(false);
+
         private bool isTrue;
         /// <summary>
         /// コンストラクタ
         /// </summary>
         /// <param name="isTrue">初期化フラグ</param>
-        public boolean(bool isTrue)
+        private boolean(bool isTrue)
         {
             this.isTrue = isTrue;
         }
@@ -75,7 +78,7 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <returns></returns>
         public static implicit operator boolean(bool b)
         {
-            return new boolean(b);
+            return b ? BOOLEAN_TRUE : BOOLEAN_FALSE;
         }
 
         /// <summary>

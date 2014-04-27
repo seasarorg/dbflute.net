@@ -43,7 +43,7 @@ namespace ConsoleApplication1
             bool huga2 = hoge2;
 
             Console.WriteLine(retBool(true));
-            Console.WriteLine(retBoolean(new boolean(false)));
+            Console.WriteLine(retBoolean(boolean.BOOLEAN_FALSE));
             Thread.Sleep(2000);
         }
 

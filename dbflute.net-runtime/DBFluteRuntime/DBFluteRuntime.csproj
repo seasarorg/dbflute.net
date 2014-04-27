@@ -63,7 +63,6 @@
     <Compile Include="JavaLike\Util\RandomAccess.cs" />
     <Compile Include="JavaLike\Util\Set.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="JavaLike\Extensions\" />
