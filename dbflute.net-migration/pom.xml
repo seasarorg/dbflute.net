@@ -211,7 +211,7 @@
 		<!--                                                                       = = = = -->
 		<dependency>
 			<groupId>org.seasar.dbflute</groupId>
-			<artifactId>utflute-spring</artifactId>
+			<artifactId>utflute-seasar</artifactId>
 			<version>${utflute.version}</version>
 			<scope>test</scope>
 		</dependency>
