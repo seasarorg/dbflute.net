@@ -6,25 +6,10 @@ namespace DBFluteRuntime.JavaLike.Lang
     /// <summary>
     /// Java基本型キャッシュクラス
     /// </summary>
-    /// <typeparam name="CS"></typeparam>
-    /// <typeparam name="J"></typeparam>
+    /// <typeparam name="CS">C#型</typeparam>
+    /// <typeparam name="J">Java型</typeparam>
     public sealed class JavaBasicValue<CS, J>
     {
-        /// <summary>
-        /// 例外メッセージ用パラメータ名
-        /// </summary>
-        public const string PARAM_A = "a";
-
-        /// <summary>
-        /// 例外メッセージ用パラメータ名
-        /// </summary>
-        public const string PARAM_B = "b";
-
-        /// <summary>
-        /// 例外メッセージ用パラメータ名
-        /// </summary>
-        public const string PARAM_I = "i";
-
         /// <summary>
         /// 一度生成したインスタンスはキャッシュしておく
         /// </summary>
