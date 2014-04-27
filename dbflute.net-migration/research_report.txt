@@ -1,5 +1,5 @@
 This file is auto-generated so you cannot modify this directly.
-(research at 2014/04/27 17:26:11)
+(research at 2014/04/27 17:38:38)
 
 [x] java.io.BufferedReader                      {  7: JavaPropertiesReader, MapListFile, ProcessConsoleReader, FileToken, DfRepsExecuteLimitter, OutsideSqlContext, DfResourceUtil, ...}
 [x] java.io.BufferedWriter                      {  2: MapListFile, FileToken}
@@ -25,23 +25,33 @@ This file is auto-generated so you cannot modify this directly.
 [x] java.io.StringWriter                        {  1: DfTypeUtil}
 [x] java.io.UnsupportedEncodingException        {  4: MapListFile, ProcessConsoleReader, DfResourceUtil, DfTypeUtil}
 [x] java.io.Writer                              {  1: FileToken}
-[n] java.lang.Comparable
+[o] java.lang.Comparable
    -> JavaLike/Lang/Comparable.cs
 
-[n] java.lang.ConcurrentModificationException
+[o] java.lang.ConcurrentModificationException
    -> JavaLike/Lang/ConcurrentModificationException.cs
 
-[n] java.lang.IllegalStateException
+[o] java.lang.IllegalStateException
    -> JavaLike/Lang/IllegalStateException.cs
 
-[n] java.lang.Iterable
+[o] java.lang.Integer
+   -> JavaLike/Lang/Integer.cs
+
+[o] java.lang.Iterable
    -> JavaLike/Lang/Iterable.cs
 
-[n] java.lang.NoSuchElementException
+[o] java.lang.NoSuchElementException
    -> JavaLike/Lang/NoSuchElementException.cs
 
-[n] java.lang.String
+[v] java.lang.Object
+   -> JavaLike/Lang/ObjectExtension.cs
+      // #pending getClassメソッドの対応
+
+[o] java.lang.String
    -> JavaLike/Lang/StringExtension.cs
+
+[o] java.lang.boolean
+   -> JavaLike/Lang/boolean.cs
 
 [x] java.lang.reflect.Array                     {  4: TnBeanArrayResultSetHandler, BindVariableNode, EmbeddedVariableNode, DfReflectionUtil}
 [x] java.lang.reflect.Constructor               {  6: DfBeanDesc, DfBeanDescImpl, DfPropertyDescImpl, TnSqlLogRegistry, TnIdentifierGeneratorFactory, DfReflectionUtil}
@@ -82,13 +92,13 @@ This file is auto-generated so you cannot modify this directly.
 [x] java.sql.Statement                          {  4: NotClosingConnectionWrapper, PlainResultSetWrapper, TnAbstractBasicSqlHandler, TnAbstractEntityHandler}
 [x] java.sql.Struct                             {  1: NotClosingConnectionWrapper}
 [x] java.sql.Time                               {  7: AbstractDBMeta, ColumnInfo, DfPropertyDescImpl, PlainResultSetWrapper, TimeType, DisplaySqlBuilder, DfTypeUtil}
-[x] java.sql.Timestamp                          { 15: AccessContext, AbstractDBMeta, ColumnInfo, HandyDate, DfPropertyDescImpl, PlainResultSetWrapper, DBFluteSystem, ResourceContext, ...}
+[x] java.sql.Timestamp                          { 15: AccessContext, AbstractDBMeta, ColumnInfo, DfPropertyDescImpl, PlainResultSetWrapper, DBFluteSystem, ResourceContext, TnAbstractEntityHandler, ...}
 [x] java.sql.Types                              { 31: TnPlainValueTypes, BigDecimalType, BigIntegerType, BinaryStreamType, BinaryType, BooleanType, ByteType, CharacterType, ClassificationType, ...}
-[x] java.text.DateFormat                        {  2: HandyDate, DfTypeUtil, HandyDate(n)}
+[x] java.text.DateFormat                        {  2: DfTypeUtil, HandyDate(n)}
 [x] java.text.DecimalFormat                     {  1: DfTypeUtil}
 [x] java.text.DecimalFormatSymbols              {  1: DfTypeUtil}
 [x] java.text.ParseException                    {  1: DfTypeUtil}
-[x] java.text.SimpleDateFormat                  {  2: HandyDate, DfTypeUtil, HandyDate(n)}
+[x] java.text.SimpleDateFormat                  {  2: DfTypeUtil, HandyDate(n)}
 [v] java.util.ArrayList                         { 69: AbstractBehaviorReadable, AbstractBehaviorWritable, AbstractEntityCommand, AbstractListEntityCommand, SequenceCache, AbstractConditionBean, ...}
    -> JavaLike/Util/ArrayList.cs
       // #pending
@@ -96,7 +106,7 @@ This file is auto-generated so you cannot modify this directly.
 [o] java.util.Arrays                            { 12: BehaviorInvokeNameExtractor, BehaviorInvokePathBuilder, LikeSearchOption, AbstractDBMeta, WayOfDB2, WayOfOracle, WayOfSQLServer, ...}
    -> JavaLike/Util/Arrays.cs
 
-[x] java.util.Calendar                          {  7: FromToOption, HandyDate, PlainResultSetWrapper, TnProcedureMetaDataFactory, TnDBMetaBeanAnnotationReader, TnPlainValueTypes, ...}
+[x] java.util.Calendar                          {  7: FromToOption, PlainResultSetWrapper, TnProcedureMetaDataFactory, TnDBMetaBeanAnnotationReader, TnPlainValueTypes, DfTypeUtil, ...}
 [o] java.util.Collection                        { 16: AbstractConditionQuery, ListResultBean, SimpleMapPmb, AbstractSqlClause, AbstractDBMeta, AbstractAlterGenerator, ConditionBeanExceptionThrower, ...}
    -> JavaLike/Util/Collection.cs
 
@@ -105,7 +115,7 @@ This file is auto-generated so you cannot modify this directly.
    -> JavaLike/Util/Comparator.cs
 
 [x] java.util.Date                              { 18: AccessContext, Entity, AbstractConditionQuery, ManualOrderBean, HpQDRParameter, FromToOption, FunctionFilterOption, AbstractDBMeta, ...}
-[n] java.util.GregorianCalendar                 {  1: HandyDate, HandyDate(n)}
+[n] java.util.GregorianCalendar                 {  1: HandyDate(n)}
 [x] java.util.HashMap                           { 26: AccessContext, DBDef, BehaviorCommandInvoker, SequenceCacheHandler, AbstractConditionQuery, HpFixedConditionQueryResolver, ...}
 [o] java.util.HashSet                           {  7: HpFixedConditionQueryResolver, AbstractSqlClause, QueryClauseFilter, DerivedReferrer, DfBeanDescImpl, FileToken, DfCollectionUtil, ...}
    -> JavaLike/Util/HashSet.cs
@@ -121,7 +131,7 @@ This file is auto-generated so you cannot modify this directly.
 [o] java.util.ListIterator                      {  1: ListResultBean}
    -> JavaLike/Util/ListIterator.cs
 
-[x] java.util.Locale                            {  2: HandyDate, DfTypeUtil, HandyDate(n)}
+[x] java.util.Locale                            {  2: DfTypeUtil, HandyDate(n)}
 [o] java.util.Map                               {108: AccessContext, DBDef, AbstractBehaviorReadable, UpdateOption, BehaviorCommandInvoker, ContextStack, AbstractBehaviorCommand, ...}
    -> JavaLike/Util/Map.cs
 
@@ -132,7 +142,7 @@ This file is auto-generated so you cannot modify this directly.
 [x] java.util.SortedSet                         {  2: SequenceCache, TnProcedureMetaData}
 [x] java.util.Stack                             {  3: ContextStack, TnRelationRowCreationResource, SqlAnalyzer}
 [x] java.util.StringTokenizer                   {  5: SplitOptionParts, AbstractSqlClause, OrderByClause, TnIdentifierGeneratorFactory, DfTypeUtil}
-[x] java.util.TimeZone                          {  2: HandyDate, DfTypeUtil, HandyDate(n)}
+[x] java.util.TimeZone                          {  2: DfTypeUtil, HandyDate(n)}
 [x] java.util.TreeSet                           {  3: SequenceCache, DfSchemaResourceFinder, TnProcedureMetaData}
 [x] java.util.UUID                              {  6: AbstractDBMeta, ColumnInfo, TnPlainValueTypes, TnValueTypes, UUIDAsDirectType, DfTypeUtil}
 [x] java.util.concurrent.Callable               {  1: CountDownRace}

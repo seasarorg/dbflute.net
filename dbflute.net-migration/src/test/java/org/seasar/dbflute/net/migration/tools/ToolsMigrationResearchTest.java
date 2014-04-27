@@ -217,7 +217,7 @@ public class ToolsMigrationResearchTest extends UnitContainerTestCase {
                 valueMap.put(KEY_IMPORT_CLASS_NAME, importClassName);
                 valueMap.put(KEY_IMPORT_SIMPLE_NAME, simpleName);
                 valueMap.put(KEY_REFERRER_LIST, new ArrayList<String>());
-                valueMap.put(KEY_MIGRATION_TARGET, false);
+                valueMap.put(KEY_MIGRATION_TARGET, true);
                 importApiMap.put(importClassName, valueMap);
             }
         }
@@ -235,13 +235,14 @@ public class ToolsMigrationResearchTest extends UnitContainerTestCase {
         final List<Class<?>> outOfReferrerList = newArrayList();
         boolean overLimit = false;
         for (Class<?> referrer : referrerList) {
+            if (isOutOfMigrationClass(referrer)) {
+                outOfReferrerList.add(referrer);
+                continue; // priority low
+            }
             if (referrerSb.length() > 0) {
                 referrerSb.append(", ");
             }
             referrerSb.append(referrer.getSimpleName());
-            if (isOutOfMigrationClass(referrer)) { // priority low
-                outOfReferrerList.add(referrer);
-            }
             if (referrerSb.length() > REFERRER_LIMIT) {
                 referrerSb.append(", ...");
                 overLimit = true;
