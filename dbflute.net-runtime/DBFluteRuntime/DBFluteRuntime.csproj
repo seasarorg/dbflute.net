@@ -45,6 +45,7 @@
     <Compile Include="JavaLike\Lang\NoSuchElementException.cs" />
     <Compile Include="JavaLike\Lang\IllegalStateException.cs" />
     <Compile Include="JavaLike\Lang\Iterable.cs" />
+    <Compile Include="JavaLike\Lang\ObjectExtension.cs" />
     <Compile Include="JavaLike\Lang\StringExtension.cs" />
     <Compile Include="JavaLike\Util\AbstractCollection.cs" />
     <Compile Include="JavaLike\Util\AbstractList.cs" />
