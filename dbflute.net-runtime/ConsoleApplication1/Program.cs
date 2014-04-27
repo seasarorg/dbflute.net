@@ -12,8 +12,95 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
+            // TestBoolean();
+            TestInteger();
+
+            Thread.Sleep(3000);
+        }
+
+        private static void TestInteger()
+        {
+            Integer i1 = 100;
+            Console.WriteLine(i1);
+
+            Integer i2 = null;
+            Console.WriteLine(i2);
+
+            int? i3 = i1;
+            Console.WriteLine(i3);
+
+            i1++;
+            Console.WriteLine(i1);
+
+            i1++;
+            Console.WriteLine(i1);
+
+            i1--;
+            Console.WriteLine(i1);
+
+            Console.WriteLine(Integer.valueOf("200"));
+
+            Console.WriteLine(i1.intValue());
+
+            Console.WriteLine(--i1);
+            Console.WriteLine(++i1);
+
+            Console.WriteLine(i1--);
+            Console.WriteLine(i1++);
+
+            try
+            {
+                Integer i4 = null;
+                Integer i5 = 10;
+                Console.WriteLine(i4 * i5);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e);
+            }
+
+            try
+            {
+                int? i6 = null;
+                Integer i7 = 10;
+                Console.WriteLine(i6 * i7);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e);
+            }
+
+            try
+            {
+                int? i8 = 999;
+                Integer i9 = null;
+                Console.WriteLine(i8 * i9);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e);
+            }
+
+            try
+            {
+                int? i10 = 999;
+                int? i11 = null;
+                Console.WriteLine((i10 * i11).HasValue ? "not null" : "null");
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        /// <summary>
+        /// booleanクラス用動作確認の実行
+        /// </summary>
+        private static void TestBoolean()
+        {
             boolean hoge1 = true;
             boolean hoge2 = false;
+
             if (hoge1)
             {
                 Console.WriteLine("true");
@@ -44,7 +131,6 @@ namespace ConsoleApplication1
 
             Console.WriteLine(retBool(true));
             Console.WriteLine(retBoolean(boolean.BOOLEAN_FALSE));
-            Thread.Sleep(2000);
         }
 
         private static void methodBool(bool b)

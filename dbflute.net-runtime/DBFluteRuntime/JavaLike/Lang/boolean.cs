@@ -2,7 +2,7 @@
 namespace DBFluteRuntime.JavaLike.Lang
 {
     /// <summary>
-    /// javaのboolean型用定義
+    /// [java]boolean - [C#]bool 関連付け
     /// </summary>
     public sealed class boolean
     {
