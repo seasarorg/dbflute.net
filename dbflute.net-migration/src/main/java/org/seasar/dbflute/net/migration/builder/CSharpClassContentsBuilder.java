@@ -112,7 +112,7 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
     }
 
     protected String doConvertExtends(String work) {
-        return replace(work, " extends ", " : ");
+        return replace(work, " extends ", " : "); // TODO jflute implements 
     }
 
     protected String doConvertMethodOverride(String work) {

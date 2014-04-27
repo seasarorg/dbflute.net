@@ -25,15 +25,47 @@ C#のメソッドエクステンションを使って、標準クラスでもJav
 // 拡張メソッド | C# によるプログラミング入門
 http://ufcpp.net/study/csharp/sp3_extension.html
 
-移行に必要なエクステンションの候補は...
+例えば、移行に必要なエクステンションの候補は...
 
-<< Java6のStringクラスの多くのメソッド >>
+// Java6のStringクラスの多くのメソッド
 http://docs.oracle.com/javase/jp/6/api/java/lang/String.html
 
-contains(), endsWith(), equals(), equalsIgnoreCase(), hashCode(), indexOf(), lastIndexOf(), length()
-, startsWith(), substring(), toLowerCase(), toString(), toUpperCase(), trim() 
+o String
+o StringBuilder
+o Object
+o int?
+o long?
 
-<< #pending ちょっとずつ洗い出していきます by jflute >>
+
+[Ignore Class]
+ o HandyDate
+ o 
+
+[Headache Class]
+ o DfTypeUtil
+ o 
+
+# ----------------------------------------------------------
+#                                                  Java Like
+#                                                  ---------
+Javaと同じクラス名、Javaとメソッド名で、C#のクラスをラップしたアダプターを作る。
+既存のJavaLikeクラスを参考にする。
+
+o Collection (List, HashMap, Arrays, ConcurrentHashMap, ...)
+o Exception (IllegalStateException, ...)
+o Reflection (Class, Method, ...)
+o JDBC for ADO.NET (PreparedStatement, ResultSet, ...)
+o 基本型吸収 (BigDecimal, ...)
+
+
+# ----------------------------------------------------------
+#                                                  Converter
+#                                                  ---------
+DBFluteランタイムのクラスを全てフィルターして、7割8割くらいのC#コードの土台を作る。
+
+o booleanクラスの可能性
+o インターフェースメソッドをabstractで受けなきゃいけない？
+o Genericの書き方の変換が大変そう
 
 
 # ----------------------------------------------------------
@@ -44,7 +76,6 @@ contains(), endsWith(), equals(), equalsIgnoreCase(), hashCode(), indexOf(), las
 
 DBFlute
  |-JavaLike
- |  |-Extensions
  |  |-Lang
  |  |-Sql
  |  |-Util
