@@ -1,0 +1,157 @@
+This file is auto-generated so you cannot modify this directly.
+(research at 2014/04/27 17:38:38)
+
+[x] java.io.BufferedReader                      {  7: JavaPropertiesReader, MapListFile, ProcessConsoleReader, FileToken, DfRepsExecuteLimitter, OutsideSqlContext, DfResourceUtil, ...}
+[x] java.io.BufferedWriter                      {  2: MapListFile, FileToken}
+[x] java.io.ByteArrayInputStream                {  5: BinaryStreamType, BinaryType, BytesOidType, BytesType, DfTypeUtil}
+[x] java.io.ByteArrayOutputStream               {  2: DfResourceUtil, DfTypeUtil}
+[x] java.io.File                                {  7: FileHierarchyTracer, FileHierarchyTracingHandler, SystemScript, DfSchemaResourceFinder, DfRepsExecuteLimitter, DfRepsSchemaSqlDir, ...}
+[x] java.io.FileFilter                          {  2: FileHierarchyTracer, DfSchemaResourceFinder}
+[x] java.io.FileInputStream                     {  3: FileToken, DfPropFile, DfRepsExecuteLimitter}
+[x] java.io.FileNotFoundException               {  6: FileToken, DfPropFile, DfPropReadingListHandler, DfPropReadingMapHandler, DfPropReadingStringHandler, DfResourceUtil}
+[x] java.io.FileOutputStream                    {  2: FileToken, DfResourceUtil}
+[x] java.io.FilenameFilter                      {  1: DfSchemaResourceFinder}
+[x] java.io.IOException                         { 22: FileHierarchyTracer, FileHierarchyTracingHandler, JavaPropertiesReader, JavaPropertiesStreamProvider, ObjectiveProperties, ...}
+[x] java.io.InputStream                         { 18: JavaPropertiesReader, JavaPropertiesStreamProvider, ObjectiveProperties, MapListFile, ProcessConsoleReader, SystemScript, FileToken, ...}
+[x] java.io.InputStreamReader                   {  6: JavaPropertiesReader, MapListFile, ProcessConsoleReader, FileToken, DfRepsExecuteLimitter, OutsideSqlContext}
+[x] java.io.ObjectInputStream                   {  1: DfTypeUtil}
+[x] java.io.ObjectOutputStream                  {  1: DfTypeUtil}
+[x] java.io.OutputStream                        {  5: MapListFile, FileToken, DfDiffMapFile, BytesOidType, DfResourceUtil}
+[x] java.io.OutputStreamWriter                  {  2: MapListFile, FileToken}
+[x] java.io.PrintWriter                         {  2: HandlingDataSourceWrapper, DfTypeUtil}
+[x] java.io.Reader                              {  4: PlainResultSetWrapper, OutsideSqlContext, StringClobType, DfResourceUtil}
+[x] java.io.Serializable                        { 41: Entity, ListResultBean, SimpleMapPmb, HpCBPurpose, ConditionKey, SplitOptionParts, ConditionValue, GroupingListRowResource, ...}
+[x] java.io.StringReader                        {  1: StringClobType}
+[x] java.io.StringWriter                        {  1: DfTypeUtil}
+[x] java.io.UnsupportedEncodingException        {  4: MapListFile, ProcessConsoleReader, DfResourceUtil, DfTypeUtil}
+[x] java.io.Writer                              {  1: FileToken}
+[o] java.lang.Comparable
+   -> JavaLike/Lang/Comparable.cs
+
+[o] java.lang.ConcurrentModificationException
+   -> JavaLike/Lang/ConcurrentModificationException.cs
+
+[o] java.lang.IllegalStateException
+   -> JavaLike/Lang/IllegalStateException.cs
+
+[o] java.lang.Integer
+   -> JavaLike/Lang/Integer.cs
+
+[o] java.lang.Iterable
+   -> JavaLike/Lang/Iterable.cs
+
+[o] java.lang.NoSuchElementException
+   -> JavaLike/Lang/NoSuchElementException.cs
+
+[v] java.lang.Object
+   -> JavaLike/Lang/ObjectExtension.cs
+      // #pending getClassメソッドの対応
+
+[o] java.lang.String
+   -> JavaLike/Lang/StringExtension.cs
+
+[o] java.lang.boolean
+   -> JavaLike/Lang/boolean.cs
+
+[x] java.lang.reflect.Array                     {  4: TnBeanArrayResultSetHandler, BindVariableNode, EmbeddedVariableNode, DfReflectionUtil}
+[x] java.lang.reflect.Constructor               {  6: DfBeanDesc, DfBeanDescImpl, DfPropertyDescImpl, TnSqlLogRegistry, TnIdentifierGeneratorFactory, DfReflectionUtil}
+[x] java.lang.reflect.Field                     {  8: DfBeanDesc, DfPropertyDesc, DfBeanDescImpl, DfPropertyDescImpl, TnProcedureMetaDataFactory, TnDBMetaBeanAnnotationReader, TnFieldBeanAnnotationReader, ...}
+[x] java.lang.reflect.GenericArrayType          {  1: DfReflectionUtil}
+[x] java.lang.reflect.InvocationTargetException {  1: DfReflectionUtil}
+[x] java.lang.reflect.Method                    { 19: AbstractBehaviorReadable, QueryTraceableSqlStringFilter, SimpleTraceableSqlStringFilter, AbstractConditionBean, AbstractConditionQuery, ...}
+[x] java.lang.reflect.Modifier                  {  2: TnProcedureMetaDataFactory, DfReflectionUtil}
+[x] java.lang.reflect.ParameterizedType         {  1: DfReflectionUtil}
+[x] java.lang.reflect.Type                      {  2: TnProcedureMetaDataFactory, DfReflectionUtil}
+[x] java.lang.reflect.WildcardType              {  1: DfReflectionUtil}
+[x] java.math.BigDecimal                        {  9: SequenceCache, SequenceCacheHandler, AbstractDBMeta, AlterGeneratorMySql, ObjectiveProperties, PlainResultSetWrapper, TnPlainValueTypes, ...}
+[x] java.math.BigInteger                        {  2: TnPlainValueTypes, DfTypeUtil}
+[x] java.net.JarURLConnection                   {  1: DfResourceUtil}
+[x] java.net.MalformedURLException              {  1: DfRefreshResourceRequest}
+[x] java.net.URL                                {  3: DfRefreshResourceRequest, PlainResultSetWrapper, DfResourceUtil}
+[x] java.net.URLConnection                      {  2: DfRefreshResourceRequest, DfResourceUtil}
+[x] java.net.URLDecoder                         {  1: DfResourceUtil}
+[x] java.sql.Array                              {  2: NotClosingConnectionWrapper, PlainResultSetWrapper}
+[x] java.sql.Blob                               {  5: NotClosingConnectionWrapper, PlainResultSetWrapper, BinaryType, BytesOidType, BytesType}
+[x] java.sql.CallableStatement                  { 41: NotClosingConnectionWrapper, StatementFactory, ValueType, TnIdentifierAbstractGenerator, TnStatementFactoryImpl, TnAbstractBasicSqlHandler, ...}
+[x] java.sql.Clob                               {  3: NotClosingConnectionWrapper, PlainResultSetWrapper, StringClobType}
+[x] java.sql.Connection                         { 54: DataSourceHandler, HandlingDataSourceWrapper, LazyDatabaseMetaDataWrapper, MetaDataConnectionProvider, NotClosingConnectionWrapper, ...}
+[x] java.sql.DatabaseMetaData                   {  8: LazyDatabaseMetaDataWrapper, NotClosingConnectionWrapper, TnBeanMetaDataFactoryExtension, TnBeanMetaDataFactory, TnRelationPropertyTypeFactoryBuilder, ...}
+[x] java.sql.Date                               {  1: PlainResultSetWrapper}
+[x] java.sql.NClob                              {  2: NotClosingConnectionWrapper, PlainResultSetWrapper}
+[x] java.sql.PreparedStatement                  { 43: NotClosingConnectionWrapper, StatementFactory, ValueType, TnIdentifierAbstractGenerator, TnStatementFactoryImpl, TnAbstractBasicSqlHandler, ...}
+[x] java.sql.Ref                                {  1: PlainResultSetWrapper}
+[x] java.sql.ResultSet                          { 59: OutsideSqlSelectCursorCommand, CursorHandler, LazyDatabaseMetaDataWrapper, PlainResultSetWrapper, StatementConfig, ValueType, ...}
+[x] java.sql.ResultSetMetaData                  {  3: PlainResultSetWrapper, ResourceContext, TnAbstractMapResultSetHandler}
+[x] java.sql.RowId                              {  1: PlainResultSetWrapper}
+[x] java.sql.RowIdLifetime                      {  1: LazyDatabaseMetaDataWrapper}
+[x] java.sql.SQLClientInfoException             {  1: NotClosingConnectionWrapper}
+[x] java.sql.SQLException                       { 85: BehaviorCommandInvoker, SqlFireResultInfo, OutsideSqlSelectCursorCommand, EntityAlreadyExistsException, SQLFailureException, ...}
+[x] java.sql.SQLWarning                         {  2: NotClosingConnectionWrapper, PlainResultSetWrapper}
+[x] java.sql.SQLXML                             {  2: NotClosingConnectionWrapper, PlainResultSetWrapper}
+[x] java.sql.Savepoint                          {  1: NotClosingConnectionWrapper}
+[x] java.sql.Statement                          {  4: NotClosingConnectionWrapper, PlainResultSetWrapper, TnAbstractBasicSqlHandler, TnAbstractEntityHandler}
+[x] java.sql.Struct                             {  1: NotClosingConnectionWrapper}
+[x] java.sql.Time                               {  7: AbstractDBMeta, ColumnInfo, DfPropertyDescImpl, PlainResultSetWrapper, TimeType, DisplaySqlBuilder, DfTypeUtil}
+[x] java.sql.Timestamp                          { 15: AccessContext, AbstractDBMeta, ColumnInfo, DfPropertyDescImpl, PlainResultSetWrapper, DBFluteSystem, ResourceContext, TnAbstractEntityHandler, ...}
+[x] java.sql.Types                              { 31: TnPlainValueTypes, BigDecimalType, BigIntegerType, BinaryStreamType, BinaryType, BooleanType, ByteType, CharacterType, ClassificationType, ...}
+[x] java.text.DateFormat                        {  2: DfTypeUtil, HandyDate(n)}
+[x] java.text.DecimalFormat                     {  1: DfTypeUtil}
+[x] java.text.DecimalFormatSymbols              {  1: DfTypeUtil}
+[x] java.text.ParseException                    {  1: DfTypeUtil}
+[x] java.text.SimpleDateFormat                  {  2: DfTypeUtil, HandyDate(n)}
+[v] java.util.ArrayList                         { 69: AbstractBehaviorReadable, AbstractBehaviorWritable, AbstractEntityCommand, AbstractListEntityCommand, SequenceCache, AbstractConditionBean, ...}
+   -> JavaLike/Util/ArrayList.cs
+      // #pending
+
+[o] java.util.Arrays                            { 12: BehaviorInvokeNameExtractor, BehaviorInvokePathBuilder, LikeSearchOption, AbstractDBMeta, WayOfDB2, WayOfOracle, WayOfSQLServer, ...}
+   -> JavaLike/Util/Arrays.cs
+
+[x] java.util.Calendar                          {  7: FromToOption, PlainResultSetWrapper, TnProcedureMetaDataFactory, TnDBMetaBeanAnnotationReader, TnPlainValueTypes, DfTypeUtil, ...}
+[o] java.util.Collection                        { 16: AbstractConditionQuery, ListResultBean, SimpleMapPmb, AbstractSqlClause, AbstractDBMeta, AbstractAlterGenerator, ConditionBeanExceptionThrower, ...}
+   -> JavaLike/Util/Collection.cs
+
+[x] java.util.Collections                       { 23: HpMobCaseWhenElement, AbstractSqlClause, AbstractDBMeta, ColumnInfo, ForeignInfo, ReferrerInfo, UniqueInfo, WayOfDerby, WayOfFirebird, ...}
+[o] java.util.Comparator                        {  5: SequenceCache, FileHierarchyTracer, DfSchemaResourceFinder, TnProcedureMetaData, DfCollectionUtil}
+   -> JavaLike/Util/Comparator.cs
+
+[x] java.util.Date                              { 18: AccessContext, Entity, AbstractConditionQuery, ManualOrderBean, HpQDRParameter, FromToOption, FunctionFilterOption, AbstractDBMeta, ...}
+[n] java.util.GregorianCalendar                 {  1: HandyDate(n)}
+[x] java.util.HashMap                           { 26: AccessContext, DBDef, BehaviorCommandInvoker, SequenceCacheHandler, AbstractConditionQuery, HpFixedConditionQueryResolver, ...}
+[o] java.util.HashSet                           {  7: HpFixedConditionQueryResolver, AbstractSqlClause, QueryClauseFilter, DerivedReferrer, DfBeanDescImpl, FileToken, DfCollectionUtil, ...}
+   -> JavaLike/Util/HashSet.cs
+
+[o] java.util.Iterator                          {  7: AbstractConditionQuery, ListResultBean, AbstractSqlClause, OrderByClause, StringSet, DfBeanDescImpl, FileToken}
+   -> JavaLike/Util/Iterator.cs
+
+[x] java.util.LinkedHashMap                     { 27: AbstractBehaviorReadable, AbstractBehaviorCommand, AbstractConditionQuery, ListResultBean, SimpleMapPmb, SimplePagingBean, ...}
+[x] java.util.LinkedHashSet                     {  8: Entity, AbstractBehaviorReadable, InsertOption, UpdateOption, ListResultBean, HpFixedConditionQueryResolver, DfSchemaResourceFinder, ...}
+[o] java.util.List                              {178: AbstractBehaviorReadable, AbstractBehaviorWritable, BehaviorWritable, DtoMapper, EntityListSetupper, InsertOption, LoadReferrerOption, ...}
+   -> JavaLike/Util/List.cs
+
+[o] java.util.ListIterator                      {  1: ListResultBean}
+   -> JavaLike/Util/ListIterator.cs
+
+[x] java.util.Locale                            {  2: DfTypeUtil, HandyDate(n)}
+[o] java.util.Map                               {108: AccessContext, DBDef, AbstractBehaviorReadable, UpdateOption, BehaviorCommandInvoker, ContextStack, AbstractBehaviorCommand, ...}
+   -> JavaLike/Util/Map.cs
+
+[x] java.util.Properties                        {  3: JavaPropertiesReader, JavaPropertiesResult, NotClosingConnectionWrapper}
+[o] java.util.Set                               { 40: Entity, AbstractBehaviorReadable, InsertOption, InstanceKeyEntity, UpdateOption, ContextStack, AbstractConditionBean, ListResultBean, ...}
+   -> JavaLike/Util/Set.cs
+
+[x] java.util.SortedSet                         {  2: SequenceCache, TnProcedureMetaData}
+[x] java.util.Stack                             {  3: ContextStack, TnRelationRowCreationResource, SqlAnalyzer}
+[x] java.util.StringTokenizer                   {  5: SplitOptionParts, AbstractSqlClause, OrderByClause, TnIdentifierGeneratorFactory, DfTypeUtil}
+[x] java.util.TimeZone                          {  2: DfTypeUtil, HandyDate(n)}
+[x] java.util.TreeSet                           {  3: SequenceCache, DfSchemaResourceFinder, TnProcedureMetaData}
+[x] java.util.UUID                              {  6: AbstractDBMeta, ColumnInfo, TnPlainValueTypes, TnValueTypes, UUIDAsDirectType, DfTypeUtil}
+[x] java.util.concurrent.Callable               {  1: CountDownRace}
+[x] java.util.concurrent.ConcurrentHashMap      {  9: AbstractDBMeta, ColumnSqlName, StringKeyMap, DfBeanDescFactory, TnBeanMetaDataFactoryExtension, TnIdentifierGeneratorFactory, ...}
+[x] java.util.concurrent.CountDownLatch         {  2: CountDownRace, CountDownRaceLatch}
+[x] java.util.concurrent.ExecutionException     {  1: CountDownRace}
+[x] java.util.concurrent.ExecutorService        {  1: CountDownRace}
+[x] java.util.concurrent.Executors              {  1: CountDownRace}
+[x] java.util.concurrent.Future                 {  1: CountDownRace}
+[x] java.util.jar.JarFile                       {  1: DfResourceUtil}
+[x] java.util.zip.ZipEntry                      {  1: DfResourceUtil}
+[x] javax.sql.DataSource                        { 50: BehaviorCommandComponentSetup, InvokerAssistant, AbstractBehaviorCommand, AbstractFixedArgExecution, AbstractFixedSqlExecution, ...}
