@@ -15,8 +15,17 @@ M2EなどのMaven管理ができる環境が整っていればビルドするこ
 
 
 # ========================================================================================
-#                                                                                     Memo
-#                                                                                     ====
+#                                                                  Migration Specification
+#                                                                  =======================
+# ----------------------------------------------------------
+#                                                   Overview
+#                                                   --------
+Method Extension と Java っぽいインターフェースのクラス (JavaLike) を作って、
+できるだけJavaのコードがそのまま移植できるようにします。
+そして、文法的な部分での変換は、Java to C# のコンバーターを作って移行します。
+最後は、手作業。(あまり定型的なものはできるだけコンバーターで吸収)
+
+
 # ----------------------------------------------------------
 #                                           Method Extension
 #                                           ----------------
@@ -37,20 +46,13 @@ o int?
 o long?
 
 
-[Ignore Class]
- o HandyDate
- o 
-
-[Headache Class]
- o DfTypeUtil
- o 
-
 # ----------------------------------------------------------
 #                                                  Java Like
 #                                                  ---------
 Javaと同じクラス名、Javaとメソッド名で、C#のクラスをラップしたアダプターを作る。
 既存のJavaLikeクラスを参考にする。
 
+o boolean, Integer, Long
 o Collection (List, HashMap, Arrays, ConcurrentHashMap, ...)
 o Exception (IllegalStateException, ...)
 o Reflection (Class, Method, ...)
@@ -63,7 +65,6 @@ o 基本型吸収 (BigDecimal, ...)
 #                                                  ---------
 DBFluteランタイムのクラスを全てフィルターして、7割8割くらいのC#コードの土台を作る。
 
-o booleanクラスの可能性
 o インターフェースメソッドをabstractで受けなきゃいけない？
 o Genericの書き方の変換が大変そう
 
@@ -84,117 +85,39 @@ DBFlute
 
 
 # ----------------------------------------------------------
-#                                               Standard API
-#                                               ------------
-import文で利用されている標準API、ToolsStandardApiResearchTestより
-(java.langは取れない...)
+#                                            Research Report
+#                                            ---------------
+dbflute.net-migration/research_report.txt には、移行調査したレポートが出力されています。
+Java側で import されているクラスと C# にて作った JavaLike クラスの対応表(進捗付き)のようなものです。
 
-java.io.BufferedReader
-java.io.BufferedWriter
-java.io.ByteArrayInputStream
-java.io.ByteArrayOutputStream
-java.io.File
-java.io.FileFilter
-java.io.FileInputStream
-java.io.FileNotFoundException
-java.io.FileOutputStream
-java.io.FilenameFilter
-java.io.IOException
-java.io.InputStream
-java.io.InputStreamReader
-java.io.ObjectInputStream
-java.io.ObjectOutputStream
-java.io.OutputStream
-java.io.OutputStreamWriter
-java.io.PrintWriter
-java.io.Reader
-java.io.Serializable
-java.io.StringReader
-java.io.StringWriter
-java.io.UnsupportedEncodingException
-java.io.Writer
-java.lang.Iterable                             OK
-java.lang.String string(C#)+拡張メソッドで対応 #pending 未対応メソッドはNotSupportedException
-java.lang.reflect.Array
-java.lang.reflect.Constructor
-java.lang.reflect.Field
-java.lang.reflect.GenericArrayType
-java.lang.reflect.InvocationTargetException
-java.lang.reflect.Method
-java.lang.reflect.Modifier
-java.lang.reflect.ParameterizedType
-java.lang.reflect.Type
-java.lang.reflect.WildcardType
-java.math.BigDecimal
-java.math.BigInteger
-java.net.JarURLConnection
-java.net.MalformedURLException
-java.net.URL
-java.net.URLConnection
-java.net.URLDecoder
-java.sql.Array
-java.sql.Blob
-java.sql.CallableStatement
-java.sql.Clob
-java.sql.Connection
-java.sql.DatabaseMetaData
-java.sql.Date
-java.sql.NClob
-java.sql.PreparedStatement
-java.sql.Ref
-java.sql.ResultSet
-java.sql.ResultSetMetaData
-java.sql.RowId
-java.sql.RowIdLifetime
-java.sql.SQLClientInfoException
-java.sql.SQLException
-java.sql.SQLWarning
-java.sql.SQLXML
-java.sql.Savepoint
-java.sql.Statement
-java.sql.Struct
-java.sql.Time
-java.sql.Timestamp
-java.sql.Types
-java.text.DateFormat
-java.text.DecimalFormat
-java.text.DecimalFormatSymbols
-java.text.ParseException
-java.text.SimpleDateFormat
-java.util.ArrayList                           OK
-java.util.Arrays                              OK
-java.util.Calendar
-java.util.Collection                          OK
-java.util.Collections
-java.util.Comparator                          OK
-java.util.Date
-java.util.GregorianCalendar
-java.util.HashMap
-java.util.HashSet
-java.util.Iterator                            OK
-java.util.LinkedHashMap
-java.util.LinkedHashSet
-java.util.List                                OK
-java.util.ListIterator                        OK
-java.util.Locale
-java.util.Map                                 OK
-java.util.Map.Entry                           OK
-java.util.Properties
-java.util.Set                                 OK
-java.util.SortedSet
-java.util.Stack
-java.util.StringTokenizer
-java.util.TimeZone
-java.util.TreeSet
-java.util.UUID
-java.util.concurrent.Callable
-java.util.concurrent.ConcurrentHashMap
-java.util.concurrent.CountDownLatch
-java.util.concurrent.ExecutionException
-java.util.concurrent.ExecutorService
-java.util.concurrent.Executors
-java.util.concurrent.Future
-java.util.jar.JarFile
-java.util.zip.ZipEntry
-javax.sql.DataSource
+[o] java.util.List            {178: AbstractBehaviorReadable, AbstractBehaviorWritable, BehaviorWritable, DtoMapper, EntityListSetupper, InsertOption, LoadReferrerOption, ...}
+   -> JavaLike/Util/List.cs
 
+[x] java.util.Properties      {  3: JavaPropertiesReader, JavaPropertiesResult, NotClosingConnectionWrapper}
+[v] java.lang.Object
+   -> JavaLike/Lang/ObjectExtension.cs
+      // #pending getClassメソッドの対応
+
+o List に対応する C# クラスが存在していて、保留事項もない (Javaでは178クラスから参照されている)
+o Properties に対応する C# クラスがまだ存在せず、実装が必要 (Javaでは3クラスから参照されている)
+o Object に対応する C# クラスが存在しているが、まだ保留事項がある (java.langは参照情報が取れない)
+
+<< 左のマーク >>
+[o]: 対応クラスあり、保留なし
+[v]: 対応クラスあり、保留あり (#pendingがある)
+[x]: 対応クラスなし、実装しなきゃ！
+[n]: 移行対象外 (参照クラスが全て移行対象外)
+
+<< Javaで参照してるクラスたち >>
+{178: クラス名, ...}という形式で右側に表示されます。
+ただし、java.lang パッケージは解析不能なので情報がありません。
+あまりに多いとつらいので、120文字くらい切っています。
+移行対象外の場合は「HandyDate(n)」というようにクラスの後ろに(n)が付きます。
+
+<< インナークラス >>
+インナークラスは一覧されません。
+所属しているクラスの中で実装されることを想定しています。
+
+<< Extension >>
+そのJavaクラスの移行は、JavaLikeクラスで対応するか、Method Extension で対応するか、大きく二つに分かれます。
+例えば Object は、Method Extension で対応するので、ファイル名が ObjectExtension.cs となっています。
