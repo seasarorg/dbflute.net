@@ -8,25 +8,8 @@ namespace DBFluteRuntime.JavaLike.Lang
     /// </summary>
     public sealed class Integer
     {
-        /// <summary>
-        /// 例外メッセージ用パラメータ名
-        /// </summary>
-        private const string PARAM_A = "a";
-
-        /// <summary>
-        /// 例外メッセージ用パラメータ名
-        /// </summary>
-        private const string PARAM_B = "b";
-
-        /// <summary>
-        /// 例外メッセージ用パラメータ名
-        /// </summary>
-        private const string PARAM_I = "i";
-
-        /// <summary>
-        /// 一度生成したIntegerインスタンスはキャッシュしておく
-        /// </summary>
-        private static readonly IDictionary<int?, Integer> CASHED_INT = new Dictionary<int?, Integer>();
+        // #pending スレッドセーフ化は未対応
+        private static readonly JavaBasicValue<int?, Integer> _basicValue = new JavaBasicValue<int?, Integer>();
 
         /// <summary>
         /// 値（書き換え不可）
@@ -72,9 +55,9 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <returns></returns>
         public static Integer operator +(Integer a, Integer b)
         {
-            throwExIfNull(a, PARAM_A);
-            throwExIfNull(b, PARAM_B);
-            return GetCashedInt(a.innerValue + b.innerValue);
+            _basicValue.throwExIfNull(a, ConstParamName.PARAM_A);
+            _basicValue.throwExIfNull(b, ConstParamName.PARAM_B);
+            return _basicValue.GetCashedValue(a.innerValue + b.innerValue, HasValue, CreateInstance);
         }
 
         /// <summary>
@@ -85,9 +68,9 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <returns></returns>
         public static Integer operator -(Integer a, Integer b)
         {
-            throwExIfNull(a, PARAM_A);
-            throwExIfNull(b, PARAM_B);
-            return GetCashedInt(a.innerValue - b.innerValue);
+            _basicValue.throwExIfNull(a, ConstParamName.PARAM_A);
+            _basicValue.throwExIfNull(b, ConstParamName.PARAM_B);
+            return _basicValue.GetCashedValue(a.innerValue - b.innerValue, HasValue, CreateInstance);
         }
 
         /// <summary>
@@ -98,9 +81,9 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <returns></returns>
         public static Integer operator *(Integer a, Integer b)
         {
-            throwExIfNull(a, PARAM_A);
-            throwExIfNull(b, PARAM_B);
-            return GetCashedInt(a.innerValue * b.innerValue);
+            _basicValue.throwExIfNull(a, ConstParamName.PARAM_A);
+            _basicValue.throwExIfNull(b, ConstParamName.PARAM_B);
+            return _basicValue.GetCashedValue(a.innerValue * b.innerValue, HasValue, CreateInstance);
         }
 
         /// <summary>
@@ -111,9 +94,9 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <returns></returns>
         public static Integer operator /(Integer a, Integer b)
         {
-            throwExIfNull(a, PARAM_A);
-            throwExIfNull(b, PARAM_B);
-            return GetCashedInt(a.innerValue / b.innerValue);
+            _basicValue.throwExIfNull(a, ConstParamName.PARAM_A);
+            _basicValue.throwExIfNull(b, ConstParamName.PARAM_B);
+            return _basicValue.GetCashedValue(a.innerValue / b.innerValue, HasValue, CreateInstance);
         }
 
         /// <summary>
@@ -122,8 +105,8 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <returns></returns>
         public static Integer operator ++(Integer i)
         {
-            throwExIfNull(i, PARAM_I);
-            return GetCashedInt(i.innerValue + 1);
+            _basicValue.throwExIfNull(i, ConstParamName.PARAM_I);
+            return _basicValue.GetCashedValue(i.innerValue + 1, HasValue, CreateInstance);
         }
 
         /// <summary>
@@ -132,8 +115,8 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <returns></returns>
         public static Integer operator --(Integer i)
         {
-            throwExIfNull(i, PARAM_I);
-            return GetCashedInt(i.innerValue - 1);
+            _basicValue.throwExIfNull(i, ConstParamName.PARAM_I);
+            return _basicValue.GetCashedValue(i.innerValue - 1, HasValue, CreateInstance);
         }
 
         /// <summary>
@@ -153,7 +136,7 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <returns></returns>
         public static implicit operator Integer(int? i)
         {
-            return GetCashedInt(i);
+            return _basicValue.GetCashedValue(i, HasValue, CreateInstance);
         }
 
         /// <summary>
@@ -163,7 +146,7 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <returns></returns>
         public static Integer valueOf(string s)
         {
-            return GetCashedInt(int.Parse(s));
+            return _basicValue.GetCashedValue(int.Parse(s), HasValue, CreateInstance);
         }
 
         /// <summary>
@@ -190,41 +173,23 @@ namespace DBFluteRuntime.JavaLike.Lang
         }
 
         /// <summary>
-        /// 値有無チェック（値が設定されていなければNullReferenceException）
-        /// </summary>
-        /// <param name="i">チェック値</param>
-        /// <param name="parameterName">パラメータ名</param>
-        /// <exception cref="NullReferenceException">値が設定されていない場合の例外</exception>
-        private static void throwExIfNull(Integer i, string parameterName)
-        {
-            if (i == null)
-            {
-                throw new NullReferenceException(string.Format("Parameter [{0}] is null.", parameterName));
-            }
-
-            if (!i.innerValue.HasValue)
-	        {
-                throw new NullReferenceException(string.Format("Parameter [{0}] has no value.", parameterName));
-	        }
-        }
-
-        /// <summary>
-        /// キャッシュされたIntegerインスタンスの取得（未キャッシュの場合はキャッシュして返す）
+        /// 値有無チェック
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        private static Integer GetCashedInt(int? i)
+        private static bool HasValue(int? i)
         {
-            if (!i.HasValue)
-            {
-                return null;
-            }
+            return i.HasValue;
+        }
 
-            if (!CASHED_INT.ContainsKey(i))
-            {
-                CASHED_INT[i] = new Integer(i);
-            }
-            return CASHED_INT[i];
+        /// <summary>
+        /// インスタンス生成
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        private static Integer CreateInstance(int? i)
+        {
+            return new Integer(i);
         }
     }
 }

@@ -48,49 +48,49 @@ namespace ConsoleApplication1
             Console.WriteLine(i1--);
             Console.WriteLine(i1++);
 
-            try
-            {
-                Integer i4 = null;
-                Integer i5 = 10;
-                Console.WriteLine(i4 * i5);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e);
-            }
+            //try
+            //{
+            //    Integer i4 = null;
+            //    Integer i5 = 10;
+            //    Console.WriteLine(i4 * i5);
+            //}
+            //catch (NullReferenceException e)
+            //{
+            //    Console.WriteLine(e);
+            //}
 
-            try
-            {
-                int? i6 = null;
-                Integer i7 = 10;
-                Console.WriteLine(i6 * i7);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e);
-            }
+            //try
+            //{
+            //    int? i6 = null;
+            //    Integer i7 = 10;
+            //    Console.WriteLine(i6 * i7);
+            //}
+            //catch (NullReferenceException e)
+            //{
+            //    Console.WriteLine(e);
+            //}
 
-            try
-            {
-                int? i8 = 999;
-                Integer i9 = null;
-                Console.WriteLine(i8 * i9);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e);
-            }
+            //try
+            //{
+            //    int? i8 = 999;
+            //    Integer i9 = null;
+            //    Console.WriteLine(i8 * i9);
+            //}
+            //catch (NullReferenceException e)
+            //{
+            //    Console.WriteLine(e);
+            //}
 
-            try
-            {
-                int? i10 = 999;
-                int? i11 = null;
-                Console.WriteLine((i10 * i11).HasValue ? "not null" : "null");
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e);
-            }
+            //try
+            //{
+            //    int? i10 = 999;
+            //    int? i11 = null;
+            //    Console.WriteLine((i10 * i11).HasValue ? "not null" : "null");
+            //}
+            //catch (NullReferenceException e)
+            //{
+            //    Console.WriteLine(e);
+            //}
         }
 
         /// <summary>
