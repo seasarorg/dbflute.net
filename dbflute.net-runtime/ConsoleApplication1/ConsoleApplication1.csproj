@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ED593611-4A0D-48E1-9C82-3D1883C56917}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{F71B7BDA-B6AB-4889-AEFE-C57540E1EC34}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DBFluteRuntime</RootNamespace>
-    <AssemblyName>DBFluteRuntime</AssemblyName>
+    <RootNamespace>ConsoleApplication1</RootNamespace>
+    <AssemblyName>ConsoleApplication1</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,34 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JavaLike\Lang\boolean.cs" />
-    <Compile Include="JavaLike\Lang\Comparable.cs" />
-    <Compile Include="JavaLike\Lang\ConcurrentModificationException.cs" />
-    <Compile Include="JavaLike\Lang\NoSuchElementException.cs" />
-    <Compile Include="JavaLike\Lang\IllegalStateException.cs" />
-    <Compile Include="JavaLike\Lang\Iterable.cs" />
-    <Compile Include="JavaLike\Lang\ObjectExtension.cs" />
-    <Compile Include="JavaLike\Lang\StringExtension.cs" />
-    <Compile Include="JavaLike\Util\AbstractCollection.cs" />
-    <Compile Include="JavaLike\Util\AbstractList.cs" />
-    <Compile Include="JavaLike\Util\AbstractSet.cs" />
-    <Compile Include="JavaLike\Util\ArrayList.cs" />
-    <Compile Include="JavaLike\Util\Arrays.cs" />
-    <Compile Include="JavaLike\Util\Collection.cs" />
-    <Compile Include="JavaLike\Util\Comparator.cs" />
-    <Compile Include="JavaLike\Util\HashSet.cs" />
-    <Compile Include="JavaLike\Util\Iterator.cs" />
-    <Compile Include="JavaLike\Util\List.cs" />
-    <Compile Include="JavaLike\Util\ListIterator.cs" />
-    <Compile Include="JavaLike\Util\Map.cs" />
-    <Compile Include="JavaLike\Util\RandomAccess.cs" />
-    <Compile Include="JavaLike\Util\Set.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="JavaLike\Extensions\" />
-    <Folder Include="JavaLike\Sql\" />
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBFluteRuntime\DBFluteRuntime.csproj">
+      <Project>{ed593611-4a0d-48e1-9c82-3d1883c56917}</Project>
+      <Name>DBFluteRuntime</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
