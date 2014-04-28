@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.seasar.dbflute.helper.HandyDate;
+import org.seasar.dbflute.helper.mapstring.MapListFile;
 import org.seasar.dbflute.infra.manage.refresh.DfRefreshResourceRequest;
 import org.seasar.dbflute.unit.core.PlainTestCase;
 import org.seasar.dbflute.unit.core.policestory.PoliceStory;
@@ -20,10 +21,22 @@ public abstract class UnitContainerTestCase extends PlainTestCase {
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
+    protected static final Set<String> outOfMigrationPackageSet = new LinkedHashSet<String>();
+    static {
+        outOfMigrationPackageSet.add("org.seasar.dbflute.dbmeta.alter");
+        outOfMigrationPackageSet.add("org.seasar.dbflute.infra");
+        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.filesystem");
+        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.jprop");
+        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.process");
+        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.secretary");
+        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.thread");
+        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.token");
+    }
     protected static final Set<Class<?>> outOfMigrationClassSet = new LinkedHashSet<Class<?>>();
     static {
         // #pending later
         outOfMigrationClassSet.add(HandyDate.class);
+        outOfMigrationClassSet.add(MapListFile.class);
     }
 
     // ===================================================================================
@@ -62,6 +75,11 @@ public abstract class UnitContainerTestCase extends PlainTestCase {
     //                                                                    Migration Helper
     //                                                                    ================
     protected boolean isOutOfMigrationClass(Class<?> clazz) {
+        for (String pkg : outOfMigrationPackageSet) {
+            if (clazz.getPackage().getName().startsWith(pkg)) {
+                return true;
+            }
+        }
         return outOfMigrationClassSet.contains(clazz);
     }
 
