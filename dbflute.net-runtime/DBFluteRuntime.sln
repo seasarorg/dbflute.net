@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBFluteRuntime", "DBFluteRu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBFluteRuntimeTest", "DBFluteRuntimeTest\DBFluteRuntimeTest.csproj", "{13201291-ACE4-4185-8ED2-A2C784CF0E04}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4FF08FF4-3EEA-4C2A-B3F2-885BFC851F86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
