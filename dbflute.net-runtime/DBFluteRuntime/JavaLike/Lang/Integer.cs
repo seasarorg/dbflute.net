@@ -173,6 +173,50 @@ namespace DBFluteRuntime.JavaLike.Lang
         }
 
         /// <summary>
+        /// 同値か判定
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return !innerValue.HasValue;
+            }
+            if (obj is int)
+            {
+                int target = (int)obj;
+                if (innerValue.HasValue)
+                {
+                    return target == innerValue.Value;    
+                }
+                return false;
+            }
+            if (obj is int?)
+            {
+                int? target = (int?)obj;
+                return (target == innerValue);
+            }
+            if (obj is Integer)
+            {
+                // 同じ型どうしの比較。nullではない
+                Integer target = (Integer)obj;
+                return (target.innerValue == this.innerValue);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// ハッシュ値を返す
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        /// <summary>
         /// 値有無チェック
         /// </summary>
         /// <param name="i"></param>
