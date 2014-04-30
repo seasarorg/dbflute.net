@@ -9,7 +9,7 @@ namespace DBFluteRuntime.JavaLike.Lang
     public sealed class Integer
     {
         // #pending スレッドセーフ化は未対応
-        private static readonly JavaBasicValue<int?, Integer> _basicValue = new JavaBasicValue<int?, Integer>();
+        private static readonly JavaBasicValueCache<int?, Integer> _basicValue = new JavaBasicValueCache<int?, Integer>();
 
         /// <summary>
         /// 値（書き換え不可）

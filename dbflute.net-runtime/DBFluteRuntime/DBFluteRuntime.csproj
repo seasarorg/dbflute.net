@@ -45,7 +45,7 @@
     <Compile Include="JavaLike\Lang\Comparable.cs" />
     <Compile Include="JavaLike\Lang\ConcurrentModificationException.cs" />
     <Compile Include="JavaLike\Lang\Integer.cs" />
-    <Compile Include="JavaLike\Lang\JavaBasicValueCashe.cs" />
+    <Compile Include="JavaLike\Lang\JavaBasicValueCache.cs" />
     <Compile Include="JavaLike\Lang\NoSuchElementException.cs" />
     <Compile Include="JavaLike\Lang\IllegalStateException.cs" />
     <Compile Include="JavaLike\Lang\Iterable.cs" />

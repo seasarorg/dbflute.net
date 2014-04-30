@@ -8,7 +8,7 @@ namespace DBFluteRuntime.JavaLike.Lang
     /// </summary>
     /// <typeparam name="CS">C#型</typeparam>
     /// <typeparam name="J">Java型</typeparam>
-    public sealed class JavaBasicValue<CS, J>
+    public sealed class JavaBasicValueCache<CS, J>
     {
         /// <summary>
         /// 一度生成したインスタンスはキャッシュしておく
