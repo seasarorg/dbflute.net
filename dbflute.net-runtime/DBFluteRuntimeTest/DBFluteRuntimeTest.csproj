@@ -49,6 +49,7 @@
     <Compile Include="JavaLike\Lang\IntegerTest.cs" />
     <Compile Include="JavaLike\Lang\ObjectExtensionTest.cs" />
     <Compile Include="JavaLike\Lang\StringExtensionTest.cs" />
+    <Compile Include="JavaLike\Util\ArraysTest.cs" />
     <Compile Include="JavaLike\Util\LinkedHashMapTest.cs" />
     <Compile Include="JavaLike\Util\HashMapTest.cs" />
     <Compile Include="JavaLike\Util\LinkedHashSetTest.cs" />

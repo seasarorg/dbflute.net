@@ -65,7 +65,7 @@ namespace DBFluteRuntime.JavaLike.Util
 
             for (int i = 0; i < arg1.Length; i++)
             {
-                if (arg1[i].Equals(arg2[i]))
+                if (!arg1[i].Equals(arg2[i]))
                 {
                     return false;
                 }
