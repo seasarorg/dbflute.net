@@ -1,0 +1,120 @@
+﻿using DBFluteRuntime.JavaLike.Helper;
+using System;
+using System.Collections.Generic;
+
+namespace DBFluteRuntime.JavaLike.Util
+{
+    /// <summary>
+    /// [Java]HashMapクラス
+    /// </summary>
+    [Serializable]
+    public class HashMap<KEY, VALUE> : Map<KEY, VALUE>, NgMap
+    {
+        protected IDictionary<KEY, VALUE> _res = new Dictionary<KEY, VALUE>();
+
+        public VALUE get(KEY key)
+        {
+            return _res.ContainsKey(key) ? _res[key] : default(VALUE);
+        }
+
+        public VALUE put(KEY key, VALUE value)
+        {
+            VALUE result = default(VALUE);
+            if (_res.ContainsKey(key))
+            {
+                result = _res[key];
+            }
+            _res[key] = value;
+            return result;
+        }
+
+        public VALUE remove(KEY key)
+        {
+            VALUE result = default(VALUE);
+            if (_res.ContainsKey(key))
+            {
+                result = _res[key];
+                _res.Remove(key);
+            }
+            return result;
+        }
+
+        public int size()
+        {
+            return _res.Count;
+        }
+
+        public bool isEmpty()
+        {
+            return _res.Count == 0;
+        }
+
+        public void clear()
+        {
+            _res.Clear();
+        }
+
+        public bool containsKey(KEY key)
+        {
+            return _res.ContainsKey(key);
+        }
+
+        public Set<KEY> keySet()
+        {
+            Set<KEY> keySet = new LinkedHashSet<KEY>();
+            ICollection<KEY> keyCol = _res.Keys;
+            foreach (KEY key in keyCol)
+            {
+                keySet.add(key);
+            }
+            return keySet;
+        }
+
+        public Collection<VALUE> values()
+        {
+            List<VALUE> valueList = new ArrayList<VALUE>();
+            ICollection<VALUE> keyCol = _res.Values;
+            foreach (VALUE value in keyCol)
+            {
+                valueList.add(value);
+            }
+            return valueList;
+        }
+
+        public Set<Entry<KEY, VALUE>> entrySet()
+        {
+            Set<Entry<KEY, VALUE>> entrySet = new LinkedHashSet<Entry<KEY, VALUE>>();
+            ICollection<KEY> keyCol = _res.Keys;
+            foreach (KEY key in keyCol)
+            {
+                entrySet.add(new Entry<KEY, VALUE>(key, _res[key]));
+            }
+            return entrySet;
+        }
+
+        public Object getAsNg(Object key)
+        {
+            return get((KEY)key);
+        }
+
+        public Object putAsNg(Object key, Object value)
+        {
+            return put((KEY)key, (VALUE)value);
+        }
+
+        public Object removeAsNg(Object key)
+        {
+            return remove((KEY)key);
+        }
+
+        public bool containsKeyAsNg(Object key)
+        {
+            return containsKey((KEY)key);
+        }
+
+        public override String ToString()
+        {
+            return StringHelper.collectionToString(entrySet());
+        }
+    }
+}

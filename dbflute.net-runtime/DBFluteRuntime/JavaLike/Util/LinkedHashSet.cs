@@ -8,6 +8,7 @@ namespace DBFluteRuntime.JavaLike.Util
     /// [Java]LinkedHashSetクラス
     /// </summary>
     /// <typeparam name="ELEMENT"></typeparam>
+    [Serializable]
     public class LinkedHashSet<ELEMENT> : Set<ELEMENT>, NgSet
     {
         protected IDictionary<ELEMENT, Object> _res = new Dictionary<ELEMENT, Object>();

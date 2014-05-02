@@ -56,8 +56,11 @@
     <Compile Include="JavaLike\Lang\StringExtension.cs" />
     <Compile Include="JavaLike\Util\ArrayList.cs" />
     <Compile Include="JavaLike\Util\Collection.cs" />
+    <Compile Include="JavaLike\Util\Entry.cs" />
+    <Compile Include="JavaLike\Util\HashMap.cs" />
     <Compile Include="JavaLike\Util\HashSet.cs" />
     <Compile Include="JavaLike\Util\Iterator.cs" />
+    <Compile Include="JavaLike\Util\LinkedHashMap.cs" />
     <Compile Include="JavaLike\Util\LinkedHashSet.cs" />
     <Compile Include="JavaLike\Util\List.cs" />
     <Compile Include="JavaLike\Util\Map.cs" />
