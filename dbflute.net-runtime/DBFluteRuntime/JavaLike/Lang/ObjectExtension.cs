@@ -19,6 +19,16 @@ namespace DBFluteRuntime.JavaLike.Lang
         }
 
         /// <summary>
+        /// 型情報の取得
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
+        public static Type getClass(this Object o)
+        {
+            return o.GetType();
+        }
+
+        /// <summary>
         /// java風hashCodeメソッド定義
         /// </summary>
         /// <param name="o"></param>

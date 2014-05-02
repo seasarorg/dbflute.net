@@ -169,16 +169,16 @@ namespace DBFluteRuntime.JavaLike.Util
 
         public override String ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.append("{");
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append("{");
             int index = 0;
             foreach (ELEMENT element in this)
             {
-                if (index > 0) { sb.append("{"); }
-                sb.append(element);
+                if (index > 0) { sb.Append("{"); }
+                sb.Append(element);
                 ++index;
             }
-            sb.append("}");
+            sb.Append("}");
             return sb.toString();
         }
     }
