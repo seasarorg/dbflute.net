@@ -150,6 +150,19 @@ namespace DBFluteRuntime.JavaLike.Lang
         }
 
         /// <summary>
+        /// 文字列から数値への変換
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="FormatException"/>
+        /// <exception cref="OverflowException"/>
+        public static int parseInt(string s)
+        {
+            return int.Parse(s);
+        }
+
+        /// <summary>
         /// int値を返す
         /// </summary>
         /// <returns></returns>

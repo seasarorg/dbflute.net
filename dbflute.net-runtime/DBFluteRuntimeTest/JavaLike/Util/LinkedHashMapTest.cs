@@ -1,4 +1,5 @@
 ﻿using DBFluteRuntime.JavaLike.Util;
+using DBFluteRuntime.JavaLike.Lang;
 using NUnit.Framework;
 
 namespace DBFluteRuntimeTest.JavaLike.Util
@@ -70,10 +71,10 @@ namespace DBFluteRuntimeTest.JavaLike.Util
             const string TEST_VALUE2 = "runtime";
             actualMap.put(TEST_KEY, TEST_VALUE1);
             int expectSize = actualMap.size();
-
+            
             // ## Act ##
             string actual = actualMap.put(TEST_KEY, TEST_VALUE2);   // 同じキー、違う値をput
-
+            
             // ## Assert ##
             Assert.AreEqual(TEST_VALUE1, actual);
             Assert.AreEqual(TEST_VALUE2, actualMap.get(TEST_KEY), "キーが重複している場合は後がちで置換");

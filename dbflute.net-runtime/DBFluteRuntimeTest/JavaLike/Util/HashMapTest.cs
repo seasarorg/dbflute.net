@@ -20,7 +20,7 @@ namespace DBFluteRuntimeTest.JavaLike.Util
             const string TEST_KEY = "dbflute";
             const string TEST_VALUE = "runtime";
             int beforeSize = actualMap.size();
-
+            
             // ## Act ##
             string actualValue = actualMap.put(TEST_KEY, TEST_VALUE);
 
