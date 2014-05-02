@@ -1,35 +1,31 @@
 ﻿using DBFluteRuntime.JavaLike.Helper;
-using DBFluteRuntime.JavaLike.Lang;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DBFluteRuntime.JavaLike.Util
 {
     /// <summary>
-    /// Java ArrayListクラス
+    /// [Java]LinkedHashSetクラス
     /// </summary>
     /// <typeparam name="ELEMENT"></typeparam>
-    [Serializable]
-    public class ArrayList<ELEMENT> : List<ELEMENT>, NgList
+    public class LinkedHashSet<ELEMENT> : Set<ELEMENT>, NgSet
     {
-        IList<ELEMENT> _res = new System.Collections.Generic.List<ELEMENT>();
+        protected IDictionary<ELEMENT, Object> _res = new Dictionary<ELEMENT, Object>();
+        protected List<ELEMENT> _seq = new ArrayList<ELEMENT>();
 
-        public ArrayList()
+        public ELEMENT get(int index)
         {
-        }
-
-        public ArrayList(Collection<ELEMENT> col)
-        {
-            foreach (ELEMENT element in col)
-            {
-                add(element);
-            }
+            return _seq.get(index);
         }
 
         public bool add(ELEMENT element)
         {
-            _res.Add(element);
+            if (_res.ContainsKey(element))
+            {
+                return false;
+            }
+            _res.Add(element, null);
+            _seq.add(element);
             return true;
         }
 
@@ -46,28 +42,15 @@ namespace DBFluteRuntime.JavaLike.Util
             return result;
         }
 
-        public ELEMENT get(int index)
-        {
-            return _res[index];
-        }
-
-        public ELEMENT set(int index, ELEMENT element)
-        {
-            ELEMENT result = _res[index];
-            _res[index] = element;
-            return result;
-        }
-
-        public ELEMENT remove(int index)
-        {
-            ELEMENT result = _res[index];
-            _res.Remove(result);
-            return result;
-        }
-
         public bool remove(ELEMENT element)
         {
-            return _res.Remove(element);
+            if (_res.ContainsKey(element))
+            {
+                _res.Remove(element);
+                _seq.remove(element);
+                return true;
+            }
+            return false;
         }
 
         public int size()
@@ -85,35 +68,19 @@ namespace DBFluteRuntime.JavaLike.Util
             _res.Clear();
         }
 
-        // merely copied list so not related to original list
-        public List<ELEMENT> subList(int fromIndex, int toIndex)
+        public bool contains(ELEMENT element)
         {
-            List<ELEMENT> resultList = new ArrayList<ELEMENT>();
-            for (int i = fromIndex; i < toIndex; i++)
-            {
-                resultList.add(get(i));
-            }
-            return resultList;
-        }
-
-        public IList<ELEMENT> getList()
-        {
-            return _res;
+            return _res.ContainsKey(element);
         }
 
         public ICollection<ELEMENT> getCollection()
         {
-            return _res;
+            return _seq.getCollection();
         }
 
-        public Object getAsNg(int index)
+        public bool containsAsNg(Object element)
         {
-            return get(index);
-        }
-
-        public System.Collections.IList getListAsNg()
-        {
-            return (System.Collections.IList)getList();
+            return contains((ELEMENT)element);
         }
 
         public bool addAsNg(Object element)
@@ -144,19 +111,21 @@ namespace DBFluteRuntime.JavaLike.Util
         [System.Serializable]
         protected class MyEmumerator : System.Collections.IEnumerator, Iterator<ELEMENT>
         {
-            protected IEnumerator<ELEMENT> _target;
-            public MyEmumerator(ArrayList<ELEMENT> target)
+            protected LinkedHashSet<ELEMENT> _target;
+            protected int _index = -1;
+            public MyEmumerator(LinkedHashSet<ELEMENT> target)
             {
-                _target = target.getCollection().GetEnumerator();
+                _target = target;
             }
-            public Object Current { get { return _target.Current; } }
+            public Object Current { get { return _target.get(_index); } }
             public bool MoveNext()
             {
-                return _target.MoveNext();
+                ++_index;
+                return _target.size() > _index;
             }
             public void Reset()
             {
-                _target.Reset();
+                _index = -1;
             }
             public bool hasNext()
             {
@@ -164,7 +133,8 @@ namespace DBFluteRuntime.JavaLike.Util
             }
             public ELEMENT next()
             { // Not moving because hasNext() does it.
-                return _target.Current;
+                if (_index == -1) { MoveNext(); } // For getting first element.
+                return _target.get(_index);
             }
         }
 

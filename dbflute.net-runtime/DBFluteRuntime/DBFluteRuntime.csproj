@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JavaLike\Helper\StringHelper.cs" />
     <Compile Include="JavaLike\Lang\boolean.cs" />
     <Compile Include="JavaLike\Lang\Comparable.cs" />
     <Compile Include="JavaLike\Lang\ConcurrentModificationException.cs" />
@@ -55,12 +56,11 @@
     <Compile Include="JavaLike\Lang\StringExtension.cs" />
     <Compile Include="JavaLike\Util\ArrayList.cs" />
     <Compile Include="JavaLike\Util\Collection.cs" />
-    <Compile Include="JavaLike\Util\Comparator.cs" />
+    <Compile Include="JavaLike\Util\HashSet.cs" />
     <Compile Include="JavaLike\Util\Iterator.cs" />
+    <Compile Include="JavaLike\Util\LinkedHashSet.cs" />
     <Compile Include="JavaLike\Util\List.cs" />
-    <Compile Include="JavaLike\Util\ListIterator.cs" />
     <Compile Include="JavaLike\Util\Map.cs" />
-    <Compile Include="JavaLike\Util\RandomAccess.cs" />
     <Compile Include="JavaLike\Util\Set.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

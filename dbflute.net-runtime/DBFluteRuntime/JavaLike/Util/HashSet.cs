@@ -1,35 +1,25 @@
 ﻿using DBFluteRuntime.JavaLike.Helper;
-using DBFluteRuntime.JavaLike.Lang;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DBFluteRuntime.JavaLike.Util
 {
     /// <summary>
-    /// Java ArrayListクラス
+    /// [Java]HashSetクラス
     /// </summary>
     /// <typeparam name="ELEMENT"></typeparam>
     [Serializable]
-    public class ArrayList<ELEMENT> : List<ELEMENT>, NgList
+    public class HashSet<ELEMENT> : Set<ELEMENT>, NgSet
     {
-        IList<ELEMENT> _res = new System.Collections.Generic.List<ELEMENT>();
-
-        public ArrayList()
-        {
-        }
-
-        public ArrayList(Collection<ELEMENT> col)
-        {
-            foreach (ELEMENT element in col)
-            {
-                add(element);
-            }
-        }
+        protected IDictionary<ELEMENT, Object> _res = new Dictionary<ELEMENT, Object>();
 
         public bool add(ELEMENT element)
         {
-            _res.Add(element);
+            if (_res.ContainsKey(element))
+            {
+                return false;
+            }
+            _res.Add(element, null);
             return true;
         }
 
@@ -46,28 +36,14 @@ namespace DBFluteRuntime.JavaLike.Util
             return result;
         }
 
-        public ELEMENT get(int index)
-        {
-            return _res[index];
-        }
-
-        public ELEMENT set(int index, ELEMENT element)
-        {
-            ELEMENT result = _res[index];
-            _res[index] = element;
-            return result;
-        }
-
-        public ELEMENT remove(int index)
-        {
-            ELEMENT result = _res[index];
-            _res.Remove(result);
-            return result;
-        }
-
         public bool remove(ELEMENT element)
         {
-            return _res.Remove(element);
+            if (_res.ContainsKey(element))
+            {
+                _res.Remove(element);
+                return true;
+            }
+            return false;
         }
 
         public int size()
@@ -85,35 +61,19 @@ namespace DBFluteRuntime.JavaLike.Util
             _res.Clear();
         }
 
-        // merely copied list so not related to original list
-        public List<ELEMENT> subList(int fromIndex, int toIndex)
+        public bool contains(ELEMENT element)
         {
-            List<ELEMENT> resultList = new ArrayList<ELEMENT>();
-            for (int i = fromIndex; i < toIndex; i++)
-            {
-                resultList.add(get(i));
-            }
-            return resultList;
-        }
-
-        public IList<ELEMENT> getList()
-        {
-            return _res;
+            return _res.ContainsKey(element);
         }
 
         public ICollection<ELEMENT> getCollection()
         {
-            return _res;
+            return _res.Keys;
         }
 
-        public Object getAsNg(int index)
+        public bool containsAsNg(Object element)
         {
-            return get(index);
-        }
-
-        public System.Collections.IList getListAsNg()
-        {
-            return (System.Collections.IList)getList();
+            return contains((ELEMENT)element);
         }
 
         public bool addAsNg(Object element)
@@ -145,7 +105,8 @@ namespace DBFluteRuntime.JavaLike.Util
         protected class MyEmumerator : System.Collections.IEnumerator, Iterator<ELEMENT>
         {
             protected IEnumerator<ELEMENT> _target;
-            public MyEmumerator(ArrayList<ELEMENT> target)
+            protected int _index;
+            public MyEmumerator(HashSet<ELEMENT> target)
             {
                 _target = target.getCollection().GetEnumerator();
             }
