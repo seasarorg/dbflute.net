@@ -4,23 +4,23 @@ using System;
 namespace DBFluteRuntime.JavaLike.Lang
 {
     /// <summary>
-    /// [java]Integer - [C#]int? 関連付け
+    /// [java]Long - [C#]long? 関連付け
     /// </summary>
-    public sealed class Integer
+    public sealed class Long
     {
         // #pending スレッドセーフ化は未対応
-        private static readonly JavaBasicValueCache<int?, Integer> _basicValue = new JavaBasicValueCache<int?, Integer>();
+        private static readonly JavaBasicValueCache<long?, Long> _basicValue = new JavaBasicValueCache<long?, Long>();
 
         /// <summary>
         /// 値（書き換え不可）
         /// </summary>
-        private readonly int? innerValue;
+        private readonly long? innerValue;
         
         /// <summary>
         /// コンストラクタ
         /// </summary>
         /// <param name="initValue">初期化フラグ</param>
-        private Integer(int? initValue)
+        private Long(long? initValue)
         {
             this.innerValue = initValue;
         }
@@ -31,7 +31,7 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static Integer operator &(Integer a, Integer b)
+        public static Long operator &(Long a, Long b)
         {
             return (a.innerValue & b.innerValue);
         }
@@ -42,7 +42,7 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static Integer operator |(Integer a, Integer b)
+        public static Long operator |(Long a, Long b)
         {
             return (a.innerValue | b.innerValue);
         }
@@ -53,7 +53,7 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static Integer operator +(Integer a, Integer b)
+        public static Long operator +(Long a, Long b)
         {
             _basicValue.throwExIfNull(a, ConstParamName.PARAM_A);
             _basicValue.throwExIfNull(b, ConstParamName.PARAM_B);
@@ -66,7 +66,7 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static Integer operator -(Integer a, Integer b)
+        public static Long operator -(Long a, Long b)
         {
             _basicValue.throwExIfNull(a, ConstParamName.PARAM_A);
             _basicValue.throwExIfNull(b, ConstParamName.PARAM_B);
@@ -79,7 +79,7 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static Integer operator *(Integer a, Integer b)
+        public static Long operator *(Long a, Long b)
         {
             _basicValue.throwExIfNull(a, ConstParamName.PARAM_A);
             _basicValue.throwExIfNull(b, ConstParamName.PARAM_B);
@@ -92,7 +92,7 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static Integer operator /(Integer a, Integer b)
+        public static Long operator /(Long a, Long b)
         {
             _basicValue.throwExIfNull(a, ConstParamName.PARAM_A);
             _basicValue.throwExIfNull(b, ConstParamName.PARAM_B);
@@ -103,7 +103,7 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// インクリメント演算子
         /// </summary>
         /// <returns></returns>
-        public static Integer operator ++(Integer i)
+        public static Long operator ++(Long i)
         {
             _basicValue.throwExIfNull(i, ConstParamName.PARAM_I);
             return _basicValue.GetCashedValue(i.innerValue + 1, HasValue, CreateInstance);
@@ -113,7 +113,7 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// デクリメント演算子
         /// </summary>
         /// <returns></returns>
-        public static Integer operator --(Integer i)
+        public static Long operator --(Long i)
         {
             _basicValue.throwExIfNull(i, ConstParamName.PARAM_I);
             return _basicValue.GetCashedValue(i.innerValue - 1, HasValue, CreateInstance);
@@ -124,7 +124,7 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        public static implicit operator int?(Integer i)
+        public static implicit operator long?(Long i)
         {
             return i.innerValue;
         }
@@ -134,9 +134,9 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        public static implicit operator Integer(int? i)
+        public static implicit operator Long(long? l)
         {
-            return _basicValue.GetCashedValue(i, HasValue, CreateInstance);
+            return _basicValue.GetCashedValue(l, HasValue, CreateInstance);
         }
 
         /// <summary>
@@ -144,17 +144,17 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public static Integer valueOf(string s)
+        public static Long valueOf(string s)
         {
-            return _basicValue.GetCashedValue(int.Parse(s), HasValue, CreateInstance);
+            return _basicValue.GetCashedValue(long.Parse(s), HasValue, CreateInstance);
         }
 
         /// <summary>
-        /// int値を返す
+        /// long値を返す
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NullReferenceException">内部で保持している値が存在しない場合</exception>
-        public int intValue()
+        public long longValue()
         {
             if (innerValue.HasValue)
             {
@@ -183,24 +183,24 @@ namespace DBFluteRuntime.JavaLike.Lang
             {
                 return !innerValue.HasValue;
             }
-            if (obj is int)
+            if (obj is long)
             {
-                int target = (int)obj;
+                long target = (long)obj;
                 if (innerValue.HasValue)
                 {
                     return target == innerValue.Value;    
                 }
                 return false;
             }
-            if (obj is int?)
+            if (obj is long?)
             {
-                int? target = (int?)obj;
+                long? target = (long?)obj;
                 return (target == innerValue);
             }
-            if (obj is Integer)
+            if (obj is Long)
             {
                 // 同じ型どうしの比較。nullではない
-                Integer target = (Integer)obj;
+                Long target = (Long)obj;
                 return (target.innerValue == this.innerValue);
             }
 
@@ -221,9 +221,9 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        private static bool HasValue(int? i)
+        private static bool HasValue(long? l)
         {
-            return i.HasValue;
+            return l.HasValue;
         }
 
         /// <summary>
@@ -231,9 +231,9 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        private static Integer CreateInstance(int? i)
+        private static Long CreateInstance(long? l)
         {
-            return new Integer(i);
+            return new Long(l);
         }
     }
 }

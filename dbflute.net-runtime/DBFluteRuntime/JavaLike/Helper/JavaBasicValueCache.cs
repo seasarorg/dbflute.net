@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DBFluteRuntime.JavaLike.Lang
+namespace DBFluteRuntime.JavaLike.Helper
 {
     /// <summary>
     /// Java基本型キャッシュクラス
@@ -65,7 +65,7 @@ namespace DBFluteRuntime.JavaLike.Lang
     /// <summary>
     /// パラメータ名定義定数クラス
     /// </summary>
-    internal sealed class ConstParamName
+    internal static class ConstParamName
     {
         /// <summary>
         /// 例外メッセージ用パラメータ名
@@ -81,8 +81,5 @@ namespace DBFluteRuntime.JavaLike.Lang
         /// 例外メッセージ用パラメータ名
         /// </summary>
         public const string PARAM_I = "i";
-
-        private ConstParamName()
-        { }
     }
 }
