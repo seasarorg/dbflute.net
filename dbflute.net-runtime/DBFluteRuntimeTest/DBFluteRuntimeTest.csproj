@@ -47,6 +47,7 @@
     <Compile Include="JavaLike\Lang\booleanTest.cs" />
     <Compile Include="JavaLike\Lang\LongTest.cs" />
     <Compile Include="JavaLike\Lang\IntegerTest.cs" />
+    <Compile Include="JavaLike\Lang\StringExtensionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
