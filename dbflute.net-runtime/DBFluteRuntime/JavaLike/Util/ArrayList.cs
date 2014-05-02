@@ -174,7 +174,7 @@ namespace DBFluteRuntime.JavaLike.Util
             int index = 0;
             foreach (ELEMENT element in this)
             {
-                if (index > 0) { sb.Append("{"); }
+                if (index > 0) { sb.Append(", "); }
                 sb.Append(element);
                 ++index;
             }

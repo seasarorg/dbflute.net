@@ -49,6 +49,7 @@
     <Compile Include="JavaLike\Lang\IntegerTest.cs" />
     <Compile Include="JavaLike\Lang\ObjectExtensionTest.cs" />
     <Compile Include="JavaLike\Lang\StringExtensionTest.cs" />
+    <Compile Include="JavaLike\Util\ArrayListTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -57,9 +58,7 @@
       <Name>DBFluteRuntime</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="JavaLike\Util\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
