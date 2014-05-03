@@ -10,7 +10,12 @@ namespace DBFluteRuntime.JavaLike.Util
     [Serializable]
     public class HashMap<KEY, VALUE> : Map<KEY, VALUE>, NgMap
     {
-        protected IDictionary<KEY, VALUE> _res = new Dictionary<KEY, VALUE>();
+        protected readonly IDictionary<KEY, VALUE> _res;
+        
+        public HashMap()
+        {
+            _res = createDictionary();
+        }
 
         public VALUE get(KEY key)
         {
@@ -115,6 +120,11 @@ namespace DBFluteRuntime.JavaLike.Util
         public override String ToString()
         {
             return StringHelper.collectionToString(entrySet());
+        }
+
+        protected virtual IDictionary<KEY, VALUE> createDictionary()
+        {
+            return new Dictionary<KEY, VALUE>();
         }
     }
 }
