@@ -1,9 +1,12 @@
 ﻿
+using System;
+
 namespace DBFluteRuntime.JavaLike.Lang
 {
     /// <summary>
     /// [java]boolean - [C#]bool 関連付け
     /// </summary>
+    [Serializable]
     public sealed class boolean
     {
         public static readonly boolean BOOLEAN_TRUE = new boolean(true);

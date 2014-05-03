@@ -6,6 +6,7 @@ namespace DBFluteRuntime.JavaLike.Lang
     /// <summary>
     /// [java]Integer - [C#]int? 関連付け
     /// </summary>
+    [Serializable]
     public sealed class Integer
     {
         // #pending スレッドセーフ化は未対応

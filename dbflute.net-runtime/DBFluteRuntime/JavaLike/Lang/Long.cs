@@ -6,6 +6,7 @@ namespace DBFluteRuntime.JavaLike.Lang
     /// <summary>
     /// [java]Long - [C#]long? 関連付け
     /// </summary>
+    [Serializable]
     public sealed class Long
     {
         // #pending スレッドセーフ化は未対応

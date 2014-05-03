@@ -56,6 +56,7 @@
     <Compile Include="JavaLike\Lang\ObjectExtension.cs" />
     <Compile Include="JavaLike\Lang\StringBuilder.cs" />
     <Compile Include="JavaLike\Lang\StringExtension.cs" />
+    <Compile Include="JavaLike\Math\BigDecimal.cs" />
     <Compile Include="JavaLike\Util\ArrayList.cs" />
     <Compile Include="JavaLike\Util\Arrays.cs" />
     <Compile Include="JavaLike\Util\Collection.cs" />
