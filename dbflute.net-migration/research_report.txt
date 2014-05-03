@@ -1,5 +1,5 @@
 This file is auto-generated so you cannot modify this directly.
-(research at 2014/04/29 00:49:58)
+(research at 2014/05/03 12:28:04)
 
 [x] java.io.BufferedReader                      {  7: OutsideSqlContext, DfResourceUtil, JavaPropertiesReader(n), MapListFile(n), ProcessConsoleReader(n), FileToken(n), DfRepsExecuteLimitter(n), ...}
 [n] java.io.BufferedWriter                      {  2: MapListFile(n), FileToken(n)}
@@ -41,11 +41,15 @@ This file is auto-generated so you cannot modify this directly.
 [o] java.lang.Iterable
    -> JavaLike/Lang/Iterable.cs
 
-[o] java.lang.JavaBasicValueCashe
-   -> JavaLike/Lang/JavaBasicValueCashe.cs
+[v] java.lang.Long
+   -> JavaLike/Lang/Long.cs
+      // #pending スレッドセーフ化は未対応
 
 [o] java.lang.NoSuchElementException
    -> JavaLike/Lang/NoSuchElementException.cs
+
+[o] java.lang.Nullable
+   -> JavaLike/Lang/NullableExtension.cs
 
 [v] java.lang.Object
    -> JavaLike/Lang/ObjectExtension.cs
@@ -53,6 +57,9 @@ This file is auto-generated so you cannot modify this directly.
 
 [o] java.lang.String
    -> JavaLike/Lang/StringExtension.cs
+
+[o] java.lang.StringBuilder
+   -> JavaLike/Lang/StringBuilder.cs
 
 [o] java.lang.boolean
    -> JavaLike/Lang/boolean.cs
@@ -67,7 +74,16 @@ This file is auto-generated so you cannot modify this directly.
 [x] java.lang.reflect.ParameterizedType         {  1: DfReflectionUtil}
 [x] java.lang.reflect.Type                      {  2: TnProcedureMetaDataFactory, DfReflectionUtil}
 [x] java.lang.reflect.WildcardType              {  1: DfReflectionUtil}
-[x] java.math.BigDecimal                        {  9: SequenceCache, SequenceCacheHandler, AbstractDBMeta, PlainResultSetWrapper, TnPlainValueTypes, IfCommentEvaluator, DfTypeUtil, ...}
+[v] java.math.BigDecimal                        {  9: SequenceCache, SequenceCacheHandler, AbstractDBMeta, PlainResultSetWrapper, TnPlainValueTypes, IfCommentEvaluator, DfTypeUtil, ...}
+   -> JavaLike/Math/BigDecimal.cs
+      // #pending BigInteger intVal
+      // #pending ThreadLocal
+      // #pending BigDecimal配列の初期化
+      // #pending ZERO_SCALED_BYの初期化
+      // #pending コンストラクタ
+      // #pending valueOfメソッドの実装
+      // #pending 加算他色々
+
 [x] java.math.BigInteger                        {  2: TnPlainValueTypes, DfTypeUtil}
 [x] java.net.JarURLConnection                   {  1: DfResourceUtil}
 [n] java.net.MalformedURLException              {  1: DfRefreshResourceRequest(n)}
@@ -103,9 +119,8 @@ This file is auto-generated so you cannot modify this directly.
 [x] java.text.DecimalFormatSymbols              {  1: DfTypeUtil}
 [x] java.text.ParseException                    {  1: DfTypeUtil}
 [x] java.text.SimpleDateFormat                  {  2: DfTypeUtil, HandyDate(n)}
-[v] java.util.ArrayList                         { 69: AbstractBehaviorReadable, AbstractBehaviorWritable, AbstractEntityCommand, AbstractListEntityCommand, SequenceCache, AbstractConditionBean, ...}
+[o] java.util.ArrayList                         { 69: AbstractBehaviorReadable, AbstractBehaviorWritable, AbstractEntityCommand, AbstractListEntityCommand, SequenceCache, AbstractConditionBean, ...}
    -> JavaLike/Util/ArrayList.cs
-      // #pending
 
 [o] java.util.Arrays                            { 12: BehaviorInvokeNameExtractor, BehaviorInvokePathBuilder, LikeSearchOption, AbstractDBMeta, WayOfDB2, WayOfOracle, WayOfSQLServer, ...}
    -> JavaLike/Util/Arrays.cs
@@ -120,24 +135,31 @@ This file is auto-generated so you cannot modify this directly.
 
 [x] java.util.Date                              { 18: AccessContext, Entity, AbstractConditionQuery, ManualOrderBean, HpQDRParameter, FromToOption, FunctionFilterOption, AbstractDBMeta, ...}
 [n] java.util.GregorianCalendar                 {  1: HandyDate(n)}
-[x] java.util.HashMap                           { 26: AccessContext, DBDef, BehaviorCommandInvoker, SequenceCacheHandler, AbstractConditionQuery, HpFixedConditionQueryResolver, ...}
+[o] java.util.HashMap                           { 26: AccessContext, DBDef, BehaviorCommandInvoker, SequenceCacheHandler, AbstractConditionQuery, HpFixedConditionQueryResolver, ...}
+   -> JavaLike/Util/HashMap.cs
+
 [o] java.util.HashSet                           {  7: HpFixedConditionQueryResolver, AbstractSqlClause, QueryClauseFilter, DerivedReferrer, DfBeanDescImpl, DfCollectionUtil, FileToken(n), ...}
    -> JavaLike/Util/HashSet.cs
 
 [o] java.util.Iterator                          {  7: AbstractConditionQuery, ListResultBean, AbstractSqlClause, OrderByClause, StringSet, DfBeanDescImpl, FileToken(n)}
    -> JavaLike/Util/Iterator.cs
 
-[x] java.util.LinkedHashMap                     { 27: AbstractBehaviorReadable, AbstractBehaviorCommand, AbstractConditionQuery, ListResultBean, SimpleMapPmb, SimplePagingBean, ...}
-[x] java.util.LinkedHashSet                     {  8: Entity, AbstractBehaviorReadable, InsertOption, UpdateOption, ListResultBean, HpFixedConditionQueryResolver, DfCollectionUtil, ...}
+[o] java.util.LinkedHashMap                     { 27: AbstractBehaviorReadable, AbstractBehaviorCommand, AbstractConditionQuery, ListResultBean, SimpleMapPmb, SimplePagingBean, ...}
+   -> JavaLike/Util/LinkedHashMap.cs
+
+[o] java.util.LinkedHashSet                     {  8: Entity, AbstractBehaviorReadable, InsertOption, UpdateOption, ListResultBean, HpFixedConditionQueryResolver, DfCollectionUtil, ...}
+   -> JavaLike/Util/LinkedHashSet.cs
+
 [o] java.util.List                              {178: AbstractBehaviorReadable, AbstractBehaviorWritable, BehaviorWritable, DtoMapper, EntityListSetupper, InsertOption, LoadReferrerOption, ...}
    -> JavaLike/Util/List.cs
 
-[o] java.util.ListIterator                      {  1: ListResultBean}
-   -> JavaLike/Util/ListIterator.cs
-
+[x] java.util.ListIterator                      {  1: ListResultBean}
 [x] java.util.Locale                            {  2: DfTypeUtil, HandyDate(n)}
 [o] java.util.Map                               {108: AccessContext, DBDef, AbstractBehaviorReadable, UpdateOption, BehaviorCommandInvoker, ContextStack, AbstractBehaviorCommand, ...}
    -> JavaLike/Util/Map.cs
+
+[o] java.util.Map.Entry                         { 25: AbstractBehaviorReadable, ContextStack, AbstractConditionBean, AbstractConditionQuery, HpFixedConditionQueryResolver, FunctionFilterOption, ...}
+   -> JavaLike/Util/Entry.cs
 
 [x] java.util.Properties                        {  3: NotClosingConnectionWrapper, JavaPropertiesReader(n), JavaPropertiesResult(n)}
 [o] java.util.Set                               { 40: Entity, AbstractBehaviorReadable, InsertOption, InstanceKeyEntity, UpdateOption, ContextStack, AbstractConditionBean, ListResultBean, ...}
@@ -150,7 +172,9 @@ This file is auto-generated so you cannot modify this directly.
 [x] java.util.TreeSet                           {  3: SequenceCache, TnProcedureMetaData, DfSchemaResourceFinder(n)}
 [x] java.util.UUID                              {  6: AbstractDBMeta, ColumnInfo, TnPlainValueTypes, TnValueTypes, UUIDAsDirectType, DfTypeUtil}
 [n] java.util.concurrent.Callable               {  1: CountDownRace(n)}
-[x] java.util.concurrent.ConcurrentHashMap      {  9: AbstractDBMeta, ColumnSqlName, StringKeyMap, DfBeanDescFactory, TnBeanMetaDataFactoryExtension, TnIdentifierGeneratorFactory, ...}
+[o] java.util.concurrent.ConcurrentHashMap      {  9: AbstractDBMeta, ColumnSqlName, StringKeyMap, DfBeanDescFactory, TnBeanMetaDataFactoryExtension, TnIdentifierGeneratorFactory, ...}
+   -> JavaLike/Util/ConcurrentHashMap.cs
+
 [n] java.util.concurrent.CountDownLatch         {  2: CountDownRace(n), CountDownRaceLatch(n)}
 [n] java.util.concurrent.ExecutionException     {  1: CountDownRace(n)}
 [n] java.util.concurrent.ExecutorService        {  1: CountDownRace(n)}
