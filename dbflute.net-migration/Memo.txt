@@ -28,5 +28,6 @@ DBFluteRuntime.JavaLike.Lang.NullableExtensionクラスに拡張メソッドと�
 # -------------------------------------------------------------
 #                                  予約語と被っているキーワード
 #                                  ----------------------------
-XXX.class ⇒ 予約後「class」と被る ⇒ getType()に変換する必要あり？
+・XXX.class ⇒ 予約後「class」と被る ⇒ getType()に変換する必要あり？
+・Field#set/get ⇒ プロパティのset/getキーワードと被る ⇒ setValue / getValueメソッドに変換？
 

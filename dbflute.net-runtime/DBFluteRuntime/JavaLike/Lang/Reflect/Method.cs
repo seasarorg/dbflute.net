@@ -8,7 +8,7 @@ namespace DBFluteRuntime.JavaLike.Lang.Reflect
     /// <summary>
     /// [Java]Methodクラス
     /// </summary>
-    public class Method
+    public sealed class Method
     {
         private readonly MethodInfo _method;
 
@@ -44,7 +44,7 @@ namespace DBFluteRuntime.JavaLike.Lang.Reflect
 
         public void setAccessible(boolean flag)
         {
-            // #pending C#に対応するメソッドがあるか？要調査
+            // #pending C#に対応するメソッドがあるか？要調査[setAccessible]メソッド
         }       
     }
 }
