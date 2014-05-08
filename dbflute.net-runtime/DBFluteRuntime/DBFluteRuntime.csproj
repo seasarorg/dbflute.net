@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="JavaLike\Helper\ComparatorAdapter.cs" />
     <Compile Include="JavaLike\Helper\StringHelper.cs" />
+    <Compile Include="JavaLike\IO\IOException.cs" />
+    <Compile Include="JavaLike\IO\Serializable.cs" />
     <Compile Include="JavaLike\Lang\boolean.cs" />
     <Compile Include="JavaLike\Lang\Comparable.cs" />
     <Compile Include="JavaLike\Lang\ConcurrentModificationException.cs" />
@@ -54,8 +56,10 @@
     <Compile Include="JavaLike\Lang\Iterable.cs" />
     <Compile Include="JavaLike\Lang\NullableExtension.cs" />
     <Compile Include="JavaLike\Lang\ObjectExtension.cs" />
+    <Compile Include="JavaLike\Lang\Reflect\Method.cs" />
     <Compile Include="JavaLike\Lang\StringBuilder.cs" />
     <Compile Include="JavaLike\Lang\StringExtension.cs" />
+    <Compile Include="JavaLike\Lang\TypeExtension.cs" />
     <Compile Include="JavaLike\Math\BigDecimal.cs" />
     <Compile Include="JavaLike\Util\ArrayList.cs" />
     <Compile Include="JavaLike\Util\Arrays.cs" />
