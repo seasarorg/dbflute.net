@@ -31,6 +31,13 @@ DBFluteRuntime.JavaLike.Lang.NullableExtensionクラスに拡張メソッドと�
 ・Field#set/get ⇒ プロパティのset/getキーワードと被る ⇒ setValue / getValueメソッドに変換？
 
 # -------------------------------------------------------------
+#                                      Genericsのワイルドカード
+#                                      ------------------------
+1:1で対応するC#のキーワードがないので下記の変換が必要
+・Class<?> -> System.Type
+・その他 -> ? -> T などのGenerics型名
+
+# -------------------------------------------------------------
 #                                      別名の定義＆拡張メソッド
 #                                     -------------------------
 Adapterの形でjavalikeクラスを作成した場合、
@@ -51,3 +58,37 @@ C#上で表現する場合、下記の変換・拡張を行えばAdapterなし�
 getNameなどのjavaメソッドを[C#]MethodInfoの拡張メソッドとして定義
 
 （とりあえずリフレクション系はそれでいけそう）
+
+○変換リスト(左：[java]import文 右：[C#]using文）
+java.lang.reflect.Method -> Method = System.Refection.MethodInfo
+java.lang.reflect.Field -> Field = System.Refection.FieldInfo
+java.lang.reflect.Constructor -> Constructor = System.Refection.ConstructorInfo
+
+（例外クラスもAdapterや継承では同等の例外をcatchできないため、別名定義が必要）
+　　※dbflute-runtime下でcatchされているmade in dbfluteではない例外が対象
+java.lang.NumberFormatExceptionn -> NumberFormatException = System.FormatException
+java.lang.InstantiationException -> InstantiationException = System.TypeLoadException
+java.lang.IllegalAccessException -> IllegalAccessException = System.SecurityException
+java.lang.NoSuchMethodException -> NoSuchMethodException = System.MissingMethodException
+java.lang.RuntimeException -> RuntimeException = System.Exception
+java.lang.ClassCastException -> ClassCastException = System.InvalidCastException
+java.lang.Throwable -> Throwable = System.Exception
+java.lang.InterruptedException -> InterruptedException = System.Threading.ThreadInterruptedException
+java.lang.IndexOutOfBoundsException -> IndexOutOfBoundsException = System.IndexOutOfRangeException
+java.lang.reflect.InvocationTargetException -> InvocationTargetException = System.Reflection.TargetInvocationException
+java.lang.ClassNotFoundException -> ClassNotFoundException = System.TypeLoadException
+java.io.UnsupportedEncodingException = UnsupportedEncodingException -> System.ArgumentException
+java.text.ParseException -> ParseException = System.FormatException
+java.util.concurrent.ExecutionException -> ExecutionException = System.Threading.ThreadStartException
+java.sql.SQLException -> SQLException = System.Data.SqlClient.SqlException
+
+java.lang.Exception -> System.Exception
+java.lang.SecurityException -> System.Security.SecurityException
+java.io.IOException -> System.IO.IOException
+java.io.FileNotFoundException -> System.IO.FileNotFoundException
+
+
+# --------------------------------------------------------------
+#                                                         その他
+#                                                         ------
+org.apache下の変換クラスはどこに置くか
