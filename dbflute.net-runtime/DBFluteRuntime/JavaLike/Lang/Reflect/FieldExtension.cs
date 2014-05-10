@@ -1,43 +1,40 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 
 namespace DBFluteRuntime.JavaLike.Lang.Reflect
 {
     // #pending テストクラス未作成
     /// <summary>
-    /// [Java]Fieldクラス
+    /// [Java]Fieldクラス（[C#]FieldInfo拡張）
     /// </summary>
-    public sealed class Field
+    public static class FieldExtension
     {
-        private readonly FieldInfo _field;
-
-        public Field(FieldInfo fieldInfo)
-        {
-            _field = fieldInfo;
-        }
-
-        public void setAccessible(boolean flag)
+        public static void setAccessible(this FieldInfo field, boolean flag)
         {
             // #pending C#に対応するメソッドがあるか？要調査[setAccessible]メソッド
+            throw new NotSupportedException();
         }
 
         /// <summary>
         /// [Java]setメソッドの代用
         /// </summary>
+        /// <param name="field"></param>
         /// <param name="target"></param>
         /// <param name="value"></param>
-        public void setValue(object target, object value)
+        public static void setValue(this FieldInfo field, object target, object value)
         {
-            _field.SetValue(target, value);
+            field.SetValue(target, value);
         }
 
         /// <summary>
         /// [Java]getメソッドの代用
         /// </summary>
+        /// <param name="field"></param>
         /// <param name="target"></param>
         /// <returns></returns>
-        public object getValue(object target)
+        public static object getValue(this FieldInfo field, object target)
         {
-            return _field.GetValue(target);
+            return field.GetValue(target);
         }
 
         // #pending getModifiersメソッド 対応するメソッドがC#にないかも？
