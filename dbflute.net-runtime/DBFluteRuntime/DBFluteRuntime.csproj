@@ -43,8 +43,6 @@
   <ItemGroup>
     <Compile Include="JavaLike\Helper\ComparatorAdapter.cs" />
     <Compile Include="JavaLike\Helper\StringHelper.cs" />
-    <Compile Include="JavaLike\IO\FileNotFoundException.cs" />
-    <Compile Include="JavaLike\IO\IOException.cs" />
     <Compile Include="JavaLike\IO\Serializable.cs" />
     <Compile Include="JavaLike\Lang\boolean.cs" />
     <Compile Include="JavaLike\Lang\Comparable.cs" />

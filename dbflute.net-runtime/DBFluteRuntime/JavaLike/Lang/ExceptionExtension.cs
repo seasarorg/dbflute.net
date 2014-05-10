@@ -17,7 +17,7 @@ namespace DBFluteRuntime.JavaLike.Lang
         }
 
         public static string getMessage(this System.Exception e)
-        {DateTime.pa
+        {
             return e.Message;
         }
     }
