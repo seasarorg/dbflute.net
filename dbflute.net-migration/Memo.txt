@@ -24,10 +24,30 @@
 #                           -----------------------------------
 DBFluteRuntime.JavaLike.Lang.NullableExtensionクラスに拡張メソッドとしてまとめて実装
 
-
 # -------------------------------------------------------------
 #                                  予約語と被っているキーワード
 #                                  ----------------------------
 ・XXX.class ⇒ 予約後「class」と被る ⇒ getType()に変換する必要あり？
 ・Field#set/get ⇒ プロパティのset/getキーワードと被る ⇒ setValue / getValueメソッドに変換？
 
+# -------------------------------------------------------------
+#                                      別名の定義＆拡張メソッド
+#                                     -------------------------
+Adapterの形でjavalikeクラスを作成した場合、
+変換が発生する度に内部でAdapterインスタンスをnewする必要があるため、
+塵も積もればでパフォーマンスなどに影響が出る懸念がある。
+↓
+C#ではusing句を使って別名定義ができるため、例えばjavaのMethodクラスを
+C#上で表現する場合、下記の変換・拡張を行えばAdapterなしで再現可能となる。
+また、getClass().getName()のような戻り値からそのままメソッド呼び出しをしている
+コードにも対応することができる。
+
+<変換> ( CSharpUsingNamespaceBuilder#doBuildMappingUsingClause で実行？ )
+[Java]import java.lang.reflect.Method;
+↓
+[C#]  using Method = System.Refrection.MethodInfo;
+
+<拡張>
+getNameなどのjavaメソッドを[C#]MethodInfoの拡張メソッドとして定義
+
+（とりあえずリフレクション系はそれでいけそう）
