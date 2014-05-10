@@ -24,8 +24,9 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
         map.put("public final ", "public readonly ");
         map.put("protected final ", "protected readonly ");
         map.put("private final ", "private readonly ");
-        map.put("boolean ", "bool ");
-        map.put("Integer ", "int? ");
+        // JavaLike exists
+        //map.put("boolean ", "bool ");
+        //map.put("Integer ", "int? ");
         _basicClassElementReplaceMap = Collections.unmodifiableMap(map);
     }
 
@@ -90,6 +91,8 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
                 _removePrevious = true;
             }
             return null;
+        } else if (isCommonsLoggingLoggerLine(line)) {
+            work = doConvertCommonsLoggingLogger(work);
         } else if (isOverrideAnnotationLine(line)) {
             _foundOverride = true;
             return null;
@@ -112,7 +115,8 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
     }
 
     protected String doConvertExtends(String work) {
-        return replace(work, " extends ", " : "); // TODO jflute implements 
+        // TODO jflute serializable
+        return replace(replace(work, " extends ", " : "), " implements ", ", ");
     }
 
     protected String doConvertMethodOverride(String work) {
@@ -124,6 +128,19 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
     //                               -----------------------
     protected boolean isSerialVersionUIDLine(String line) {
         return line != null && line.contains("long serialVersionUID");
+    }
+
+    // -----------------------------------------------------
+    //                               Serial Version UID Line
+    //                               -----------------------
+    protected boolean isCommonsLoggingLoggerLine(String line) {
+        return line != null && line.contains("LogFactory.getLog");
+    }
+
+    protected String doConvertCommonsLoggingLogger(String work) {
+        String factory = "LogFactory.getLog";
+        String front = Srl.substringFirstFront(work, factory);
+        return front + factory + "(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);";
     }
 
     // -----------------------------------------------------
