@@ -71,6 +71,8 @@
     <Compile Include="JavaLike\Sql\Blob.cs" />
     <Compile Include="JavaLike\Sql\CallableStatement.cs" />
     <Compile Include="JavaLike\Sql\Clob.cs" />
+    <Compile Include="JavaLike\Sql\Connection.cs" />
+    <Compile Include="JavaLike\Sql\DatabaseMetaData.cs" />
     <Compile Include="JavaLike\Sql\PreparedStatement.cs" />
     <Compile Include="JavaLike\Sql\ResultSet.cs" />
     <Compile Include="JavaLike\Sql\ResultSetMetaData.cs" />
