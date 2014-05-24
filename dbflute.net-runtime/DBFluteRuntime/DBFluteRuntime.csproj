@@ -69,11 +69,13 @@
     <Compile Include="JavaLike\Math\BigInteger.cs" />
     <Compile Include="JavaLike\Sql\Array.cs" />
     <Compile Include="JavaLike\Sql\Blob.cs" />
+    <Compile Include="JavaLike\Sql\CallableStatement.cs" />
     <Compile Include="JavaLike\Sql\Clob.cs" />
     <Compile Include="JavaLike\Sql\PreparedStatement.cs" />
     <Compile Include="JavaLike\Sql\ResultSet.cs" />
     <Compile Include="JavaLike\Sql\ResultSetMetaData.cs" />
     <Compile Include="JavaLike\Sql\SQLExceptionExtension.cs" />
+    <Compile Include="JavaLike\Sql\Statement.cs" />
     <Compile Include="JavaLike\Util\ArrayList.cs" />
     <Compile Include="JavaLike\Util\Arrays.cs" />
     <Compile Include="JavaLike\Util\Collection.cs" />

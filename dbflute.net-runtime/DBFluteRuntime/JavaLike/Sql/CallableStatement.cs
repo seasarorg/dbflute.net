@@ -1,149 +1,146 @@
-﻿using DBFluteRuntime.JavaLike.IO;
-using DBFluteRuntime.JavaLike.Lang;
-using DBFluteRuntime.JavaLike.Math;
-using System;
+﻿using System;
 
 namespace DBFluteRuntime.JavaLike.Sql
 {
     // #pending とりあえず必要なメソッドだけ。中身は順次実装
     /// <summary>
-    /// [Java]PreparedStatement
+    /// [Java]CallableStatement
     /// </summary>
-    public class PreparedStatement : Statement
+    public class CallableStatement : Statement
     {
         public void close()
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setQueryTimeout(int seconds)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setFetchSize(int size)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setMaxRows(int max)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public ResultSet executeQuery()
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public int executeUpdate()
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public int[] executeBatch()
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void addBatch()
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public int getUpdateCount()
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
-        public void setBigDecimal(int parameterIndex, BigDecimal x)
+        public void setBigDecimal(int parameterIndex, Math.BigDecimal x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
-        public void setBinaryStream(int parameterIndex, InputStream x, int length)
+        public void setBinaryStream(int parameterIndex, IO.InputStream x, int length)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setObject(int parameterIndex, object x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
-        public void setBoolean(int parameterIndex, boolean x)
+        public void setBoolean(int parameterIndex, Lang.boolean x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setByte(int parameterIndex, byte x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setString(int parameterIndex, string x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setInt(int parameterIndex, int x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setDouble(int parameterIndex, double x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setFloat(int parameterIndex, float x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setLong(int parameterIndex, long x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setShort(int parameterIndex, short x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setDate(int parameterIndex, DateTime x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setTimestamp(int parameterIndex, DateTime x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setTime(int parameterIndex, DateTime x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setBlob(int parameterIndex, Blob x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setBytes(int parameterIndex, byte[] x)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
         public void setNull(int parameterIndex, int sqlType, string typeName)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
 
-        public void setCharacterStream(int parameterIndex, Reader reader, int length)
+        public void setCharacterStream(int parameterIndex, IO.Reader reader, int length)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
     }
 }
