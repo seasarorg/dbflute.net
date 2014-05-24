@@ -6,7 +6,8 @@ using System.Data;
 
 namespace DBFluteRuntime.JavaLike.Sql
 {
-    // #pending 
+    // #pending 未実装なメソッドあり、テストも要
+    // memo;next(), hasNext(). getString(), getInt() など以外は空実装でOK
     /// <summary>
     /// [Java]ResultSet
     /// </summary>

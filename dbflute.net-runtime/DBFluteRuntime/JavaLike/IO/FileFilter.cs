@@ -8,13 +8,9 @@ namespace DBFluteRuntime.JavaLike.IO
 {
     // #pending 未実装
     /// <summary>
-    /// [Java]Reader
+    /// [Java]FileFilter
     /// </summary>
-    public class Reader
+    public class FileFilter
     {
-        public void close()
-        {
-            throw new NotSupportedException();
-        }
     }
 }

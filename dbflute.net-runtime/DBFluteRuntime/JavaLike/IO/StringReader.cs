@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace DBFluteRuntime.JavaLike.IO
 {
-    // #pending 未実装
+    // #penging 未実装
     /// <summary>
-    /// [Java]Reader
+    /// [Java]StringReader
     /// </summary>
-    public class Reader
+    public class StringReader : Reader
     {
-        public void close()
-        {
-            throw new NotSupportedException();
-        }
     }
 }

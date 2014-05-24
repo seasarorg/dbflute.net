@@ -8,13 +8,9 @@ namespace DBFluteRuntime.JavaLike.IO
 {
     // #pending 未実装
     /// <summary>
-    /// [Java]Reader
+    /// [Java]InputStreamReader
     /// </summary>
-    public class Reader
+    public class InputStreamReader : Reader
     {
-        public void close()
-        {
-            throw new NotSupportedException();
-        }
     }
 }
