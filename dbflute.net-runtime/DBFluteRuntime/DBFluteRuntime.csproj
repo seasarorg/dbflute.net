@@ -45,6 +45,8 @@
     <Compile Include="JavaLike\Helper\EnumeratorExtension.cs" />
     <Compile Include="JavaLike\Helper\AdoSQLExceptionHandlerFactory.cs" />
     <Compile Include="JavaLike\Helper\StringHelper.cs" />
+    <Compile Include="JavaLike\IO\InputStream.cs" />
+    <Compile Include="JavaLike\IO\Reader.cs" />
     <Compile Include="JavaLike\IO\Serializable.cs" />
     <Compile Include="JavaLike\Lang\boolean.cs" />
     <Compile Include="JavaLike\Lang\Comparable.cs" />
@@ -66,7 +68,9 @@
     <Compile Include="JavaLike\Math\BigDecimal.cs" />
     <Compile Include="JavaLike\Math\BigInteger.cs" />
     <Compile Include="JavaLike\Sql\Array.cs" />
+    <Compile Include="JavaLike\Sql\Blob.cs" />
     <Compile Include="JavaLike\Sql\Clob.cs" />
+    <Compile Include="JavaLike\Sql\PreparedStatement.cs" />
     <Compile Include="JavaLike\Sql\ResultSet.cs" />
     <Compile Include="JavaLike\Sql\ResultSetMetaData.cs" />
     <Compile Include="JavaLike\Sql\SQLExceptionExtension.cs" />
