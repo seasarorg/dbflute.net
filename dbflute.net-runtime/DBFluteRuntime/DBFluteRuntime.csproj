@@ -88,6 +88,11 @@
     <Compile Include="JavaLike\Lang\ClassExtension.cs" />
     <Compile Include="JavaLike\Math\BigDecimal.cs" />
     <Compile Include="JavaLike\Math\BigInteger.cs" />
+    <Compile Include="JavaLike\Net\JarURLConnection.cs" />
+    <Compile Include="JavaLike\Net\MalformedURLException.cs" />
+    <Compile Include="JavaLike\Net\URL.cs" />
+    <Compile Include="JavaLike\Net\URLConnection.cs" />
+    <Compile Include="JavaLike\Net\URLDecoder.cs" />
     <Compile Include="JavaLike\Sql\Array.cs" />
     <Compile Include="JavaLike\Sql\Blob.cs" />
     <Compile Include="JavaLike\Sql\CallableStatement.cs" />
