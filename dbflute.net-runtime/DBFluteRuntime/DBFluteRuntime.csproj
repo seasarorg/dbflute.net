@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JavaLike\Helper\ComparatorAdapter.cs" />
+    <Compile Include="JavaLike\Helper\EnumeratorExtension.cs" />
+    <Compile Include="JavaLike\Helper\AdoSQLExceptionHandlerFactory.cs" />
     <Compile Include="JavaLike\Helper\StringHelper.cs" />
     <Compile Include="JavaLike\IO\Serializable.cs" />
     <Compile Include="JavaLike\Lang\boolean.cs" />
@@ -62,6 +64,12 @@
     <Compile Include="JavaLike\Lang\StringExtension.cs" />
     <Compile Include="JavaLike\Lang\ClassExtension.cs" />
     <Compile Include="JavaLike\Math\BigDecimal.cs" />
+    <Compile Include="JavaLike\Math\BigInteger.cs" />
+    <Compile Include="JavaLike\Sql\Array.cs" />
+    <Compile Include="JavaLike\Sql\Clob.cs" />
+    <Compile Include="JavaLike\Sql\ResultSet.cs" />
+    <Compile Include="JavaLike\Sql\ResultSetMetaData.cs" />
+    <Compile Include="JavaLike\Sql\SQLExceptionExtension.cs" />
     <Compile Include="JavaLike\Util\ArrayList.cs" />
     <Compile Include="JavaLike\Util\Arrays.cs" />
     <Compile Include="JavaLike\Util\Collection.cs" />
@@ -80,7 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="JavaLike\Extensions\" />
-    <Folder Include="JavaLike\Sql\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
