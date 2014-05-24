@@ -1,4 +1,5 @@
-﻿using DBFluteRuntime.JavaLike.Math;
+﻿using DBFluteRuntime.JavaLike.Lang;
+using DBFluteRuntime.JavaLike.Math;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -84,12 +85,23 @@ namespace DBFluteRuntime.JavaLike.Sql
             return hasNext;
         }
 
+        public boolean previous()
+        {
+            throw new NotSupportedException();
+        }
+
         /// <summary>
         /// 先頭レコードを参照
         /// </summary>
         public void beforeFirst()
         {
             _currentRowNo = 0;
+        }
+
+        public void afterLast()
+        {
+            _currentRowNo = _cachedDatas.Count - 1;
+            next();
         }
 
         /// <summary>
@@ -119,6 +131,56 @@ namespace DBFluteRuntime.JavaLike.Sql
             }
         }
 
+        public boolean first()
+        {
+            throw new NotSupportedException();
+        }
+
+        public boolean isAfterLast()
+        {
+            throw new NotSupportedException();
+        }
+
+        public boolean isBeforeFirst()
+        {
+            throw new NotSupportedException();
+        }
+
+        public boolean isFirst()
+        {
+            throw new NotSupportedException();
+        }
+
+        public boolean isLast()
+        {
+            throw new NotSupportedException();
+        }
+
+        public boolean last()
+        {
+            throw new NotSupportedException();
+        }
+
+        public boolean rowDeleted()
+        {
+            throw new NotSupportedException();
+        }
+
+        public boolean rowInserted()
+        {
+            throw new NotSupportedException();
+        }
+
+        public boolean rowUpdated()
+        {
+            throw new NotSupportedException();
+        }
+
+        public boolean wasNull()
+        {
+            throw new NotSupportedException();
+        }
+
         /// <summary>
         /// 現在レコード番号の取得
         /// </summary>
@@ -135,6 +197,83 @@ namespace DBFluteRuntime.JavaLike.Sql
         {
             _reader.Close();   
         }
+
+        public void cancelRowUpdates()
+        {
+            throw new NotSupportedException();
+        }
+
+        public void clearWarnings()
+        {
+            throw new NotSupportedException();
+        }
+
+        public void deleteRow()
+        {
+            throw new NotSupportedException();
+        }
+
+        public void insertRow()
+        {
+            throw new NotSupportedException();
+        }
+
+        public void updateNull(int columnIndex)
+        {
+            throw new NotSupportedException();
+        }
+
+        public void moveToCurrentRow()
+        {
+            _currentRowNo = _cachedDatas.Count - 1;
+        }
+
+        public void moveToInsertRow()
+        {
+            throw new NotSupportedException();
+        }
+
+        public void refreshRow()
+        {
+            throw new NotSupportedException();
+        }
+
+        public void updateRow()
+        {
+            throw new NotSupportedException();
+        }
+
+        public int getConcurrency()
+        {
+            throw new NotSupportedException();
+        }
+
+        public int getFetchDirection()
+        {
+            throw new NotSupportedException();
+        }
+
+        public int setFetchDirection()
+        {
+            throw new NotSupportedException();
+        }
+
+        public int getFetchSize()
+        {
+            throw new NotSupportedException();
+        }
+
+        public int setFetchSize()
+        {
+            throw new NotSupportedException();
+        }
+
+        public int getType()
+        {
+            throw new NotSupportedException();
+        }
+
+
 
         public string getString(string columnName)
         {
@@ -236,6 +375,41 @@ namespace DBFluteRuntime.JavaLike.Sql
         public Array getArray(int columnIndex)
         {
             return getValue<Array>(columnIndex);
+        }
+
+        public void updateByte(int columnIndex, byte x)
+        {
+            throw new NotSupportedException();
+        }
+
+        public void updateDouble(int columnIndex, double x)
+        {
+            throw new NotSupportedException();
+        }
+
+        public void updateFloat(int columnIndex, float x)
+        {
+            throw new NotSupportedException();
+        }
+
+        public void updateInt(int columnIndex, int x)
+        {
+            throw new NotSupportedException();
+        }
+
+        public void updateLong(int columnIndex, long x)
+        {
+            throw new NotSupportedException();
+        }
+
+        public void updateShort(int columnIndex, short x)
+        {
+            throw new NotSupportedException();
+        }
+
+        public void updateBoolean(int columnIndex, boolean x)
+        {
+            throw new NotSupportedException();
         }
 
         /// <summary>
