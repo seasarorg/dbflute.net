@@ -74,9 +74,15 @@
     <Compile Include="JavaLike\Lang\Iterable.cs" />
     <Compile Include="JavaLike\Lang\NullableExtension.cs" />
     <Compile Include="JavaLike\Lang\ObjectExtension.cs" />
+    <Compile Include="JavaLike\Lang\Reflect\Array.cs" />
     <Compile Include="JavaLike\Lang\Reflect\ConstructorExtension.cs" />
     <Compile Include="JavaLike\Lang\Reflect\FieldExtension.cs" />
+    <Compile Include="JavaLike\Lang\Reflect\GenericArrayType.cs" />
+    <Compile Include="JavaLike\Lang\Reflect\InvocationTargetException.cs" />
     <Compile Include="JavaLike\Lang\Reflect\MethodExtension.cs" />
+    <Compile Include="JavaLike\Lang\Reflect\Modifier.cs" />
+    <Compile Include="JavaLike\Lang\Reflect\ParameterizedType.cs" />
+    <Compile Include="JavaLike\Lang\Reflect\WildcardType.cs" />
     <Compile Include="JavaLike\Lang\StringBuilder.cs" />
     <Compile Include="JavaLike\Lang\StringExtension.cs" />
     <Compile Include="JavaLike\Lang\ClassExtension.cs" />
