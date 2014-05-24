@@ -73,6 +73,7 @@
     <Compile Include="JavaLike\Sql\Clob.cs" />
     <Compile Include="JavaLike\Sql\Connection.cs" />
     <Compile Include="JavaLike\Sql\DatabaseMetaData.cs" />
+    <Compile Include="JavaLike\Sql\DataSource.cs" />
     <Compile Include="JavaLike\Sql\Date.cs" />
     <Compile Include="JavaLike\Sql\NClob.cs" />
     <Compile Include="JavaLike\Sql\PreparedStatement.cs" />
@@ -91,18 +92,31 @@
     <Compile Include="JavaLike\Sql\Types.cs" />
     <Compile Include="JavaLike\Util\ArrayList.cs" />
     <Compile Include="JavaLike\Util\Arrays.cs" />
+    <Compile Include="JavaLike\Util\Calendar.cs" />
     <Compile Include="JavaLike\Util\Collection.cs" />
+    <Compile Include="JavaLike\Util\Collections.cs" />
     <Compile Include="JavaLike\Util\Comparator.cs" />
     <Compile Include="JavaLike\Util\ConcurrentHashMap.cs" />
     <Compile Include="JavaLike\Util\Entry.cs" />
     <Compile Include="JavaLike\Util\HashMap.cs" />
     <Compile Include="JavaLike\Util\HashSet.cs" />
     <Compile Include="JavaLike\Util\Iterator.cs" />
+    <Compile Include="JavaLike\Util\Jar\JarFile.cs" />
     <Compile Include="JavaLike\Util\LinkedHashMap.cs" />
     <Compile Include="JavaLike\Util\LinkedHashSet.cs" />
     <Compile Include="JavaLike\Util\List.cs" />
+    <Compile Include="JavaLike\Util\ListIterator.cs" />
+    <Compile Include="JavaLike\Util\Locale.cs" />
     <Compile Include="JavaLike\Util\Map.cs" />
+    <Compile Include="JavaLike\Util\Properties.cs" />
     <Compile Include="JavaLike\Util\Set.cs" />
+    <Compile Include="JavaLike\Util\SortedSet.cs" />
+    <Compile Include="JavaLike\Util\Stack.cs" />
+    <Compile Include="JavaLike\Util\StringTokenizer.cs" />
+    <Compile Include="JavaLike\Util\TimeZone.cs" />
+    <Compile Include="JavaLike\Util\TreeSet.cs" />
+    <Compile Include="JavaLike\Util\UUID.cs" />
+    <Compile Include="JavaLike\Util\Zip\ZipEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

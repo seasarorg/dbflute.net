@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DBFluteRuntime.JavaLike.Util
+{
+    // #pending 未実装
+    /// <summary>
+    /// [Java]TimeZone
+    /// </summary>
+    public class TimeZone
+    {
+    }
+}
