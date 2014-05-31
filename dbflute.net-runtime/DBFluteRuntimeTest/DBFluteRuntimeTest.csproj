@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JavaLike\IO\BufferedReaderTest.cs" />
     <Compile Include="JavaLike\Lang\booleanTest.cs" />
     <Compile Include="JavaLike\Lang\LongTest.cs" />
     <Compile Include="JavaLike\Lang\IntegerTest.cs" />
@@ -66,6 +67,9 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>C:\dev\dbflute.net\dbflute.net-runtime\DBFluteRuntimeTest\execute_nunit_test.bat</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

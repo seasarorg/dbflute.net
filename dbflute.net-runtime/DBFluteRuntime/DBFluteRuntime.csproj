@@ -45,7 +45,7 @@
     <Compile Include="JavaLike\Helper\EnumeratorExtension.cs" />
     <Compile Include="JavaLike\Helper\AdoSQLExceptionHandlerFactory.cs" />
     <Compile Include="JavaLike\Helper\StringHelper.cs" />
-    <Compile Include="JavaLike\IO\BufferedReader.cs" />
+    <Compile Include="JavaLike\IO\BufferedReaderExtension.cs" />
     <Compile Include="JavaLike\IO\ByteArrayInputStream.cs" />
     <Compile Include="JavaLike\IO\ByteArrayOutputStream.cs" />
     <Compile Include="JavaLike\IO\File.cs" />
