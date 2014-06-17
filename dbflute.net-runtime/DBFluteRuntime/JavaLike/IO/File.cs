@@ -1,51 +1,75 @@
 ﻿using DBFluteRuntime.JavaLike.Lang;
-using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DBFluteRuntime.JavaLike.IO
 {
-    // #pending 未実装
     /// <summary>
     /// [Java]File
     /// </summary>
     public class File
     {
+        private readonly string _path;
+
         public File(string path)
         {
-            throw new NotSupportedException();
+            _path = path;
         }
 
         public string getName()
         {
-            throw new NotSupportedException();
+            return Path.GetFileName(_path);
         }
 
-        public string list(FilenameFilter filter)
+        public string[] list(FilenameFilter filter)
         {
-            throw new NotSupportedException();
+            if (isDirectory())
+            {
+                string[] paths = Directory.GetFiles(_path);
+                var filteredPaths = from path in paths where filter.accept(this, path) select path;
+                if (filteredPaths != null && filteredPaths.Count() > 0)
+                {
+                    return filteredPaths.ToArray();
+                }
+                return null;
+            }
+            return null;
         }
 
         public File[] listFiles(FileFilter filter)
         {
-            throw new NotSupportedException();
+            if (isDirectory())
+            {
+                string[] paths = Directory.GetFiles(_path);
+                var filteredFiles = from path in paths where filter.accept(this) select new File(path);
+                if (filteredFiles != null && filteredFiles.Count() > 0)
+                {
+                    return filteredFiles.ToArray();
+                }
+                return null;
+            }
+            return null;
         }
 
         public boolean isDirectory()
         {
-            throw new NotSupportedException();
+            return Directory.Exists(_path);
         }
 
         public string getCanonicalPath()
         {
-            throw new NotSupportedException();
+            // #pending C#には一意のパスを返すメソッドがないので完全パスで代用
+            return Path.GetFullPath(_path);
         }
 
         public File getParentFile()
         {
-            throw new NotSupportedException();
+            var parent = Directory.GetParent(_path);
+            if (parent != null && parent.Exists)
+            {
+                return new File(parent.FullName);
+            }
+            return null;
         }
     }
 }

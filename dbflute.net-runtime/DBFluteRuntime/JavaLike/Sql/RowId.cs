@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBFluteRuntime.JavaLike.IO
+namespace DBFluteRuntime.JavaLike.Sql
 {
-    // #penging 未実装
+    // #pending 未実装
     /// <summary>
-    /// [Java]ByteArrayInputStream
+    /// [Java]RowId
     /// </summary>
-    public class ByteArrayInputStream : InputStream
+    public class RowId
     {
-
     }
 }

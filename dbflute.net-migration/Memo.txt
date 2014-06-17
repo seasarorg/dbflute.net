@@ -77,16 +77,20 @@ java.lang.InterruptedException -> InterruptedException = System.Threading.Thread
 java.lang.IndexOutOfBoundsException -> IndexOutOfBoundsException = System.IndexOutOfRangeException
 java.lang.reflect.InvocationTargetException -> InvocationTargetException = System.Reflection.TargetInvocationException
 java.lang.ClassNotFoundException -> ClassNotFoundException = System.TypeLoadException
-java.io.UnsupportedEncodingException = UnsupportedEncodingException -> System.ArgumentException
-java.text.ParseException -> ParseException = System.FormatException
-java.util.concurrent.ExecutionException -> ExecutionException = System.Threading.ThreadStartException
-java.sql.SQLException -> SQLException = System.Data.SqlClient.SqlException
-
 java.lang.Exception -> System.Exception
 java.lang.SecurityException -> System.Security.SecurityException
+
+java.text.ParseException -> ParseException = System.FormatException
+
+java.util.concurrent.ExecutionException -> ExecutionException = System.Threading.ThreadStartException
+
+java.sql.SQLException -> SQLException = System.Data.SqlClient.SqlException
+
 java.io.IOException -> System.IO.IOException
 java.io.FileNotFoundException -> System.IO.FileNotFoundException
-
+java.io.ByteArrayInputStream -> System.IO.MemoryStream
+java.io.BufferedReader -> System.IO.StreamReader
+java.io.UnsupportedEncodingException = UnsupportedEncodingException -> System.ArgumentException
 
 # --------------------------------------------------------------
 #                                                         その他

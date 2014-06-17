@@ -46,7 +46,7 @@
     <Compile Include="JavaLike\Helper\AdoSQLExceptionHandlerFactory.cs" />
     <Compile Include="JavaLike\Helper\StringHelper.cs" />
     <Compile Include="JavaLike\IO\BufferedReaderExtension.cs" />
-    <Compile Include="JavaLike\IO\ByteArrayInputStream.cs" />
+    <Compile Include="JavaLike\IO\StreamExtension.cs" />
     <Compile Include="JavaLike\IO\ByteArrayOutputStream.cs" />
     <Compile Include="JavaLike\IO\File.cs" />
     <Compile Include="JavaLike\IO\FileFilter.cs" />
