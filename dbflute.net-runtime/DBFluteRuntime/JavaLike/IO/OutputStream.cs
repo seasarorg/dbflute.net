@@ -1,25 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
 namespace DBFluteRuntime.JavaLike.IO
 {
-    // #pending 未実装
+    // #pending テストコード未実装
     /// <summary>
     /// [Java]OutputStream
     /// </summary>
     public abstract class OutputStream
     {
+        protected readonly BufferedStream _writer;
+
+        public OutputStream()
+        {
+            _writer = new BufferedStream(new MemoryStream());
+        }
+
+        public OutputStream(Stream st)
+        {
+            _writer = new BufferedStream(st);
+        }
+
         public void close()
         {
-            throw new NotSupportedException();
+            _writer.Flush();
+            _writer.Close();
         }
 
         public void write(byte[] buf, int offset, int length)
         {
-            throw new NotSupportedException();
+            _writer.Write(buf, offset, length);
         }
     }
 }

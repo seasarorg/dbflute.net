@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
 namespace DBFluteRuntime.JavaLike.IO
 {
-    // #pending 未実装
+    // #pending テストコード未実装
     /// <summary>
     /// [Java]FileOutputStream
     /// </summary>
     public class FileOutputStream : OutputStream
     {
-        public FileOutputStream(string filePath)
+        public FileOutputStream(string filePath) : base(new FileStream(filePath, FileMode.Append))
         {
-            throw new NotSupportedException();
         }
     }
 }

@@ -1,21 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace DBFluteRuntime.JavaLike.IO
 {
-    // #pending 未実装
+    // #pending テストコード未実装
     /// <summary>
     /// [Java]ByteArrayOutputStream
     /// </summary>
     public class ByteArrayOutputStream : OutputStream
     {
+        private byte[] _buf = null;
+
+        public ByteArrayOutputStream() : base()
+        { }
 
         public byte[] toByteArray()
         {
-            throw new NotSupportedException();
+            return _buf;
+        }
+
+        internal void setBytes(byte[] buf)
+        {
+            _buf = buf;
         }
     }
 }
