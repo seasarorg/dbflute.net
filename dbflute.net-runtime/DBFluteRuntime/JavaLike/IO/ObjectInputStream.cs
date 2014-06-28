@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DBFluteRuntime.JavaLike.IO
 {
-    // #pending 未実装
     /// <summary>
     /// [Java]ObjectInputStream
     /// </summary>
@@ -14,6 +9,7 @@ namespace DBFluteRuntime.JavaLike.IO
     {
         public object readObject()
         {
+            // #pending readObject中身未実装
             throw new NotSupportedException();
         }
     }

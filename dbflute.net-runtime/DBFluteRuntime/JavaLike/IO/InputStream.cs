@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace DBFluteRuntime.JavaLike.IO
 {
-    // #pending 他の箇所の実装の都合上、とりあえずクラスだけ定義
     /// <summary>
     /// [Java]InputStream
     /// </summary>
-    public class InputStream
+    public abstract class InputStream
     {
+        public void read(byte[] bytes)
+        {
+            // #pending read未実装
+        }
+
+        public void close()
+        {
+            // #pending close未実装
+        }
     }
 }

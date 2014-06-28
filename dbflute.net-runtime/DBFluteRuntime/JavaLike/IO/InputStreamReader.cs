@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace DBFluteRuntime.JavaLike.IO
 {
     // #pending 未実装
@@ -12,5 +7,9 @@ namespace DBFluteRuntime.JavaLike.IO
     /// </summary>
     public class InputStreamReader : Reader
     {
+        public InputStreamReader(InputStream ins, string charsetName)
+        {
+            // #pending コンストラクタ中身未実装
+        }
     }
 }
