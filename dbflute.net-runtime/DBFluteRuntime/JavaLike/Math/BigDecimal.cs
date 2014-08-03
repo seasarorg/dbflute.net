@@ -52,7 +52,7 @@ namespace DBFluteRuntime.JavaLike.Math
 
         #endregion
 
-        #region Static Factoru Methods
+        #region Static Factory Methods
 
         public static BigDecimal valueOf(long unscaledVal, int scale)
         {

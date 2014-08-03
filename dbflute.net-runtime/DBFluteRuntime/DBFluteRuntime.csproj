@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JavaLike\Helper\ClassUtils.cs" />
     <Compile Include="JavaLike\Helper\ComparatorAdapter.cs" />
     <Compile Include="JavaLike\Helper\EnumeratorExtension.cs" />
     <Compile Include="JavaLike\Helper\AdoSQLExceptionHandlerFactory.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="JavaLike\IO\StringWriter.cs" />
     <Compile Include="JavaLike\IO\Writer.cs" />
     <Compile Include="JavaLike\Lang\boolean.cs" />
+    <Compile Include="JavaLike\Lang\ClassNotFoundException.cs" />
     <Compile Include="JavaLike\Lang\Comparable.cs" />
     <Compile Include="JavaLike\Lang\ConcurrentModificationException.cs" />
     <Compile Include="JavaLike\Lang\ExceptionExtension.cs" />
@@ -97,7 +99,7 @@
     <Compile Include="JavaLike\Sql\Blob.cs" />
     <Compile Include="JavaLike\Sql\CallableStatement.cs" />
     <Compile Include="JavaLike\Sql\Clob.cs" />
-    <Compile Include="JavaLike\Sql\Connection.cs" />
+    <Compile Include="JavaLike\Sql\ConnectionExtension.cs" />
     <Compile Include="JavaLike\Sql\DatabaseMetaData.cs" />
     <Compile Include="JavaLike\Sql\DataSource.cs" />
     <Compile Include="JavaLike\Sql\Date.cs" />

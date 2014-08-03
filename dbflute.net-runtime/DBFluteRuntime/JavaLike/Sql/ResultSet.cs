@@ -13,6 +13,8 @@ namespace DBFluteRuntime.JavaLike.Sql
     /// </summary>
     public class ResultSet
     {
+        private const int NO_SET = 0;
+
         /// <summary>
         /// C#におけるResultSet
         /// </summary>
@@ -32,6 +34,10 @@ namespace DBFluteRuntime.JavaLike.Sql
         /// 現在参照中のレコード番号
         /// </summary>
         private int _currentRowNo = 0;
+
+        private int _fetchSize = NO_SET;
+
+        private int _maxRows = NO_SET;
 
         /// <summary>
         /// 読込済のレコードデータコレクション
@@ -264,9 +270,14 @@ namespace DBFluteRuntime.JavaLike.Sql
             throw new NotSupportedException();
         }
 
-        public int setFetchSize()
+        public void setFetchSize(int size)
         {
-            throw new NotSupportedException();
+            _fetchSize = size;
+        }
+
+        public void setMaxRows(int max)
+        {
+            _maxRows = max;
         }
 
         public int getType()

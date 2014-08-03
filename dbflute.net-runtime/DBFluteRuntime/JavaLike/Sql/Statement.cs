@@ -1,66 +1,103 @@
-﻿using DBFluteRuntime.JavaLike.IO;
-using DBFluteRuntime.JavaLike.Lang;
-using DBFluteRuntime.JavaLike.Math;
-using System;
+﻿using System.Data;
 
 namespace DBFluteRuntime.JavaLike.Sql
 {
     /// <summary>
     /// [Java]Statement
     /// </summary>
-    public interface Statement
+    public class Statement
     {
-        void close();
-        void setQueryTimeout(int seconds);
+        protected const int NO_SET = 0;
+        private readonly IDbConnection _connection;
+        private int _timeout = NO_SET;
+        private int _fetchSize = NO_SET;
+        private int _maxRows = NO_SET;
+        private int _updatedCount = 0;
 
-        void setFetchSize(int size);
+        public Statement(IDbConnection connection)
+        {
+            _connection = connection;
+        }
 
-        void setMaxRows(int max);
+        public virtual void close()
+        {
+            _connection.close();
+        }
 
-        ResultSet executeQuery();
+        public virtual void setQueryTimeout(int seconds)
+        {
+            _timeout = seconds;
+        }
 
-        int executeUpdate();
+        public virtual void setFetchSize(int size)
+        {
+            _fetchSize = size;
+        }
 
-        int[] executeBatch();
+        public virtual void setMaxRows(int max)
+        {
+            _maxRows = max;
+        }
 
-        void addBatch();
+        public virtual ResultSet executeQuery(string sql)
+        {
+            return executeQuery(createCommand(sql));
+        }
 
-        int getUpdateCount();
+        public virtual int executeUpdate(string sql)
+        {
+            return executeUpdate(createCommand(sql));
+        }
 
-        void setBigDecimal(int parameterIndex, BigDecimal x);
+        public virtual int getUpdateCount()
+        {
+            return _updatedCount;
+        }
 
-        void setBinaryStream(int parameterIndex, InputStream x, int length);
+        #region 補助メソッド（継承可）
+        protected virtual ResultSet executeQuery(IDbCommand command)
+        {
+            IDataReader reader = command.ExecuteReader();
+            ResultSet result = new ResultSet(reader);
+            if (_fetchSize != NO_SET)
+            {
+                result.setFetchSize(_fetchSize);
+            }
 
-        void setObject(int parameterIndex, object x);
+            if (_maxRows != NO_SET)
+            {
+                result.setMaxRows(_maxRows);
+            }
 
-        void setBoolean(int parameterIndex, boolean x);
+            return new ResultSet(reader);
+        }
 
-        void setByte(int parameterIndex, byte x);
+        protected virtual int executeUpdate(IDbCommand command)
+        {
+            _updatedCount = command.ExecuteNonQuery();
+            return _updatedCount;
+        }
 
-        void setString(int parameterIndex, string x);
+        protected virtual void addUpdatedCount(int updatedCount)
+        {
+            _updatedCount = _updatedCount + updatedCount;
+        }
 
-        void setInt(int parameterIndex, int x);
+        #endregion
 
-        void setDouble(int parameterIndex, double x);
+        #region 補助メソッド
 
-        void setFloat(int parameterIndex, float x);
+        private IDbCommand createCommand(string sql)
+        {
+            IDbCommand command = _connection.CreateCommand();
+            command.CommandText = sql;
+            if (_timeout != NO_SET)
+            {
+                command.CommandTimeout = _timeout;
+            }
+            return command;
+        }
 
-        void setLong(int parameterIndex, long x);
-
-        void setShort(int parameterIndex, short x);
-
-        void setDate(int parameterIndex, DateTime x);
-
-        void setTimestamp(int parameterIndex, DateTime x);
-
-        void setTime(int parameterIndex, DateTime x);
-
-        void setBlob(int parameterIndex, Blob x);
-
-        void setBytes(int parameterIndex, byte[] x);
-
-        void setNull(int parameterIndex, int sqlType, string typeName);
-
-        void setCharacterStream(int parameterIndex, Reader reader, int length);
+        #endregion
     }
 }
