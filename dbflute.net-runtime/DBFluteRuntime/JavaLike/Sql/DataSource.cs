@@ -18,7 +18,6 @@ namespace DBFluteRuntime.JavaLike.Sql
 
         public Connection getConnection()
         {
-            // #pending 接続文字列も設定
             var connection = (Connection)ClassUtils.createInstance(ConnectionTypeName);
             connection.ConnectionString = ConnectionString;
             return connection;
