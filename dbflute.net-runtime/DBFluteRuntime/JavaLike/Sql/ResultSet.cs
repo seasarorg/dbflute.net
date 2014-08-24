@@ -285,7 +285,15 @@ namespace DBFluteRuntime.JavaLike.Sql
             throw new NotSupportedException();
         }
 
+        public int getInt(string columnName)
+        {
+            return getValue<int>(columnName);
+        }
 
+        public int getInt(int columnIndex)
+        {
+            return getValue<int>(columnIndex);
+        }
 
         public string getString(string columnName)
         {
@@ -443,7 +451,8 @@ namespace DBFluteRuntime.JavaLike.Sql
         /// <returns></returns>
         private VAL getValue<VAL>(int columnIndex)
         {
-            return (VAL)_cachedDatas[_currentRowNo][columnIndex];
+            object[] row = _cachedDatas[_currentRowNo - 1];
+            return (VAL)row[columnIndex];
         }
     }
 }

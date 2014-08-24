@@ -1,22 +1,21 @@
 ﻿using DBFluteRuntime.JavaLike.Sql;
-using DBFluteRuntimeTest.TestDB;
 using NUnit.Framework;
-using Connection = System.Data.IDbConnection;
 
 namespace DBFluteRuntimeTest.JavaLike.Sql
 {
+    /// <summary>
+    /// Statementテストクラス
+    /// </summary>
     [TestFixture]
     public class StatementTest
     {
+        /// <summary>
+        /// ExecuteQueryメソッドテスト
+        /// </summary>
         [Test]
         public void TestExecuteQuery()
         {
-            // ## Arrange ##
-            DataSource ds = TestDbProvider.GetInstance().GetDataSource();
-            Connection cn = ds.getConnection();
-            cn.Open();
-            try
-            {
+            DBFluteRuntimeTestUtils.ExecuteQuery(cn => {
                 Statement actual = cn.createStatement();
 
                 // ## Act ##
@@ -24,11 +23,16 @@ namespace DBFluteRuntimeTest.JavaLike.Sql
 
                 // ## Assert ##
                 Assert.IsNotNull(results);
-            }
-            finally
-            {
-                cn.close();
-            }
+
+                int count = 0;
+                while (results.next())
+                {
+                    int id = results.getInt(MemberTbl.ID);
+                    Assert.Greater(id, 0, id.ToString());
+                    count++;
+                }
+                Assert.IsTrue(count > 0);
+            });
         }
     }
 }
