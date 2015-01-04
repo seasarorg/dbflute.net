@@ -16,11 +16,14 @@
 package org.seasar.dbflute.net.migration.tools;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
-import org.seasar.dbflute.net.migration.example.MigrationExample;
+import org.dbflute.helper.filesystem.FileTextIO;
+import org.dbflute.utflute.core.policestory.javaclass.PoliceStoryJavaClassHandler;
+import org.dbflute.util.Srl;
 import org.seasar.dbflute.net.migration.tools.handler.MigrationFileLineHandler;
 import org.seasar.dbflute.net.migration.unit.UnitContainerTestCase;
-import org.seasar.dbflute.unit.core.policestory.javaclass.PoliceStoryJavaClassHandler;
 
 /**
  * @author jflute
@@ -29,24 +32,53 @@ public class ToolsMigrationFromJavaTest extends UnitContainerTestCase {
 
     @Override
     protected boolean isUseRuntimeDirectPoliceStory() {
-        // #pending not yet, uses example test for now
-        //return true;
-        return false;
+        return true;
     }
 
     public void test_making() throws Exception {
         policeStoryOfJavaClassChase(new PoliceStoryJavaClassHandler() {
             public void handle(File srcFile, Class<?> clazz) {
-                if (clazz.equals(MigrationExample.class)) { // #pending
+                if (clazz.getName().contains("org.dbflute.system")) {
                     migrateToCSharp(srcFile, clazz);
                 }
             }
         });
+        refreshMigrationProject();
     }
 
     protected void migrateToCSharp(File srcFile, Class<?> clazz) {
         MigrationFileLineHandler handler = new MigrationFileLineHandler();
         readLine(srcFile, "UTF-8", handler);
-        log(ln() + handler.toCSharpString()); // #pending
+        try {
+            String textPath = buildOutputTextPath(clazz);
+            mkdirsIfNeeds(textPath);
+            String text = handler.toCSharpString();
+            log(ln() + text);
+            new FileTextIO().encodeAsUTF8().write(textPath, text);
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    protected String buildOutputTextPath(Class<?> clazz) throws IOException {
+        File sourceDir = getNetRuntimeSourceDir();
+        String canonicalPath = sourceDir.getCanonicalPath();
+        String className = clazz.getName();
+        List<String> splitList = Srl.splitList(className, ".");
+        StringBuilder sb = new StringBuilder();
+        for (String element : splitList) {
+            if (sb.length() > 0) {
+                sb.append("/");
+            }
+            sb.append(Srl.initCap(element));
+        }
+        return canonicalPath + "/" + sb.toString() + ".cs";
+    }
+
+    protected void mkdirsIfNeeds(String textPath) {
+        File baseDir = new File(Srl.substringLastFront(textPath, "/"));
+        if (!baseDir.exists()) {
+            baseDir.mkdirs();
+        }
     }
 }

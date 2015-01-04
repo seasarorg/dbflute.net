@@ -3,8 +3,8 @@ package org.seasar.dbflute.net.migration.builder;
 import java.util.List;
 import java.util.Map;
 
+import org.dbflute.util.Srl;
 import org.seasar.dbflute.net.migration.analyzer.JavaInfo;
-import org.seasar.dbflute.util.Srl;
 
 /**
  * @author jflute

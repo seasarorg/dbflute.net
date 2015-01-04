@@ -4,9 +4,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.dbflute.util.DfCollectionUtil;
+import org.dbflute.util.Srl;
 import org.seasar.dbflute.net.migration.analyzer.JavaInfo;
-import org.seasar.dbflute.util.DfCollectionUtil;
-import org.seasar.dbflute.util.Srl;
 
 /**
  * @author jflute

@@ -13,8 +13,8 @@
 	<inceptionYear>2006</inceptionYear>
 
 	<properties>
-		<dbflute.version>1.0.5D</dbflute.version>
-		<utflute.version>0.4.3</utflute.version>
+		<dbflute.version>1.1.0</dbflute.version>
+		<utflute.version>0.5.0</utflute.version>
 	</properties>
 
 	<licenses>
@@ -125,11 +125,10 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.seasar.dbflute</groupId>
+				<groupId>org.dbflute</groupId>
 				<artifactId>dbflute-maven-plugin</artifactId>
-				<version>1.0.0</version>
+				<version>1.1.0-RC2</version>
 				<configuration>
-					<dbfluteVersion>${dbflute.version}</dbfluteVersion>
 					<clientProject>exampledb</clientProject>
 				</configuration>
 			</plugin>
@@ -143,66 +142,22 @@
 		</extensions>
 	</build>
 
-	<distributionManagement>
-		<repository>
-			<uniqueVersion>false</uniqueVersion>
-			<id>maven.seasar.org</id>
-			<name>The Seasar Foundation Maven2 Repository</name>
-			<url>dav:https://www.seasar.org/maven/maven2</url>
-		</repository>
-		<snapshotRepository>
-			<uniqueVersion>true</uniqueVersion>
-			<id>maven.seasar.org</id>
-			<name>The Seasar Foundation Maven2 Snapshot Repository</name>
-			<url>dav:https://www.seasar.org/maven/maven2-snapshot</url>
-		</snapshotRepository>
-	</distributionManagement>
-
-	<repositories>
-		<repository>
-			<id>maven.seasar.org</id>
-			<name>The Seasar Foundation Maven2 Repository</name>
-			<url>http://maven.seasar.org/maven2</url>
-		</repository>
-		<repository>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<id>snapshot.maven.seasar.org</id>
-			<name>The Seasar Foundation Maven2 Snapshot Repository</name>
-			<url>http://maven.seasar.org/maven2-snapshot</url>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>mave.seaser.org</id>
-			<name>The Seasar Foundation Maven2 Repository</name>
-			<url>http://maven.seasar.org/maven2</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>snapshot.mave.seaser.org</id>
-			<name>The Seasar Foundation Maven2 Repository</name>
-			<url>http://maven.seasar.org/maven2-snapshot</url>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<dependencies>
 		<!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = -->
 		<!--                                                                Main Framework -->
 		<!--                                                                 = = = = = = = -->
 		<!-- dbflute -->
 		<dependency>
-			<groupId>org.seasar.dbflute</groupId>
+			<groupId>org.dbflute</groupId>
 			<artifactId>dbflute-runtime</artifactId>
 			<version>${dbflute.version}</version>
 		</dependency>
 
 		<!-- logging -->
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.14</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.7</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -210,7 +165,7 @@
 		<!--                                                                       Testing -->
 		<!--                                                                       = = = = -->
 		<dependency>
-			<groupId>org.seasar.dbflute</groupId>
+			<groupId>org.dbflute.utflute</groupId>
 			<artifactId>utflute-seasar</artifactId>
 			<version>${utflute.version}</version>
 			<scope>test</scope>

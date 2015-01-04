@@ -1,9 +1,9 @@
 package org.seasar.dbflute.net.migration.tools.handler;
 
+import org.dbflute.utflute.core.filesystem.FileLineHandler;
 import org.seasar.dbflute.net.migration.analyzer.JavaAnalyzer;
 import org.seasar.dbflute.net.migration.analyzer.JavaInfo;
 import org.seasar.dbflute.net.migration.builder.CSharpBuilder;
-import org.seasar.dbflute.unit.core.filesystem.FileLineHandler;
 
 /**
  * @author jflute

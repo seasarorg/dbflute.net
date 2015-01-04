@@ -7,11 +7,11 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.seasar.dbflute.helper.HandyDate;
-import org.seasar.dbflute.helper.mapstring.MapListFile;
-import org.seasar.dbflute.infra.manage.refresh.DfRefreshResourceRequest;
-import org.seasar.dbflute.unit.core.PlainTestCase;
-import org.seasar.dbflute.unit.core.policestory.PoliceStory;
+import org.dbflute.helper.HandyDate;
+import org.dbflute.helper.mapstring.MapListFile;
+import org.dbflute.infra.manage.refresh.DfRefreshResourceRequest;
+import org.dbflute.utflute.core.PlainTestCase;
+import org.dbflute.utflute.core.policestory.PoliceStory;
 
 /**
  * @author jflute
@@ -23,14 +23,14 @@ public abstract class UnitContainerTestCase extends PlainTestCase {
     //                                                                          ==========
     protected static final Set<String> outOfMigrationPackageSet = new LinkedHashSet<String>();
     static {
-        outOfMigrationPackageSet.add("org.seasar.dbflute.dbmeta.alter");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.infra");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.filesystem");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.jprop");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.process");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.secretary");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.thread");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.token");
+        outOfMigrationPackageSet.add("org.dbflute.dbmeta.alter");
+        outOfMigrationPackageSet.add("org.dbflute.infra");
+        outOfMigrationPackageSet.add("org.dbflute.helper.filesystem");
+        outOfMigrationPackageSet.add("org.dbflute.helper.jprop");
+        outOfMigrationPackageSet.add("org.dbflute.helper.process");
+        outOfMigrationPackageSet.add("org.dbflute.helper.secretary");
+        outOfMigrationPackageSet.add("org.dbflute.helper.thread");
+        outOfMigrationPackageSet.add("org.dbflute.helper.token");
     }
     protected static final Set<Class<?>> outOfMigrationClassSet = new LinkedHashSet<Class<?>>();
     static {
@@ -60,7 +60,7 @@ public abstract class UnitContainerTestCase extends PlainTestCase {
     //                                                                           =========
     protected File getRuntimeProjectDir() {
         File workspaceDir = getProjectDir().getParentFile().getParentFile();
-        return new File(workspaceDir + "/dbflute/dbflute-runtime/");
+        return new File(workspaceDir + "/dbflute-core/dbflute-runtime/");
     }
 
     protected File getNetRuntimeProjectDir() throws IOException {

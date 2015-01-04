@@ -24,12 +24,12 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
+import org.dbflute.utflute.core.filesystem.FileLineHandler;
+import org.dbflute.utflute.core.policestory.javaclass.PoliceStoryJavaClassHandler;
+import org.dbflute.utflute.core.policestory.miscfile.PoliceStoryMiscFileHandler;
+import org.dbflute.util.Srl;
 import org.seasar.dbflute.net.migration.tools.handler.MigrationFileLineHandler;
 import org.seasar.dbflute.net.migration.unit.UnitContainerTestCase;
-import org.seasar.dbflute.unit.core.filesystem.FileLineHandler;
-import org.seasar.dbflute.unit.core.policestory.javaclass.PoliceStoryJavaClassHandler;
-import org.seasar.dbflute.unit.core.policestory.miscfile.PoliceStoryMiscFileHandler;
-import org.seasar.dbflute.util.Srl;
 import org.seasar.framework.util.FileUtil;
 
 /**

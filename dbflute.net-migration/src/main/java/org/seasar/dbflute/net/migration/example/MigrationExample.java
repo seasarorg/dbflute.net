@@ -21,8 +21,8 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.seasar.dbflute.helper.HandyDate;
-import org.seasar.dbflute.util.DfTypeUtil;
+import org.dbflute.helper.HandyDate;
+import org.dbflute.util.DfTypeUtil;
 
 /**
  * @author jflute

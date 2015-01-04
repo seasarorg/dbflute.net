@@ -2,8 +2,8 @@ package org.seasar.dbflute.net.migration.analyzer;
 
 import java.util.List;
 
-import org.seasar.dbflute.util.DfCollectionUtil;
-import org.seasar.dbflute.util.Srl;
+import org.dbflute.util.DfCollectionUtil;
+import org.dbflute.util.Srl;
 
 /**
  * @author jflute
