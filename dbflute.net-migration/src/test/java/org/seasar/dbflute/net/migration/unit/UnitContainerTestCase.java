@@ -23,14 +23,14 @@ public abstract class UnitContainerTestCase extends PlainTestCase {
     //                                                                          ==========
     protected static final Set<String> outOfMigrationPackageSet = new LinkedHashSet<String>();
     static {
-        outOfMigrationPackageSet.add("org.seasar.dbflute.dbmeta.alter");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.infra");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.filesystem");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.jprop");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.process");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.secretary");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.thread");
-        outOfMigrationPackageSet.add("org.seasar.dbflute.helper.token");
+        outOfMigrationPackageSet.add("org.dbflute.dbmeta.alter");
+        outOfMigrationPackageSet.add("org.dbflute.infra");
+        outOfMigrationPackageSet.add("org.dbflute.helper.filesystem");
+        outOfMigrationPackageSet.add("org.dbflute.helper.jprop");
+        outOfMigrationPackageSet.add("org.dbflute.helper.process");
+        outOfMigrationPackageSet.add("org.dbflute.helper.secretary");
+        outOfMigrationPackageSet.add("org.dbflute.helper.thread");
+        outOfMigrationPackageSet.add("org.dbflute.helper.token");
     }
     protected static final Set<Class<?>> outOfMigrationClassSet = new LinkedHashSet<Class<?>>();
     static {
