@@ -17,10 +17,10 @@ package org.seasar.dbflute.net.migration.tools;
 
 import java.io.File;
 
+import org.dbflute.utflute.core.policestory.javaclass.PoliceStoryJavaClassHandler;
 import org.seasar.dbflute.net.migration.example.MigrationExample;
 import org.seasar.dbflute.net.migration.tools.handler.MigrationFileLineHandler;
 import org.seasar.dbflute.net.migration.unit.UnitContainerTestCase;
-import org.seasar.dbflute.unit.core.policestory.javaclass.PoliceStoryJavaClassHandler;
 
 /**
  * @author jflute

@@ -7,11 +7,11 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.seasar.dbflute.helper.HandyDate;
-import org.seasar.dbflute.helper.mapstring.MapListFile;
-import org.seasar.dbflute.infra.manage.refresh.DfRefreshResourceRequest;
-import org.seasar.dbflute.unit.core.PlainTestCase;
-import org.seasar.dbflute.unit.core.policestory.PoliceStory;
+import org.dbflute.helper.HandyDate;
+import org.dbflute.helper.mapstring.MapListFile;
+import org.dbflute.infra.manage.refresh.DfRefreshResourceRequest;
+import org.dbflute.utflute.core.PlainTestCase;
+import org.dbflute.utflute.core.policestory.PoliceStory;
 
 /**
  * @author jflute
