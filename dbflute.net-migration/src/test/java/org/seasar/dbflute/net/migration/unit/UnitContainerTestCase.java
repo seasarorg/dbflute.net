@@ -60,7 +60,7 @@ public abstract class UnitContainerTestCase extends PlainTestCase {
     //                                                                           =========
     protected File getRuntimeProjectDir() {
         File workspaceDir = getProjectDir().getParentFile().getParentFile();
-        return new File(workspaceDir + "/dbflute/dbflute-runtime/");
+        return new File(workspaceDir + "/dbflute-core/dbflute-runtime/");
     }
 
     protected File getNetRuntimeProjectDir() throws IOException {
