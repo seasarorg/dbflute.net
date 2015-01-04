@@ -69,6 +69,8 @@ public class ToolsMigrationFromJavaTest extends UnitContainerTestCase {
         for (String element : splitList) {
             if (sb.length() > 0) {
                 sb.append("/");
+            } else if ("org".equals(element) || "dbflute".equals(element)) {
+                continue;
             }
             sb.append(Srl.initCap(element));
         }
