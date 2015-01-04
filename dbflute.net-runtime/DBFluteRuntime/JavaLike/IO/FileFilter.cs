@@ -1,6 +1,6 @@
-﻿using DBFluteRuntime.JavaLike.Lang;
+﻿using DBFlute.JavaLike.Lang;
 
-namespace DBFluteRuntime.JavaLike.IO
+namespace DBFlute.JavaLike.IO
 {
     /// <summary>
     /// [Java]FileFilter

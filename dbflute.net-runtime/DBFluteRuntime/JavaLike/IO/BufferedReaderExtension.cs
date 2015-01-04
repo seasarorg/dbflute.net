@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace DBFluteRuntime.JavaLike.IO
+namespace DBFlute.JavaLike.IO
 {
     /// <summary>
     /// [Java]BufferedReaderクラスの拡張

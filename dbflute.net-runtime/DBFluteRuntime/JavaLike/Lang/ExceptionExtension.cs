@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DBFluteRuntime.JavaLike.Lang
+namespace DBFlute.JavaLike.Lang
 {
     /// <summary>
     /// [Java]Exceptionクラス([C#]System.Exception拡張)

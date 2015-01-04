@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace DBFluteRuntime.JavaLike.Net
+namespace DBFlute.JavaLike.Net
 {
     /// <summary>
     /// [Java]MalformedURLException

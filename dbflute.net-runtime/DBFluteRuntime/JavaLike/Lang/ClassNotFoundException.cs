@@ -1,5 +1,5 @@
 ﻿
-namespace DBFluteRuntime.JavaLike.Lang
+namespace DBFlute.JavaLike.Lang
 {
     /// <summary>
     /// クラス名からインスタンスを生成できなかった場合の例外

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace DBFluteRuntime.JavaLike.Lang.Reflect
+namespace DBFlute.JavaLike.Lang.Reflect
 {
     // #pending テストクラス未作成
     /// <summary>

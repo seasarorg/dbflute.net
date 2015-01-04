@@ -1,8 +1,8 @@
-﻿using DBFluteRuntime.JavaLike.Lang;
+﻿using DBFlute.JavaLike.Lang;
 using System;
 using System.Collections.Generic;
 
-namespace DBFluteRuntime.JavaLike.Helper
+namespace DBFlute.JavaLike.Helper
 {
     /// <summary>
     /// プロバイダごとの例外の違いを吸収するためのファクトリクラス

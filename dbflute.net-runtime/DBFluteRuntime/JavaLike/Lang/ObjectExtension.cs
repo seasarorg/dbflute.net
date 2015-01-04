@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DBFluteRuntime.JavaLike.Lang
+namespace DBFlute.JavaLike.Lang
 {
     // #pending getClassメソッドの対応
     /// <summary>

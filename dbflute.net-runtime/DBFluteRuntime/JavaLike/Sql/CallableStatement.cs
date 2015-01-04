@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace DBFluteRuntime.JavaLike.Sql
+namespace DBFlute.JavaLike.Sql
 {
     /// <summary>
     /// [Java]CallableStatement

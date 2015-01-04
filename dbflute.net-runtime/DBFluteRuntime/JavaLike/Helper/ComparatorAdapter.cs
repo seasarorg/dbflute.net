@@ -1,7 +1,7 @@
-﻿using DBFluteRuntime.JavaLike.Util;
+﻿using DBFlute.JavaLike.Util;
 using System;
 
-namespace DBFluteRuntime.JavaLike.Helper
+namespace DBFlute.JavaLike.Helper
 {
     /// <summary>
     /// [Java]Comparatorと[C#]IComparerを繋ぐアダプタクラス

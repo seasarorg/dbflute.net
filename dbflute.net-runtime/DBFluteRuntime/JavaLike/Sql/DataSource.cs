@@ -1,7 +1,7 @@
-﻿using DBFluteRuntime.JavaLike.Helper;
+﻿using DBFlute.JavaLike.Helper;
 using Connection = System.Data.IDbConnection;
 
-namespace DBFluteRuntime.JavaLike.Sql
+namespace DBFlute.JavaLike.Sql
 {
 // #pending 未実装
     /// <summary>

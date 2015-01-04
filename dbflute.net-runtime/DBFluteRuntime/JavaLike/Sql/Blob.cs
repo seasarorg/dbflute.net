@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBFluteRuntime.JavaLike.Sql
+namespace DBFlute.JavaLike.Sql
 {
     // #pending 他の箇所の実装の都合上クラスだけ定義
     /// <summary>

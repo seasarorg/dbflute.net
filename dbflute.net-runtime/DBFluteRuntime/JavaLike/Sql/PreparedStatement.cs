@@ -1,12 +1,12 @@
-﻿using DBFluteRuntime.JavaLike.IO;
-using DBFluteRuntime.JavaLike.Lang;
-using DBFluteRuntime.JavaLike.Math;
+﻿using DBFlute.JavaLike.IO;
+using DBFlute.JavaLike.Lang;
+using DBFlute.JavaLike.Math;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text.RegularExpressions;
 
-namespace DBFluteRuntime.JavaLike.Sql
+namespace DBFlute.JavaLike.Sql
 {
     /// <summary>
     /// [Java]PreparedStatement

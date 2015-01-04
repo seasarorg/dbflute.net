@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace DBFluteRuntime.JavaLike.IO
+namespace DBFlute.JavaLike.IO
 {
     // #pending テストコード未実装
     /// <summary>

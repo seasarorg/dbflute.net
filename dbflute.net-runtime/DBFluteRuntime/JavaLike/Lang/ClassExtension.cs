@@ -1,7 +1,7 @@
 ﻿using System;
 using Constructor = System.Reflection.ConstructorInfo;
 
-namespace DBFluteRuntime.JavaLike.Lang
+namespace DBFlute.JavaLike.Lang
 {
     // #pending テストクラス未作成
     /// <summary>

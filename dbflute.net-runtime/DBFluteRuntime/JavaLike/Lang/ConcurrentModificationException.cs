@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DBFluteRuntime.JavaLike.Lang
+namespace DBFlute.JavaLike.Lang
 {
     /**
      * This exception may be thrown by methods that have detected concurrent

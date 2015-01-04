@@ -1,10 +1,10 @@
-﻿using DBFluteRuntime.JavaLike.Helper;
-using DBFluteRuntime.JavaLike.Lang;
+﻿using DBFlute.JavaLike.Helper;
+using DBFlute.JavaLike.Lang;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DBFluteRuntime.JavaLike.Util
+namespace DBFlute.JavaLike.Util
 {
     /// <summary>
     /// Java ArrayListクラス

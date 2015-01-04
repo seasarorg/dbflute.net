@@ -1,7 +1,7 @@
-﻿using DBFluteRuntime.JavaLike.Helper;
+﻿using DBFlute.JavaLike.Helper;
 using System;
 
-namespace DBFluteRuntime.JavaLike.Util
+namespace DBFlute.JavaLike.Util
 {
     /// <summary>
     /// [Java]LinkedHashMapクラス

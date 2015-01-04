@@ -1,8 +1,8 @@
-﻿using DBFluteRuntime.JavaLike.Helper;
+﻿using DBFlute.JavaLike.Helper;
 using System;
 using System.Collections.Generic;
 
-namespace DBFluteRuntime.JavaLike.Util
+namespace DBFlute.JavaLike.Util
 {
     /// <summary>
     /// [Java]HashSetクラス

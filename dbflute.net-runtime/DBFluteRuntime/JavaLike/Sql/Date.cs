@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DBFluteRuntime.JavaLike.Sql
+namespace DBFlute.JavaLike.Sql
 {
     //#pending 未実装
     /// <summary>

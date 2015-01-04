@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace DBFluteRuntime.JavaLike.Helper
+namespace DBFlute.JavaLike.Helper
 {
     /// <summary>
     /// [C#]IEnumerator拡張

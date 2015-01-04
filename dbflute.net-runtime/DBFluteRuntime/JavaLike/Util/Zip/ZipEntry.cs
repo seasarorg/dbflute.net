@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBFluteRuntime.JavaLike.Util.Zip
+namespace DBFlute.JavaLike.Util.Zip
 {
     /// <summary>
     /// [Java]ZipEntry

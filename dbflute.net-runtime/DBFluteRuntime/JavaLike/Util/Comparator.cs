@@ -1,5 +1,5 @@
 ﻿
-namespace DBFluteRuntime.JavaLike.Util
+namespace DBFlute.JavaLike.Util
 {
     /// <summary>
     /// [Java]比較インターフェース

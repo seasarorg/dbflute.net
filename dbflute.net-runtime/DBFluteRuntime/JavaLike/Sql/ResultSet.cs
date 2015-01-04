@@ -1,10 +1,10 @@
-﻿using DBFluteRuntime.JavaLike.Lang;
-using DBFluteRuntime.JavaLike.Math;
+﻿using DBFlute.JavaLike.Lang;
+using DBFlute.JavaLike.Math;
 using System;
 using System.Collections.Generic;
 using System.Data;
 
-namespace DBFluteRuntime.JavaLike.Sql
+namespace DBFlute.JavaLike.Sql
 {
     // #pending 未実装なメソッドあり、テストも要
     // memo;next(), hasNext(). getString(), getInt() など以外は空実装でOK

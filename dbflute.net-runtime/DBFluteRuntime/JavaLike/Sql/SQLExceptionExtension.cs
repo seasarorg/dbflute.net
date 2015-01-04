@@ -1,8 +1,8 @@
-﻿using DBFluteRuntime.JavaLike.Helper;
-using DBFluteRuntime.JavaLike.Lang;
+﻿using DBFlute.JavaLike.Helper;
+using DBFlute.JavaLike.Lang;
 using System;
 
-namespace DBFluteRuntime.JavaLike.Sql
+namespace DBFlute.JavaLike.Sql
 {
     /// <summary>
     /// [Java]SQLException([C#]SystemExceptionの拡張）

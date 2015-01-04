@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBFluteRuntime.JavaLike.Math
+namespace DBFlute.JavaLike.Math
 {
     /// <summary>
     /// [Java]BigDecimalクラス

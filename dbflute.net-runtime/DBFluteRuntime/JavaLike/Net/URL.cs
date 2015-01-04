@@ -1,11 +1,11 @@
-﻿using DBFluteRuntime.JavaLike.IO;
+﻿using DBFlute.JavaLike.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBFluteRuntime.JavaLike.Net
+namespace DBFlute.JavaLike.Net
 {
     // #pending 未実装
     /// <summary>

@@ -1,5 +1,5 @@
 ﻿
-namespace DBFluteRuntime.JavaLike.Lang
+namespace DBFlute.JavaLike.Lang
 {
     /// <summary>
     /// [Java]String用拡張クラス

@@ -1,6 +1,6 @@
-﻿using DBFluteRuntime.JavaLike.Util;
+﻿using DBFlute.JavaLike.Util;
 
-namespace DBFluteRuntime.JavaLike.Lang
+namespace DBFlute.JavaLike.Lang
 {
     /// <summary>
     /// as java.lang.Iterable interface

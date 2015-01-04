@@ -1,4 +1,4 @@
-﻿using DBFluteRuntime.JavaLike.Lang;
+﻿using DBFlute.JavaLike.Lang;
 using NUnit.Framework;
 
 namespace DBFluteRuntimeTest.JavaLike.Lang

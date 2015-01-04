@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DBFluteRuntime.JavaLike.Util
+namespace DBFlute.JavaLike.Util
 {
     /// <summary>
     /// Javaコレクションインターフェース

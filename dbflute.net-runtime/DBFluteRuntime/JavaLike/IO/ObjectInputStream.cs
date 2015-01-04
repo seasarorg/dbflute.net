@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DBFluteRuntime.JavaLike.IO
+namespace DBFlute.JavaLike.IO
 {
     /// <summary>
     /// [Java]ObjectInputStream

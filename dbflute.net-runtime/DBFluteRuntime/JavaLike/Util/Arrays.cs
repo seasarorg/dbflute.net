@@ -1,7 +1,7 @@
-﻿using DBFluteRuntime.JavaLike.Helper;
+﻿using DBFlute.JavaLike.Helper;
 using System.Linq;
 
-namespace DBFluteRuntime.JavaLike.Util
+namespace DBFlute.JavaLike.Util
 {
     /// <summary>
     /// 配列変換処理クラス

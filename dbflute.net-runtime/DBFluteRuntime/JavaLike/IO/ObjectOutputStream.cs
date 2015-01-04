@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace DBFluteRuntime.JavaLike.IO
+namespace DBFlute.JavaLike.IO
 {
     /// <summary>
     /// [Java]ObjectOutputStream

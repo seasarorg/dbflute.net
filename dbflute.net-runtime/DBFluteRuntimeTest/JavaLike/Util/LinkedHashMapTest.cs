@@ -1,5 +1,5 @@
-﻿using DBFluteRuntime.JavaLike.Util;
-using DBFluteRuntime.JavaLike.Lang;
+﻿using DBFlute.JavaLike.Util;
+using DBFlute.JavaLike.Lang;
 using NUnit.Framework;
 
 namespace DBFluteRuntimeTest.JavaLike.Util

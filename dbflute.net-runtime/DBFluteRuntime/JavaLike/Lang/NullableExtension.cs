@@ -1,5 +1,5 @@
 ﻿
-namespace DBFluteRuntime.JavaLike.Lang
+namespace DBFlute.JavaLike.Lang
 {
     /// <summary>
     /// Null可能なクラスの拡張

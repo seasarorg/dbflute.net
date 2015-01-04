@@ -1,7 +1,7 @@
-﻿using DBFluteRuntime.JavaLike.Helper;
+﻿using DBFlute.JavaLike.Helper;
 using System;
 
-namespace DBFluteRuntime.JavaLike.Lang
+namespace DBFlute.JavaLike.Lang
 {
     /// <summary>
     /// [java]Long - [C#]long? 関連付け

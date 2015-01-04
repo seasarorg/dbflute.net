@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBFluteRuntime.JavaLike.Util.Jar
+namespace DBFlute.JavaLike.Util.Jar
 {
     // #pending 未実装
     /// <summary>

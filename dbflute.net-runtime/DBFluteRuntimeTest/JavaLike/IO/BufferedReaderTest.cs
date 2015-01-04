@@ -1,4 +1,4 @@
-﻿using DBFluteRuntime.JavaLike.IO;
+﻿using DBFlute.JavaLike.IO;
 using NUnit.Framework;
 using System;
 using System.IO;

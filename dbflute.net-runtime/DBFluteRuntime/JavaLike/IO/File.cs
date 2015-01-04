@@ -1,8 +1,8 @@
-﻿using DBFluteRuntime.JavaLike.Lang;
+﻿using DBFlute.JavaLike.Lang;
 using System.IO;
 using System.Linq;
 
-namespace DBFluteRuntime.JavaLike.IO
+namespace DBFlute.JavaLike.IO
 {
     /// <summary>
     /// [Java]File

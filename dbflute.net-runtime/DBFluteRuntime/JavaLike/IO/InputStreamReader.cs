@@ -1,5 +1,5 @@
 ﻿
-namespace DBFluteRuntime.JavaLike.IO
+namespace DBFlute.JavaLike.IO
 {
     // #pending 未実装
     /// <summary>

@@ -1,6 +1,6 @@
-﻿using DBFluteRuntime.JavaLike.Util;
+﻿using DBFlute.JavaLike.Util;
 
-namespace DBFluteRuntime.JavaLike.Helper
+namespace DBFlute.JavaLike.Helper
 {
     /// <summary>
     /// 文字列処理ヘルパークラス

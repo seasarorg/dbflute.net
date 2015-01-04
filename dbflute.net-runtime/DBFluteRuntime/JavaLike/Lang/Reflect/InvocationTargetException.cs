@@ -1,5 +1,5 @@
 ﻿
-namespace DBFluteRuntime.JavaLike.Lang.Reflect
+namespace DBFlute.JavaLike.Lang.Reflect
 {
     /// <summary>
     /// [Java]InvocationTargetException

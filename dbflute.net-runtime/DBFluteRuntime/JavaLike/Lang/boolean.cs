@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace DBFluteRuntime.JavaLike.Lang
+namespace DBFlute.JavaLike.Lang
 {
     /// <summary>
     /// [java]boolean - [C#]bool 関連付け

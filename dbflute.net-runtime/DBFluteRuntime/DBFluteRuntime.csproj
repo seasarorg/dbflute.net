@@ -7,7 +7,7 @@
     <ProjectGuid>{ED593611-4A0D-48E1-9C82-3D1883C56917}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DBFluteRuntime</RootNamespace>
+    <RootNamespace>DBFlute</RootNamespace>
     <AssemblyName>DBFluteRuntime</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

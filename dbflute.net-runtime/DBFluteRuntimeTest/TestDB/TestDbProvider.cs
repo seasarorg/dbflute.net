@@ -1,5 +1,5 @@
 ﻿
-using DBFluteRuntime.JavaLike.Sql;
+using DBFlute.JavaLike.Sql;
 using System;
 
 namespace DBFluteRuntimeTest.TestDB

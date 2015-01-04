@@ -1,8 +1,8 @@
-﻿using DBFluteRuntime.JavaLike.Lang;
+﻿using DBFlute.JavaLike.Lang;
 using System;
 using System.Reflection;
 
-namespace DBFluteRuntime.JavaLike.Helper
+namespace DBFlute.JavaLike.Helper
 {
     /// <summary>
     /// クラス情報操作ユーティリティ
