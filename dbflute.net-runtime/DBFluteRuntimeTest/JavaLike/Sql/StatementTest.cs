@@ -1,5 +1,6 @@
 ﻿using DBFlute.JavaLike.Sql;
 using NUnit.Framework;
+using DBFlute.JavaLike.Extensions;
 
 namespace DBFluteRuntimeTest.JavaLike.Sql
 {

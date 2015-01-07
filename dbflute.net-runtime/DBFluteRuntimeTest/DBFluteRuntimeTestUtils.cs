@@ -1,4 +1,5 @@
-﻿using DBFlute.JavaLike.Sql;
+﻿using DBFlute.JavaLike.Extensions;
+using DBFlute.JavaLike.Sql;
 using DBFluteRuntimeTest.TestDB;
 using System;
 using Connection = System.Data.IDbConnection;

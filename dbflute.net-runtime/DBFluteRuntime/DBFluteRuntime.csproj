@@ -7,7 +7,7 @@
     <ProjectGuid>{ED593611-4A0D-48E1-9C82-3D1883C56917}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DBFlute</RootNamespace>
+    <RootNamespace>Org</RootNamespace>
     <AssemblyName>DBFluteRuntime</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="slf4net">
+      <HintPath>..\packages\slf4net.0.1.32.1\lib\net35\slf4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -41,114 +44,131 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JavaLike\Helper\ClassUtils.cs" />
-    <Compile Include="JavaLike\Helper\ComparatorAdapter.cs" />
-    <Compile Include="JavaLike\Helper\EnumeratorExtension.cs" />
-    <Compile Include="JavaLike\Helper\AdoSQLExceptionHandlerFactory.cs" />
-    <Compile Include="JavaLike\Helper\StringHelper.cs" />
-    <Compile Include="JavaLike\IO\BufferedReaderExtension.cs" />
-    <Compile Include="JavaLike\IO\StreamExtension.cs" />
-    <Compile Include="JavaLike\IO\ByteArrayOutputStream.cs" />
-    <Compile Include="JavaLike\IO\File.cs" />
-    <Compile Include="JavaLike\IO\FileFilter.cs" />
-    <Compile Include="JavaLike\IO\FilenameFilter.cs" />
-    <Compile Include="JavaLike\IO\FileOutputStream.cs" />
-    <Compile Include="JavaLike\IO\InputStream.cs" />
-    <Compile Include="JavaLike\IO\InputStreamReader.cs" />
-    <Compile Include="JavaLike\IO\ObjectInputStream.cs" />
-    <Compile Include="JavaLike\IO\ObjectOutputStream.cs" />
-    <Compile Include="JavaLike\IO\OutputStream.cs" />
-    <Compile Include="JavaLike\IO\PrintWriter.cs" />
-    <Compile Include="JavaLike\IO\Reader.cs" />
-    <Compile Include="JavaLike\IO\Serializable.cs" />
-    <Compile Include="JavaLike\IO\StringReader.cs" />
-    <Compile Include="JavaLike\IO\StringWriter.cs" />
-    <Compile Include="JavaLike\IO\Writer.cs" />
-    <Compile Include="JavaLike\Lang\boolean.cs" />
-    <Compile Include="JavaLike\Lang\ClassNotFoundException.cs" />
-    <Compile Include="JavaLike\Lang\Comparable.cs" />
-    <Compile Include="JavaLike\Lang\ConcurrentModificationException.cs" />
-    <Compile Include="JavaLike\Lang\ExceptionExtension.cs" />
-    <Compile Include="JavaLike\Lang\Long.cs" />
-    <Compile Include="JavaLike\Lang\Integer.cs" />
-    <Compile Include="JavaLike\Helper\JavaBasicValueCache.cs" />
-    <Compile Include="JavaLike\Lang\IllegalStateException.cs" />
-    <Compile Include="JavaLike\Lang\Iterable.cs" />
-    <Compile Include="JavaLike\Lang\NullableExtension.cs" />
-    <Compile Include="JavaLike\Lang\ObjectExtension.cs" />
-    <Compile Include="JavaLike\Lang\Reflect\Array.cs" />
-    <Compile Include="JavaLike\Lang\Reflect\ConstructorExtension.cs" />
-    <Compile Include="JavaLike\Lang\Reflect\FieldExtension.cs" />
-    <Compile Include="JavaLike\Lang\Reflect\GenericArrayType.cs" />
-    <Compile Include="JavaLike\Lang\Reflect\InvocationTargetException.cs" />
-    <Compile Include="JavaLike\Lang\Reflect\MethodExtension.cs" />
-    <Compile Include="JavaLike\Lang\Reflect\Modifier.cs" />
-    <Compile Include="JavaLike\Lang\Reflect\ParameterizedType.cs" />
-    <Compile Include="JavaLike\Lang\Reflect\WildcardType.cs" />
-    <Compile Include="JavaLike\Lang\StringBuilder.cs" />
-    <Compile Include="JavaLike\Lang\StringExtension.cs" />
-    <Compile Include="JavaLike\Lang\ClassExtension.cs" />
-    <Compile Include="JavaLike\Math\BigDecimal.cs" />
-    <Compile Include="JavaLike\Math\BigInteger.cs" />
-    <Compile Include="JavaLike\Net\JarURLConnection.cs" />
-    <Compile Include="JavaLike\Net\MalformedURLException.cs" />
-    <Compile Include="JavaLike\Net\URL.cs" />
-    <Compile Include="JavaLike\Net\URLConnection.cs" />
-    <Compile Include="JavaLike\Net\URLDecoder.cs" />
-    <Compile Include="JavaLike\Sql\Array.cs" />
-    <Compile Include="JavaLike\Sql\Blob.cs" />
-    <Compile Include="JavaLike\Sql\CallableStatement.cs" />
-    <Compile Include="JavaLike\Sql\Clob.cs" />
-    <Compile Include="JavaLike\Sql\ConnectionExtension.cs" />
-    <Compile Include="JavaLike\Sql\DatabaseMetaData.cs" />
-    <Compile Include="JavaLike\Sql\DataSource.cs" />
-    <Compile Include="JavaLike\Sql\Date.cs" />
-    <Compile Include="JavaLike\Sql\NClob.cs" />
-    <Compile Include="JavaLike\Sql\PreparedStatement.cs" />
-    <Compile Include="JavaLike\Sql\Ref.cs" />
-    <Compile Include="JavaLike\Sql\ResultSet.cs" />
-    <Compile Include="JavaLike\Sql\ResultSetMetaData.cs" />
-    <Compile Include="JavaLike\Sql\RowId.cs" />
-    <Compile Include="JavaLike\Sql\RowIdLifetime.cs" />
-    <Compile Include="JavaLike\Sql\Savepoint.cs" />
-    <Compile Include="JavaLike\Sql\SQLClientInfoException.cs" />
-    <Compile Include="JavaLike\Sql\SQLExceptionExtension.cs" />
-    <Compile Include="JavaLike\Sql\SQLWarning.cs" />
-    <Compile Include="JavaLike\Sql\SQLXML.cs" />
-    <Compile Include="JavaLike\Sql\Statement.cs" />
-    <Compile Include="JavaLike\Sql\Struct.cs" />
-    <Compile Include="JavaLike\Sql\Types.cs" />
-    <Compile Include="JavaLike\Util\ArrayList.cs" />
-    <Compile Include="JavaLike\Util\Arrays.cs" />
-    <Compile Include="JavaLike\Util\Calendar.cs" />
-    <Compile Include="JavaLike\Util\Collection.cs" />
-    <Compile Include="JavaLike\Util\Collections.cs" />
-    <Compile Include="JavaLike\Util\Comparator.cs" />
-    <Compile Include="JavaLike\Util\ConcurrentHashMap.cs" />
-    <Compile Include="JavaLike\Util\Entry.cs" />
-    <Compile Include="JavaLike\Util\HashMap.cs" />
-    <Compile Include="JavaLike\Util\HashSet.cs" />
-    <Compile Include="JavaLike\Util\Iterator.cs" />
-    <Compile Include="JavaLike\Util\Jar\JarFile.cs" />
-    <Compile Include="JavaLike\Util\LinkedHashMap.cs" />
-    <Compile Include="JavaLike\Util\LinkedHashSet.cs" />
-    <Compile Include="JavaLike\Util\List.cs" />
-    <Compile Include="JavaLike\Util\ListIterator.cs" />
-    <Compile Include="JavaLike\Util\Locale.cs" />
-    <Compile Include="JavaLike\Util\Map.cs" />
-    <Compile Include="JavaLike\Util\Properties.cs" />
-    <Compile Include="JavaLike\Util\Set.cs" />
-    <Compile Include="JavaLike\Util\SortedSet.cs" />
-    <Compile Include="JavaLike\Util\Stack.cs" />
-    <Compile Include="JavaLike\Util\StringTokenizer.cs" />
-    <Compile Include="JavaLike\Util\TimeZone.cs" />
-    <Compile Include="JavaLike\Util\TreeSet.cs" />
-    <Compile Include="JavaLike\Util\UUID.cs" />
-    <Compile Include="JavaLike\Util\Zip\ZipEntry.cs" />
+    <Compile Include="DBFlute\JavaLike\Extensions\ConnectionExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Extensions\DateTimeExtensions.cs" />
+    <Compile Include="DBFlute\JavaLike\Helper\ClassUtils.cs" />
+    <Compile Include="DBFlute\JavaLike\Helper\ComparatorAdapter.cs" />
+    <Compile Include="DBFlute\JavaLike\Helper\EnumeratorExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Helper\AdoSQLExceptionHandlerFactory.cs" />
+    <Compile Include="DBFlute\JavaLike\Helper\StringHelper.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\BufferedReaderExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\StreamExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\ByteArrayOutputStream.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\File.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\FileFilter.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\FilenameFilter.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\FileOutputStream.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\InputStream.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\InputStreamReader.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\ObjectInputStream.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\ObjectOutputStream.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\OutputStream.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\PrintWriter.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\Reader.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\Serializable.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\StringReader.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\StringWriter.cs" />
+    <Compile Include="DBFlute\JavaLike\IO\Writer.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\boolean.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\ClassNotFoundException.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\Comparable.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\ConcurrentModificationException.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\ExceptionExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\Long.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\Integer.cs" />
+    <Compile Include="DBFlute\JavaLike\Helper\JavaBasicValueCache.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\IllegalStateException.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\Iterable.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\NullableExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\ObjectExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\Reflect\Array.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\Reflect\ConstructorExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\Reflect\FieldExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\Reflect\GenericArrayType.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\Reflect\InvocationTargetException.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\Reflect\MethodExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\Reflect\Modifier.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\Reflect\ParameterizedType.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\Reflect\WildcardType.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\StringBuilder.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\StringExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\ClassExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Math\BigDecimal.cs" />
+    <Compile Include="DBFlute\JavaLike\Math\BigInteger.cs" />
+    <Compile Include="DBFlute\JavaLike\Net\JarURLConnection.cs" />
+    <Compile Include="DBFlute\JavaLike\Net\MalformedURLException.cs" />
+    <Compile Include="DBFlute\JavaLike\Net\URL.cs" />
+    <Compile Include="DBFlute\JavaLike\Net\URLConnection.cs" />
+    <Compile Include="DBFlute\JavaLike\Net\URLDecoder.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\Array.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\Blob.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\CallableStatement.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\Clob.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\DatabaseMetaData.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\DataSource.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\Date.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\NClob.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\PreparedStatement.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\Ref.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\ResultSet.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\ResultSetMetaData.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\RowId.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\RowIdLifetime.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\Savepoint.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\SQLClientInfoException.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\SQLExceptionExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\SQLWarning.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\SQLXML.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\Statement.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\Struct.cs" />
+    <Compile Include="DBFlute\JavaLike\Sql\Types.cs" />
+    <Compile Include="DBFlute\JavaLike\JavaLikeSystem.cs" />
+    <Compile Include="DBFlute\JavaLike\Time\Instant.cs" />
+    <Compile Include="DBFlute\JavaLike\Time\LocalDate.cs" />
+    <Compile Include="DBFlute\JavaLike\Time\LocalDateTime.cs" />
+    <Compile Include="DBFlute\JavaLike\Time\ZonedDateTime.cs" />
+    <Compile Include="DBFlute\JavaLike\Time\ZoneId.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\ArrayList.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Arrays.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Calendar.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Collection.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Collections.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Comparator.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\ConcurrentHashMap.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Entry.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\HashMap.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\HashSet.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Iterator.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Jar\JarFile.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\LinkedHashMap.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\LinkedHashSet.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\List.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\ListIterator.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Locale.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Map.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Properties.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Set.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\SortedSet.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Stack.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\StringTokenizer.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\TimeZone.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\TreeSet.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\UUID.cs" />
+    <Compile Include="DBFlute\JavaLike\Util\Zip\ZipEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DBFlute\DfSystem\DBFluteSystem.cs" />
+    <Compile Include="DBFlute\DfSystem\Provider\DfCurrentDateProvider.cs" />
+    <Compile Include="DBFlute\DfSystem\Provider\DfFinalLocaleProvider.cs" />
+    <Compile Include="DBFlute\DfSystem\Provider\DfFinalTimeZoneProvider.cs" />
+    <Compile Include="DBFlute\DfSystem\QLog.cs" />
+    <Compile Include="DBFlute\DfSystem\XLog.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="JavaLike\Extensions\" />
+    <Content Include="ExchangeList.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
