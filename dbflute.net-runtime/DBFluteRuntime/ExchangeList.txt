@@ -1,4 +1,0 @@
-﻿slf4net -> slf4net
-private static readonly ILogger -> private static readonly ILogger
-GetLogger -> GetLogger
-.GetType() -> .GetType()
