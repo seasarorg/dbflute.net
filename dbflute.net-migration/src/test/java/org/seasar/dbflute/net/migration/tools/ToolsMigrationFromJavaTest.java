@@ -72,9 +72,10 @@ public class ToolsMigrationFromJavaTest extends UnitContainerTestCase {
             } else if ("org".equals(element) || "dbflute".equals(element)) {
                 continue;
             }
+            element = element.equals("system") ? "DfSystem" : element;
             sb.append(Srl.initCap(element));
         }
-        return canonicalPath + "/" + sb.toString() + ".cs";
+        return canonicalPath + "/DBFlute/" + sb.toString() + ".cs";
     }
 
     protected void mkdirsIfNeeds(String textPath) {

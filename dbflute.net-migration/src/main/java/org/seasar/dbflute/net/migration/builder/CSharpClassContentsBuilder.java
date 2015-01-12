@@ -27,6 +27,15 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
         // JavaLike exists
         //map.put("boolean ", "bool ");
         //map.put("Integer ", "int? ");
+        map.put(" lock()", " doLock()");
+        map.put(".lock()", ".doLock()");
+        map.put(" unlock()", " undoLock()");
+        map.put(".unlock()", ".undoLock()");
+        map.put("log.isDebugEnabled()", "log.IsDebugEnabled");
+        map.put("log.isInfoEnabled()", "log.IsInfoEnabled");
+        map.put("log.debug", "log.Debug");
+        map.put("log.info", "log.Info");
+        map.put("TimeZone", "DBFlute.JavaLike.Util.TimeZone");
         _basicClassElementReplaceMap = Collections.unmodifiableMap(map);
     }
 
@@ -134,13 +143,14 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
     //                               Serial Version UID Line
     //                               -----------------------
     protected boolean isCommonsLoggingLoggerLine(String line) {
-        return line != null && line.contains("LogFactory.getLog");
+        return line != null && line.contains("LoggerFactory.getLogger");
     }
 
     protected String doConvertCommonsLoggingLogger(String work) {
-        String factory = "LogFactory.getLog";
+        String factory = "LoggerFactory.GetLogger";
         String front = Srl.substringFirstFront(work, factory);
-        return front + factory + "(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);";
+        String type = replace(front, " Logger", " ILogger");
+        return type + factory + "(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);";
     }
 
     // -----------------------------------------------------

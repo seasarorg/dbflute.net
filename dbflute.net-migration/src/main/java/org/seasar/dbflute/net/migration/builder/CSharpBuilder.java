@@ -14,16 +14,13 @@ public class CSharpBuilder extends CSharpBuilderBase {
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
-    protected static final Map<String, String> _basicClassElementReplaceMap;
+    protected static final Map<String, String> _wholeFinallyReplaceMap;
     static {
         Map<String, String> map = DfCollectionUtil.newLinkedHashMap();
-        map.put("static final ", "static readonly ");
-        map.put("public final ", "public readonly ");
-        map.put("protected final ", "protected readonly ");
-        map.put("private final ", "private readonly ");
-        map.put("boolean ", "bool ");
-        map.put("Integer ", "int? ");
-        _basicClassElementReplaceMap = Collections.unmodifiableMap(map);
+        map.put("Org.DBFlute", "DBFlute");
+        map.put("Org.Slf4j", "slf4net");
+        map.put("System.currentTimeMillis()", "JavaLikeSystem.currentTimeMillis()");
+        _wholeFinallyReplaceMap = Collections.unmodifiableMap(map);
     }
 
     // ===================================================================================
@@ -49,13 +46,20 @@ public class CSharpBuilder extends CSharpBuilderBase {
 
         sb.append(ln());
         sb.append("}"); // Namespace closing
-        return sb.toString();
+        return doConvertWholeFinally(sb.toString());
     }
 
     protected void buildCopyright(StringBuilder sb) {
         for (String line : _javaInfo.getCopyrightList()) {
             sb.append(line).append(ln());
         }
+    }
+
+    protected String doConvertWholeFinally(String work) {
+        if (work == null) {
+            return null;
+        }
+        return replaceBy(work, _wholeFinallyReplaceMap);
     }
 
     // ===================================================================================
