@@ -13,6 +13,16 @@ namespace DBFlute.JavaLike.Util
     {
         protected IDictionary<ELEMENT, Object> _res = new Dictionary<ELEMENT, Object>();
 
+        public HashSet()
+        {
+            throw new NotSupportedException();
+        }
+
+        public HashSet(Set<ELEMENT> element)
+        {
+            throw new NotSupportedException();
+        }
+
         public bool add(ELEMENT element)
         {
             if (_res.ContainsKey(element))
@@ -132,6 +142,18 @@ namespace DBFlute.JavaLike.Util
         public override String ToString()
         {
             return StringHelper.collectionToString(this);
+        }
+
+
+        void Set<ELEMENT>.add(ELEMENT element)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public Set<ELEMENT> unmodifiableSet(Set<ELEMENT> element)
+        {
+            throw new NotImplementedException();
         }
     }
 }

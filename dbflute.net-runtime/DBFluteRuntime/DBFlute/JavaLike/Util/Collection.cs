@@ -17,6 +17,7 @@ namespace DBFlute.JavaLike.Util
         void clear();
         Iterator<ELEMENT> iterator();
         ICollection<ELEMENT> getCollection();
+        Set<ELEMENT> unmodifiableSet(Set<ELEMENT> element);
     }
 
     /// <summary>

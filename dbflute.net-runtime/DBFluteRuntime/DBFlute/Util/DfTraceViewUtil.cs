@@ -32,17 +32,17 @@ public class DfTraceViewUtil {
     public static String convertToPerformanceView(long after_minus_before) {
         if (after_minus_before < 0) {
             // no exception because this method is basically for logging
-            return String.valueOf(after_minus_before);
+            return StringExtension.valueOf(after_minus_before);
         }
 
         // this code was written when jflute was very young
         // (it remains without refactoring)
         long sec = after_minus_before / 1000;
-        final long min = sec / 60;
+        long min = sec / 60;
         sec = sec % 60;
-        final long mil = after_minus_before % 1000;
+        long mil = after_minus_before % 1000;
 
-        final StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         if (min >= 10) { // Minute
             sb.append(min).append("m");
         } else if (min < 10 && min >= 0) {

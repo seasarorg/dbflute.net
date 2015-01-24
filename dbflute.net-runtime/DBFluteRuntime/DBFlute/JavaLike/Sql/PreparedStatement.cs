@@ -1,10 +1,10 @@
 ﻿using DBFlute.JavaLike.IO;
-using DBFlute.JavaLike.Lang;
 using DBFlute.JavaLike.Math;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text.RegularExpressions;
+using boolean = System.Boolean;
 
 namespace DBFlute.JavaLike.Sql
 {

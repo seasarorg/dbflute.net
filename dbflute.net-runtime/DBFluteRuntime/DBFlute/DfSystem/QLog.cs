@@ -10,10 +10,11 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-using System;
+
 using DBFlute.JavaLike.Lang;
-using DBFlute.JavaLike.Util;
 using slf4net;
+using System;
+using boolean = System.Boolean;
 
 namespace DBFlute.DfSystem {
 

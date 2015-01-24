@@ -16,6 +16,8 @@ using DBFlute.JavaLike.Extensions;
 using DBFlute.JavaLike.Lang;
 using DBFlute.JavaLike.Time;
 using DBFlute.JavaLike.Util;
+using Character = System.Char;
+using boolean = System.Boolean;
 
 namespace DBFlute.Util {
 
@@ -31,21 +33,31 @@ public class Srl {
     protected static readonly String HARF_LOWER_ALPHABET = "abcdefghijklmnopqrstuvwxyz";
     protected static readonly String HARF_NUMBER = "0123456789";
     protected static readonly Set<Character> _alphabetHarfCharSet;
-    static {
-        final Set<Character> setupSet = DfCollectionUtil.newHashSet();
-        final StringBuilder sb = new StringBuilder();
+
+    static Srl() {
+        _alphabetHarfCharSet = Srl1();
+        Srl2();
+        Srl3();
+        Srl4();
+        Srl5();
+        Srl6();
+        Srl7();
+    }
+    private static Set<Character> Srl1() {
+        Set<Character> setupSet = DfCollectionUtil.newHashSet();
+        StringBuilder sb = new StringBuilder();
         sb.append(HARF_LOWER_ALPHABET);
         sb.append(sb.toString().toUpperCase());
         char[] chAry = sb.toString().toCharArray();
         foreach (char ch in chAry) {
             setupSet.add(ch);
         }
-        _alphabetHarfCharSet = Collections.unmodifiableSet(setupSet);
+        return Collections.unmodifiableSet(setupSet);
     }
-    protected static readonly Set<Character> _alphabetHarfLowerCharSet;
-    static {
-        final Set<Character> setupSet = DfCollectionUtil.newHashSet();
-        final StringBuilder sb = new StringBuilder();
+    protected static Set<Character> _alphabetHarfLowerCharSet;
+    private static void Srl2() {
+        Set<Character> setupSet = DfCollectionUtil.newHashSet();
+        StringBuilder sb = new StringBuilder();
         sb.append(HARF_LOWER_ALPHABET);
         char[] chAry = sb.toString().toCharArray();
         foreach (char ch in chAry) {
@@ -53,10 +65,10 @@ public class Srl {
         }
         _alphabetHarfLowerCharSet = Collections.unmodifiableSet(setupSet);
     }
-    protected static readonly Set<Character> _alphabetHarfUpperCharSet;
-    static {
-        final Set<Character> setupSet = DfCollectionUtil.newHashSet();
-        final StringBuilder sb = new StringBuilder();
+    protected static Set<Character> _alphabetHarfUpperCharSet;
+    private static void Srl3() {
+        Set<Character> setupSet = DfCollectionUtil.newHashSet();
+        StringBuilder sb = new StringBuilder();
         sb.append(HARF_LOWER_ALPHABET.toUpperCase());
         char[] chAry = sb.toString().toCharArray();
         foreach (char ch in chAry) {
@@ -64,33 +76,34 @@ public class Srl {
         }
         _alphabetHarfUpperCharSet = Collections.unmodifiableSet(setupSet);
     }
-    protected static readonly Set<Character> _numberHarfCharSet;
-    static {
-        final Set<Character> setupSet = DfCollectionUtil.newHashSet();
-        final String chStr = HARF_NUMBER;
+    protected static Set<Character> _numberHarfCharSet;
+    private static void Srl4() {
+        Set<Character> setupSet = DfCollectionUtil.newHashSet();
+        String chStr = HARF_NUMBER;
         char[] chAry = chStr.toCharArray();
         foreach (char ch in chAry) {
             setupSet.add(ch);
         }
         _numberHarfCharSet = Collections.unmodifiableSet(setupSet);
     }
-    protected static readonly Set<Character> _alphabetHarfNumberHarfCharSet;
-    static {
-        final Set<Character> setupSet = DfCollectionUtil.newHashSet();
+    protected static Set<Character> _alphabetHarfNumberHarfCharSet;
+    private static void Srl5() {
+        Set<Character> setupSet = DfCollectionUtil.newHashSet();
         setupSet.addAll(_alphabetHarfCharSet);
         setupSet.addAll(_numberHarfCharSet);
         _alphabetHarfNumberHarfCharSet = Collections.unmodifiableSet(setupSet);
     }
-    protected static readonly Set<Character> _alphabetNumberHarfLowerCharSet;
-    static {
-        final Set<Character> setupSet = DfCollectionUtil.newHashSet();
+    protected static Set<Character> _alphabetNumberHarfLowerCharSet;
+    private static void Srl6() {
+        Set<Character> setupSet = DfCollectionUtil.newHashSet();
         setupSet.addAll(_alphabetHarfLowerCharSet);
         setupSet.addAll(_numberHarfCharSet);
         _alphabetNumberHarfLowerCharSet = Collections.unmodifiableSet(setupSet);
     }
-    protected static readonly Set<Character> _alphabetNumberHarfUpperCharSet;
-    static {
-        final Set<Character> setupSet = DfCollectionUtil.newHashSet();
+    protected static Set<Character> _alphabetNumberHarfUpperCharSet;
+    private static void Srl7()
+    {
+        Set<Character> setupSet = DfCollectionUtil.newHashSet();
         setupSet.addAll(_alphabetHarfUpperCharSet);
         setupSet.addAll(_numberHarfCharSet);
         _alphabetNumberHarfUpperCharSet = Collections.unmodifiableSet(setupSet);
@@ -104,7 +117,7 @@ public class Srl {
      * @param str A judged string. (NullAllowed)
      * @return The determination.
      */
-    public static boolean is_Null_or_Empty(final String str) {
+    public static boolean is_Null_or_Empty(String str) {
         return str == null || str.length() == 0;
     }
 
@@ -113,7 +126,7 @@ public class Srl {
      * @param str A judged string. (NullAllowed)
      * @return The determination.
      */
-    public static boolean is_Null_or_TrimmedEmpty(final String str) {
+    public static boolean is_Null_or_TrimmedEmpty(String str) {
         return str == null || str.trim().length() == 0;
     }
 
@@ -122,7 +135,7 @@ public class Srl {
      * @param str A judged string. (NullAllowed)
      * @return The determination.
      */
-    public static boolean is_NotNull_and_NotEmpty(final String str) {
+    public static boolean is_NotNull_and_NotEmpty(String str) {
         return !is_Null_or_Empty(str);
     }
 
@@ -131,7 +144,7 @@ public class Srl {
      * @param str A judged string. (NullAllowed)
      * @return The determination.
      */
-    public static boolean is_NotNull_and_NotTrimmedEmpty(final String str) {
+    public static boolean is_NotNull_and_NotTrimmedEmpty(String str) {
         return !is_Null_or_TrimmedEmpty(str);
     }
 
@@ -140,7 +153,7 @@ public class Srl {
      * @param str A judged string. (NullAllowed)
      * @return The determination.
      */
-    public static boolean isEmpty(final String str) {
+    public static boolean isEmpty(String str) {
         return str != null && str.length() == 0;
     }
 
@@ -149,24 +162,24 @@ public class Srl {
      * @param str A judged string. (NullAllowed)
      * @return The determination.
      */
-    public static boolean isTrimmedEmpty(final String str) {
+    public static boolean isTrimmedEmpty(String str) {
         return str != null && str.trim().length() == 0;
     }
 
     // ===================================================================================
     //                                                                              Length
     //                                                                              ======
-    public static int length(final String str) {
+    public static int length(String str) {
         assertStringNotNull(str);
         return str.length();
     }
 
-    public static String cut(final String str, int length) {
+    public static String cut(String str, int length) {
         assertStringNotNull(str);
         return cut(str, length, null);
     }
 
-    public static String cut(final String str, int length, String suffix) {
+    public static String cut(String str, int length, String suffix) {
         assertStringNotNull(str);
         return str.length() > length ? (str.substring(0, length) + (suffix != null ? suffix : "")) : str;
     }
@@ -174,12 +187,12 @@ public class Srl {
     // ===================================================================================
     //                                                                                Case
     //                                                                                ====
-    public static String toLowerCase(final String str) {
+    public static String toLowerCase(String str) {
         assertStringNotNull(str);
         return str.toLowerCase();
     }
 
-    public static String toUpperCase(final String str) {
+    public static String toUpperCase(String str) {
         assertStringNotNull(str);
         return str.toUpperCase();
     }
@@ -187,58 +200,63 @@ public class Srl {
     // ===================================================================================
     //                                                                                Trim
     //                                                                                ====
-    public static String trim(final String str) {
+    public static String trim(String str) {
         return doTrim(str, null);
     }
 
-    public static String trim(final String str, final String trimStr) {
+    public static String trim(String str, String trimStr) {
         return doTrim(str, trimStr);
     }
 
-    public static String ltrim(final String str) {
+    public static String ltrim(String str) {
         return doLTrim(str, null);
     }
 
-    public static String ltrim(final String str, final String trimStr) {
+    public static String ltrim(String str, String trimStr) {
         return doLTrim(str, trimStr);
     }
 
-    public static String rtrim(final String str) {
+    public static String rtrim(String str) {
         return doRTrim(str, null);
     }
 
-    public static String rtrim(final String str, final String trimStr) {
+    public static String rtrim(String str, String trimStr) {
         return doRTrim(str, trimStr);
     }
 
-    protected static String doTrim(final String str, final String trimStr) {
+    protected static String doTrim(String str, String trimStr) {
         return doRTrim(doLTrim(str, trimStr), trimStr);
     }
 
-    protected static String doLTrim(final String str, final String trimStr) {
+    protected static String doLTrim(String str, String trimStr)
+    {
         assertStringNotNull(str);
 
         // for trim target same as String.trim()
-        if (trimStr == null) {
-            final String notTrimmedString = "a";
-            final String trimmed = (str + notTrimmedString).trim();
+        if (trimStr == null)
+        {
+            String notTrimmedString = "a";
+            String trimmed = (str + notTrimmedString).trim();
             return trimmed.substring(0, trimmed.length() - notTrimmedString.length());
         }
 
         // for original trim target
-        String trimmed = str;
-        for (; trimmed.startsWith(trimStr);) {
-            trimmed = substringFirstRear(trimmed, trimStr);
+        {
+            String trimmed = str;
+            for (; trimmed.startsWith(trimStr); )
+            {
+                trimmed = substringFirstRear(trimmed, trimStr);
+            }
+            return trimmed;
         }
-        return trimmed;
     }
 
-    protected static String doRTrim(final String str, final String trimStr) {
+    protected static String doRTrim(String str, String trimStr) {
         assertStringNotNull(str);
 
         // for trim target same as String.trim()
         if (trimStr == null) {
-            final String notTrimmedString = "a";
+            String notTrimmedString = "a";
             return (notTrimmedString + str).trim().substring(notTrimmedString.length());
         }
 
@@ -285,7 +303,7 @@ public class Srl {
     public static String replaceBy(String str, Map<String, String> fromToMap) {
         assertStringNotNull(str);
         assertFromToMapNotNull(fromToMap);
-        final Set<Entry<String, String>> entrySet = fromToMap.entrySet();
+        Set<Entry<String, String>> entrySet = fromToMap.entrySet();
         foreach (Entry<String, String> entry in entrySet) {
             str = replace(str, entry.getKey(), entry.getValue());
         }
@@ -293,7 +311,7 @@ public class Srl {
     }
 
     public static String replaceScopeContent(String str, String fromStr, String toStr, String beginMark, String endMark) {
-        final List<ScopeInfo> scopeList = extractScopeList(str, beginMark, endMark);
+        List<ScopeInfo> scopeList = extractScopeList(str, beginMark, endMark);
         if (scopeList.isEmpty()) {
             return str;
         }
@@ -301,7 +319,7 @@ public class Srl {
     }
 
     public static String replaceScopeInterspace(String str, String fromStr, String toStr, String beginMark, String endMark) {
-        final List<ScopeInfo> scopeList = extractScopeList(str, beginMark, endMark);
+        List<ScopeInfo> scopeList = extractScopeList(str, beginMark, endMark);
         if (scopeList.isEmpty()) {
             return str;
         }
@@ -316,7 +334,8 @@ public class Srl {
      * @param delimiter The delimiter for split. (NotNull)
      * @return The split list. (NotNull)
      */
-    public static List<String> splitList(final String str, final String delimiter) {
+    public static List<String> splitList(String str, String delimiter)
+    {
         return doSplitList(str, delimiter, false);
     }
 
@@ -325,30 +344,35 @@ public class Srl {
      * @param delimiter The delimiter for split. (NotNull)
      * @return The split list that their elements is trimmed. (NotNull)
      */
-    public static List<String> splitListTrimmed(final String str, final String delimiter) {
+    public static List<String> splitListTrimmed(String str,String delimiter) {
         return doSplitList(str, delimiter, true);
     }
 
-    protected static List<String> doSplitList(final String str, final String delimiter, boolean trim) {
+    protected static List<String> doSplitList(String str, String delimiter, boolean trim)
+    {
         assertStringNotNull(str);
         assertDelimiterNotNull(delimiter);
-        final List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<String>();
         int elementIndex = 0;
         int delimiterIndex = str.indexOf(delimiter);
-        while (delimiterIndex >= 0) {
-            final String element = str.substring(elementIndex, delimiterIndex);
+        while (delimiterIndex >= 0)
+        {
+            String element = str.substring(elementIndex, delimiterIndex);
             list.add(trim ? element.trim() : element);
             elementIndex = delimiterIndex + delimiter.length();
             delimiterIndex = str.indexOf(delimiter, elementIndex);
         }
-        final String element = str.substring(elementIndex);
-        list.add(trim ? element.trim() : element);
-        return list;
+        {
+            String element = str.substring(elementIndex);
+            list.add(trim ? element.trim() : element);
+            return list;
+        }
     }
 
     // ===================================================================================
     //                                                                             IndexOf
     //                                                                             =======
+
     /**
      * Get the index of the first-found delimiter.
      * <pre>
@@ -359,8 +383,24 @@ public class Srl {
      * @param delimiters The array of delimiters. (NotNull) 
      * @return The information of index. (NullAllowed: if delimiter not found)
      */
-    public static IndexOfInfo indexOfFirst(final String str, final String... delimiters) {
+    public static IndexOfInfo indexOfFirst(String str, String[] delimiters)
+    {
         return doIndexOfFirst(false, str, delimiters);
+    }
+
+    /**
+    * Get the index of the first-found delimiter.
+    * <pre>
+    * indexOfFirst("foo.bar/baz.qux", ".", "/")
+    * returns the index of ".bar"
+    * </pre>
+    * @param str The target string. (NotNull)
+    * @param delimiters The array of delimiters. (NotNull) 
+    * @return The information of index. (NullAllowed: if delimiter not found)
+    */
+    public static IndexOfInfo indexOfFirst(String str, String value)
+    {
+        return doIndexOfFirst(false, str, new String[] { value });
     }
 
     /**
@@ -373,11 +413,13 @@ public class Srl {
      * @param delimiters The array of delimiters. (NotNull) 
      * @return The information of index. (NullAllowed: if delimiter not found)
      */
-    public static IndexOfInfo indexOfFirstIgnoreCase(final String str, final String... delimiters) {
+    public static IndexOfInfo indexOfFirstIgnoreCase(String str, String[] delimiters)
+    {
         return doIndexOfFirst(true, str, delimiters);
     }
 
-    protected static IndexOfInfo doIndexOfFirst(final boolean ignoreCase, final String str, final String... delimiters) {
+    protected static IndexOfInfo doIndexOfFirst(boolean ignoreCase, String str, String[] delimiters)
+    {
         return doIndexOf(ignoreCase, false, str, delimiters);
     }
 
@@ -391,8 +433,24 @@ public class Srl {
      * @param delimiters The array of delimiters. (NotNull) 
      * @return The information of index. (NullAllowed: if delimiter not found)
      */
-    public static IndexOfInfo indexOfLast(final String str, final String... delimiters) {
+    public static IndexOfInfo indexOfLast(String str, String[] delimiters)
+    {
         return doIndexOfLast(false, str, delimiters);
+    }
+
+    /**
+     * Get the index of the last-found delimiter.
+     * <pre>
+     * indexOfLast("foo.bar/baz.qux", ".", "/")
+     * returns the index of ".qux"
+     * </pre>
+     * @param str The target string. (NotNull)
+     * @param delimiters The array of delimiters. (NotNull) 
+     * @return The information of index. (NullAllowed: if delimiter not found)
+     */
+    public static IndexOfInfo indexOfLast(String str, String value)
+    {
+        return doIndexOfLast(false, str, new String[] { value });
     }
 
     /**
@@ -405,55 +463,71 @@ public class Srl {
      * @param delimiters The array of delimiters. (NotNull) 
      * @return The information of index. (NullAllowed: if delimiter not found)
      */
-    public static IndexOfInfo indexOfLastIgnoreCase(final String str, final String... delimiters) {
+    public static IndexOfInfo indexOfLastIgnoreCase(String str, String[] delimiters)
+    {
         return doIndexOfLast(true, str, delimiters);
     }
 
-    protected static IndexOfInfo doIndexOfLast(final boolean ignoreCase, final String str, final String... delimiters) {
+    protected static IndexOfInfo doIndexOfLast(boolean ignoreCase, String str, String[] delimiters)
+    {
         return doIndexOf(ignoreCase, true, str, delimiters);
     }
 
-    protected static IndexOfInfo doIndexOf(final boolean ignoreCase, final boolean last, final String str, final String... delimiters) {
-        final String filteredStr;
-        if (ignoreCase) {
+    protected static IndexOfInfo doIndexOf(boolean ignoreCase, boolean last, String str, String[] delimiters)
+    {
+        String filteredStr;
+        if (ignoreCase)
+        {
             filteredStr = str.toLowerCase();
-        } else {
+        }
+        else
+        {
             filteredStr = str;
         }
         int targetIndex = -1;
         String targetDelimiter = null;
-        foreach (String delimiter in delimiters) {
-            final String filteredDelimiter;
-            if (ignoreCase) {
+        foreach (String delimiter in delimiters)
+        {
+            String filteredDelimiter;
+            if (ignoreCase)
+            {
                 filteredDelimiter = delimiter.toLowerCase();
-            } else {
+            }
+            else
+            {
                 filteredDelimiter = delimiter;
             }
-            final int index;
-            if (last) {
+            int index;
+            if (last)
+            {
                 index = filteredStr.lastIndexOf(filteredDelimiter);
-            } else {
+            }
+            else
+            {
                 index = filteredStr.indexOf(filteredDelimiter);
             }
-            if (index < 0) {
+            if (index < 0)
+            {
                 continue;
             }
-            if (targetIndex < 0 || (last ? targetIndex < index : targetIndex > index)) {
+            if (targetIndex < 0 || (last ? targetIndex < index : targetIndex > index))
+            {
                 targetIndex = index;
                 targetDelimiter = delimiter;
             }
         }
-        if (targetIndex < 0) {
+        if (targetIndex < 0)
+        {
             return null;
         }
-        final IndexOfInfo info = new IndexOfInfo();
+        IndexOfInfo info = new IndexOfInfo();
         info.setBaseString(str);
         info.setIndex(targetIndex);
         info.setDelimiter(targetDelimiter);
         return info;
     }
 
-    public static class IndexOfInfo {
+    public class IndexOfInfo {
         protected String _baseString;
         protected int _index;
         protected String _delimiter;
@@ -516,7 +590,7 @@ public class Srl {
      * @param beginIndex The from-index. 
      * @return The part of string. (NotNull)
      */
-    public static String substring(final String str, final int beginIndex) {
+    public static String substring(String str, int beginIndex) {
         assertStringNotNull(str);
         if (str.length() < beginIndex) {
             String msg = "The length of the string was smaller than the begin index:";
@@ -537,7 +611,7 @@ public class Srl {
      * @param endIndex The to-index.
      * @return The part of string. (NotNull)
      */
-    public static String substring(final String str, final int beginIndex, final int endIndex) {
+    public static String substring(String str, int beginIndex, int endIndex) {
         assertStringNotNull(str);
         if (str.length() < beginIndex) {
             String msg = "The length of the string was smaller than the begin index:";
@@ -567,7 +641,7 @@ public class Srl {
      * @param index The index from rear. 
      * @return The rear string. (NotNull)
      */
-    public static String frontstring(final String str, final int index) {
+    public static String frontstring(String str, int index) {
         assertStringNotNull(str);
         if (str.length() < index) {
             String msg = "The length of the string was smaller than the index:";
@@ -587,7 +661,7 @@ public class Srl {
      * @param reverseIndex The index from rear. 
      * @return The rear string. (NotNull)
      */
-    public static String rearstring(final String str, final int reverseIndex) {
+    public static String rearstring(String str, int reverseIndex) {
         assertStringNotNull(str);
         if (str.length() < reverseIndex) {
             String msg = "The length of the string was smaller than the index:";
@@ -607,7 +681,7 @@ public class Srl {
      * @param delimiters The array of delimiters. (NotNull) 
      * @return The part of string. (NotNull: if delimiter not found, returns argument-plain string)
      */
-    public static String substringFirstFront(final String str, final String... delimiters) {
+    public static String substringFirstFront(String str, String[] delimiters) {
         assertStringNotNull(str);
         return doSubstringFirstRear(false, false, false, str, delimiters);
     }
@@ -622,7 +696,7 @@ public class Srl {
      * @param delimiters The array of delimiters. (NotNull) 
      * @return The part of string. (NotNull: if delimiter not found, returns argument-plain string)
      */
-    public static String substringFirstFrontIgnoreCase(final String str, final String... delimiters) {
+    public static String substringFirstFrontIgnoreCase(String str, String[] delimiters) {
         assertStringNotNull(str);
         return doSubstringFirstRear(false, false, true, str, delimiters);
     }
@@ -637,7 +711,7 @@ public class Srl {
      * @param delimiters The array of delimiters. (NotNull) 
      * @return The part of string. (NotNull: if delimiter not found, returns argument-plain string)
      */
-    public static String substringFirstRear(String str, String... delimiters) {
+    public static String substringFirstRear(String str,params String[] delimiters) {
         assertStringNotNull(str);
         return doSubstringFirstRear(false, true, false, str, delimiters);
     }
@@ -652,7 +726,7 @@ public class Srl {
      * @param delimiters The array of delimiters. (NotNull) 
      * @return The part of string. (NotNull: if delimiter not found, returns argument-plain string)
      */
-    public static String substringFirstRearIgnoreCase(String str, String... delimiters) {
+    public static String substringFirstRearIgnoreCase(String str, params String[] delimiters) {
         assertStringNotNull(str);
         return doSubstringFirstRear(false, true, true, str, delimiters);
     }
@@ -667,7 +741,7 @@ public class Srl {
      * @param delimiters The array of delimiters. (NotNull) 
      * @return The part of string. (NotNull: if delimiter not found, returns argument-plain string)
      */
-    public static String substringLastFront(String str, String... delimiters) {
+    public static String substringLastFront(String str, params String[] delimiters) {
         assertStringNotNull(str);
         return doSubstringFirstRear(true, false, false, str, delimiters);
     }
@@ -682,7 +756,7 @@ public class Srl {
      * @param delimiters The array of delimiters. (NotNull) 
      * @return The part of string. (NotNull: if delimiter not found, returns argument-plain string)
      */
-    public static String substringLastFrontIgnoreCase(String str, String... delimiters) {
+    public static String substringLastFrontIgnoreCase(String str, params String[] delimiters) {
         assertStringNotNull(str);
         return doSubstringFirstRear(true, false, true, str, delimiters);
     }
@@ -697,7 +771,7 @@ public class Srl {
      * @param delimiters The array of delimiters. (NotNull) 
      * @return The part of string. (NotNull: if delimiter not found, returns argument-plain string)
      */
-    public static String substringLastRear(String str, String... delimiters) {
+    public static String substringLastRear(String str, params String[] delimiters) {
         assertStringNotNull(str);
         return doSubstringFirstRear(true, true, false, str, delimiters);
     }
@@ -712,15 +786,15 @@ public class Srl {
      * @param delimiters The array of delimiters. (NotNull) 
      * @return The part of string. (NotNull: if delimiter not found, returns argument-plain string)
      */
-    public static String substringLastRearIgnoreCase(String str, String... delimiters) {
+    public static String substringLastRearIgnoreCase(String str, params String[] delimiters) {
         assertStringNotNull(str);
         return doSubstringFirstRear(true, true, true, str, delimiters);
     }
 
-    protected static readonly String doSubstringFirstRear(final boolean last, final boolean rear, final boolean ignoreCase, final String str,
-            String... delimiters) {
+    protected static String doSubstringFirstRear(boolean last, boolean rear, boolean ignoreCase, String str,
+            params String[] delimiters) {
         assertStringNotNull(str);
-        final IndexOfInfo info;
+        IndexOfInfo info;
         if (ignoreCase) {
             if (last) {
                 info = indexOfLastIgnoreCase(str, delimiters);
@@ -755,23 +829,24 @@ public class Srl {
         return containsAllIgnoreCase(str, keyword);
     }
 
-    public static boolean containsAll(String str, String... keywords) {
+    public static boolean containsAll(String str, params String[] keywords) {
         return doContainsAll(false, str, keywords);
     }
 
-    public static boolean containsAllIgnoreCase(String str, String... keywords) {
+    public static boolean containsAllIgnoreCase(String str, params String[] keywords) {
         return doContainsAll(true, str, keywords);
     }
 
-    protected static boolean doContainsAll(boolean ignoreCase, String str, String... keywords) {
+    protected static boolean doContainsAll(boolean ignoreCase, String str, params String[] keywords) {
         assertStringNotNull(str);
-        if (keywords == null || keywords.length == 0) {
+        if (keywords == null || keywords.length() == 0) {
             return false;
         }
         if (ignoreCase) {
             str = str.toLowerCase();
         }
-        foreach (String keyword in keywords) {
+        foreach (String k in keywords) {
+            var keyword = k;
             if (ignoreCase) {
                 keyword = keyword != null ? keyword.toLowerCase() : null;
             }
@@ -782,23 +857,24 @@ public class Srl {
         return true;
     }
 
-    public static boolean containsAny(String str, String... keywords) {
+    public static boolean containsAny(String str, params String[] keywords) {
         return doContainsAny(false, str, keywords);
     }
 
-    public static boolean containsAnyIgnoreCase(String str, String... keywords) {
+    public static boolean containsAnyIgnoreCase(String str, params String[] keywords) {
         return doContainsAny(true, str, keywords);
     }
 
-    protected static boolean doContainsAny(boolean ignoreCase, String str, String... keywords) {
+    protected static boolean doContainsAny(boolean ignoreCase, String str, params String[] keywords) {
         assertStringNotNull(str);
-        if (keywords == null || keywords.length == 0) {
+        if (keywords == null || keywords.length() == 0) {
             return false;
         }
         if (ignoreCase) {
             str = str.toLowerCase();
         }
-        foreach (String keyword in keywords) {
+        foreach (String k in keywords) {
+            var keyword = k;
             if (ignoreCase) {
                 keyword = keyword != null ? keyword.toLowerCase() : null;
             }
@@ -809,24 +885,25 @@ public class Srl {
         return false;
     }
 
-    public static boolean containsOrderedAll(String str, String... keywords) {
+    public static boolean containsOrderedAll(String str, params String[] keywords) {
         return doContainsOrderedAll(false, str, keywords);
     }
 
-    public static boolean containsOrderedAllIgnoreCase(String str, String... keywords) {
+    public static boolean containsOrderedAllIgnoreCase(String str, params String[] keywords) {
         return doContainsOrderedAll(true, str, keywords);
     }
 
-    protected static boolean doContainsOrderedAll(boolean ignoreCase, String str, String... keywords) {
+    protected static boolean doContainsOrderedAll(boolean ignoreCase, String str, params String[] keywords) {
         assertStringNotNull(str);
-        if (keywords == null || keywords.length == 0) {
+        if (keywords == null || keywords.length() == 0) {
             return false;
         }
         if (ignoreCase) {
             str = str.toLowerCase();
         }
         String current = str;
-        foreach (String keyword in keywords) {
+        foreach (String k in keywords) {
+            var keyword = k;
             if (ignoreCase) {
                 keyword = keyword != null ? keyword.toLowerCase() : null;
             }
@@ -850,45 +927,45 @@ public class Srl {
         return containsElementAllIgnoreCase(strList, element);
     }
 
-    public static boolean containsElementAll(Collection<String> strList, String... elements) {
+    public static boolean containsElementAll(Collection<String> strList, params String[] elements) {
         return doContainsElementAll(false, strList, elements);
     }
 
-    public static boolean containsElementAllIgnoreCase(Collection<String> strList, String... elements) {
+    public static boolean containsElementAllIgnoreCase(Collection<String> strList, params String[] elements) {
         return doContainsElementAll(true, strList, elements);
     }
 
-    protected static boolean doContainsElementAll(boolean ignoreCase, Collection<String> strList, String... elements) {
+    protected static boolean doContainsElementAll(boolean ignoreCase, Collection<String> strList, params String[] elements) {
         assertStringListNotNull(strList);
         assertElementVaryingNotNull(elements);
         return doContainsElement(true, ignoreCase, ListElementContainsType.EQUAL, strList, elements);
     }
 
-    public static boolean containsElementAny(Collection<String> strList, String... elements) {
+    public static boolean containsElementAny(Collection<String> strList, params String[] elements) {
         return doContainsElementAny(false, strList, elements);
     }
 
-    public static boolean containsElementAnyIgnoreCase(Collection<String> strList, String... elements) {
+    public static boolean containsElementAnyIgnoreCase(Collection<String> strList, params String[] elements) {
         return doContainsElementAny(true, strList, elements);
     }
 
-    protected static boolean doContainsElementAny(boolean ignoreCase, Collection<String> strList, String... elements) {
+    protected static boolean doContainsElementAny(boolean ignoreCase, Collection<String> strList, params String[] elements) {
         assertStringListNotNull(strList);
         assertElementVaryingNotNull(elements);
         return doContainsElement(false, ignoreCase, ListElementContainsType.EQUAL, strList, elements);
     }
 
     protected static boolean doContainsElement(boolean all, boolean ignoreCase, ListElementContainsType type, Collection<String> strList,
-            String... elements) {
+            params String[] elements) {
         assertStringListNotNull(strList);
         assertElementVaryingNotNull(elements);
-        if (elements.length == 0) {
+        if (elements.length() == 0) {
             return false;
         }
         foreach (String element in elements) {
             boolean exists = false;
             foreach (String current in strList) {
-                final boolean result;
+                boolean result;
                 if (ignoreCase) {
                     if (ListElementContainsType.PREFIX.equals(type)) {
                         result = current != null ? startsWithIgnoreCase(current, element) : false;
@@ -942,29 +1019,29 @@ public class Srl {
         return containsKeywordAllIgnoreCase(strList, keyword);
     }
 
-    public static boolean containsKeywordAll(Collection<String> strList, String... keywords) {
+    public static boolean containsKeywordAll(Collection<String> strList, params String[] keywords) {
         return doContainsKeywordAll(false, strList, keywords);
     }
 
-    public static boolean containsKeywordAllIgnoreCase(Collection<String> strList, String... keywords) {
+    public static boolean containsKeywordAllIgnoreCase(Collection<String> strList, params String[] keywords) {
         return doContainsKeywordAll(true, strList, keywords);
     }
 
-    protected static boolean doContainsKeywordAll(boolean ignoreCase, Collection<String> strList, String... keywords) {
+    protected static boolean doContainsKeywordAll(boolean ignoreCase, Collection<String> strList, params String[] keywords) {
         assertStringListNotNull(strList);
         assertKeywordVaryingNotNull(keywords);
         return doContainsElement(true, ignoreCase, ListElementContainsType.KEYWORD, strList, keywords);
     }
 
-    public static boolean containsKeywordAny(Collection<String> strList, String... keywords) {
+    public static boolean containsKeywordAny(Collection<String> strList, params String[] keywords) {
         return doContainsKeywordAny(false, strList, keywords);
     }
 
-    public static boolean containsKeywordAnyIgnoreCase(Collection<String> strList, String... keywords) {
+    public static boolean containsKeywordAnyIgnoreCase(Collection<String> strList, params String[] keywords) {
         return doContainsKeywordAny(true, strList, keywords);
     }
 
-    protected static boolean doContainsKeywordAny(boolean ignoreCase, Collection<String> strList, String... keywords) {
+    protected static boolean doContainsKeywordAny(boolean ignoreCase, Collection<String> strList, params String[] keywords) {
         assertStringListNotNull(strList);
         assertKeywordVaryingNotNull(keywords);
         return doContainsElement(false, ignoreCase, ListElementContainsType.KEYWORD, strList, keywords);
@@ -981,28 +1058,28 @@ public class Srl {
         return containsPrefixAllIgnoreCase(strList, prefix);
     }
 
-    public static boolean containsPrefixAll(Collection<String> strList, String... prefixes) {
+    public static boolean containsPrefixAll(Collection<String> strList, params String[] prefixes) {
         return doContainsPrefixAll(false, strList, prefixes);
     }
 
-    public static boolean containsPrefixAllIgnoreCase(Collection<String> strList, String... prefixes) {
+    public static boolean containsPrefixAllIgnoreCase(Collection<String> strList, params String[] prefixes) {
         return doContainsPrefixAll(true, strList, prefixes);
     }
 
-    protected static boolean doContainsPrefixAll(boolean ignoreCase, Collection<String> strList, String... prefixes) {
+    protected static boolean doContainsPrefixAll(boolean ignoreCase, Collection<String> strList, params String[] prefixes) {
         assertStringListNotNull(strList);
         return doContainsElement(true, ignoreCase, ListElementContainsType.PREFIX, strList, prefixes);
     }
 
-    public static boolean containsPrefixAny(Collection<String> strList, String... prefixes) {
+    public static boolean containsPrefixAny(Collection<String> strList, params String[] prefixes) {
         return doContainsPrefixAny(false, strList, prefixes);
     }
 
-    public static boolean containsPrefixAnyIgnoreCase(Collection<String> strList, String... prefixes) {
+    public static boolean containsPrefixAnyIgnoreCase(Collection<String> strList, params String[] prefixes) {
         return doContainsPrefixAny(true, strList, prefixes);
     }
 
-    protected static boolean doContainsPrefixAny(boolean ignoreCase, Collection<String> strList, String... prefixes) {
+    protected static boolean doContainsPrefixAny(boolean ignoreCase, Collection<String> strList, params String[] prefixes) {
         assertStringListNotNull(strList);
         return doContainsElement(false, ignoreCase, ListElementContainsType.PREFIX, strList, prefixes);
     }
@@ -1018,28 +1095,28 @@ public class Srl {
         return containsSuffixAllIgnoreCase(strList, suffix);
     }
 
-    public static boolean containsSuffixAll(Collection<String> strList, String... suffixes) {
+    public static boolean containsSuffixAll(Collection<String> strList, params String[] suffixes) {
         return doContainsSuffixAll(false, strList, suffixes);
     }
 
-    public static boolean containsSuffixAllIgnoreCase(Collection<String> strList, String... suffixes) {
+    public static boolean containsSuffixAllIgnoreCase(Collection<String> strList, params String[] suffixes) {
         return doContainsSuffixAll(true, strList, suffixes);
     }
 
-    protected static boolean doContainsSuffixAll(boolean ignoreCase, Collection<String> strList, String... suffixes) {
+    protected static boolean doContainsSuffixAll(boolean ignoreCase, Collection<String> strList, params String[] suffixes) {
         assertStringListNotNull(strList);
         return doContainsElement(true, ignoreCase, ListElementContainsType.SUFFIX, strList, suffixes);
     }
 
-    public static boolean containsSuffixAny(Collection<String> strList, String... suffixes) {
+    public static boolean containsSuffixAny(Collection<String> strList, params String[] suffixes) {
         return doContainsSuffixAny(false, strList, suffixes);
     }
 
-    public static boolean containsSuffixAnyIgnoreCase(Collection<String> strList, String... suffixes) {
+    public static boolean containsSuffixAnyIgnoreCase(Collection<String> strList, params String[] suffixes) {
         return doContainsSuffixAny(true, strList, suffixes);
     }
 
-    protected static boolean doContainsSuffixAny(boolean ignoreCase, Collection<String> strList, String... suffixes) {
+    protected static boolean doContainsSuffixAny(boolean ignoreCase, Collection<String> strList, params String[] suffixes) {
         assertStringListNotNull(strList);
         return doContainsElement(false, ignoreCase, ListElementContainsType.SUFFIX, strList, suffixes);
     }
@@ -1047,23 +1124,24 @@ public class Srl {
     // ===================================================================================
     //                                                                          StartsWith
     //                                                                          ==========
-    public static readonly boolean startsWith(final String str, final String... prefixes) {
+    public static boolean startsWith(String str, params String[] prefixes) {
         return doStartsWith(false, str, prefixes);
     }
 
-    public static readonly boolean startsWithIgnoreCase(final String str, final String... prefixes) {
+    public static boolean startsWithIgnoreCase(String str, params String[] prefixes) {
         return doStartsWith(true, str, prefixes);
     }
 
-    protected static readonly boolean doStartsWith(boolean ignoreCase, String str, final String... prefixes) {
+    protected static boolean doStartsWith(boolean ignoreCase, String str, params String[] prefixes) {
         assertStringNotNull(str);
-        if (prefixes == null || prefixes.length == 0) {
+        if (prefixes == null || prefixes.length() == 0) {
             return false;
         }
         if (ignoreCase) {
             str = str.toLowerCase();
         }
-        foreach (String prefix in prefixes) {
+        foreach (String p in prefixes) {
+            String prefix = p;
             if (ignoreCase) {
                 prefix = prefix != null ? prefix.toLowerCase() : null;
             }
@@ -1077,26 +1155,27 @@ public class Srl {
     // ===================================================================================
     //                                                                            EndsWith
     //                                                                            ========
-    public static readonly boolean endsWith(final String str, final String... suffixes) {
+    public static boolean endsWith(String str, params String[] suffixes) {
         return doEndsWith(false, str, suffixes);
     }
 
-    public static readonly boolean endsWithIgnoreCase(final String str, final String... suffixes) {
+    public static boolean endsWithIgnoreCase(String str, params String[] suffixes) {
         return doEndsWith(true, str, suffixes);
     }
 
-    protected static readonly boolean doEndsWith(boolean ignoreCase, String str, final String... suffixes) {
+    protected static boolean doEndsWith(boolean ignoreCase, String str, params String[] suffixes) {
         assertStringNotNull(str);
-        if (suffixes == null || suffixes.length == 0) {
+        if (suffixes == null || suffixes.length() == 0) {
             return false;
         }
-        if (suffixes.length == 0) {
+        if (suffixes.length() == 0) {
             return false;
         }
         if (ignoreCase) {
             str = str.toLowerCase();
         }
-        foreach (String suffix in suffixes) {
+        foreach (String s in suffixes) {
+            var suffix = s;
             if (ignoreCase) {
                 suffix = suffix != null ? suffix.toLowerCase() : null;
             }
@@ -1110,39 +1189,39 @@ public class Srl {
     // ===================================================================================
     //                                                                          HasKeyword
     //                                                                          ==========
-    public static readonly boolean hasKeywordAll(final String keyword, final String... strs) {
+    public static boolean hasKeywordAll(String keyword, params String[] strs) {
         return doHasKeywordAll(false, keyword, strs);
     }
 
-    public static readonly boolean hasKeywordAllIgnoreCase(final String keyword, final String... strs) {
+    public static boolean hasKeywordAllIgnoreCase(String keyword, params String[] strs) {
         return doHasKeywordAll(true, keyword, strs);
     }
 
-    protected static readonly boolean doHasKeywordAll(boolean ignoreCase, String keyword, final String... strs) {
+    protected static boolean doHasKeywordAll(boolean ignoreCase, String keyword, params String[] strs) {
         assertKeywordNotNull(keyword);
         return doHasKeyword(true, ignoreCase, KeywordType.CONTAIN, keyword, strs);
     }
 
-    public static readonly boolean hasKeywordAny(final String keyword, final String... strs) {
+    public static boolean hasKeywordAny(String keyword, params String[] strs) {
         return doHasKeywordAny(false, keyword, strs);
     }
 
-    public static readonly boolean hasKeywordAnyIgnoreCase(final String keyword, final String... strs) {
+    public static boolean hasKeywordAnyIgnoreCase(String keyword, params String[] strs) {
         return doHasKeywordAny(true, keyword, strs);
     }
 
-    protected static readonly boolean doHasKeywordAny(boolean ignoreCase, String keyword, final String... strs) {
+    protected static boolean doHasKeywordAny(boolean ignoreCase, String keyword, params String[] strs) {
         assertKeywordNotNull(keyword);
         return doHasKeyword(false, ignoreCase, KeywordType.CONTAIN, keyword, strs);
     }
 
-    protected static readonly boolean doHasKeyword(boolean all, boolean ignoreCase, KeywordType type, String keyword, final String... strs) {
+    protected static boolean doHasKeyword(boolean all, boolean ignoreCase, KeywordType type, String keyword, params String[] strs) {
         assertKeywordNotNull(keyword);
-        if (strs == null || strs.length == 0) {
+        if (strs == null || strs.length() == 0) {
             return false;
         }
         foreach (String str in strs) {
-            final boolean result;
+            boolean result;
             if (ignoreCase) {
                 if (KeywordType.PREFIX.equals(type)) {
                     result = str != null ? startsWithIgnoreCase(str, keyword) : false;
@@ -1177,54 +1256,54 @@ public class Srl {
         CONTAIN, PREFIX, SUFFIX
     }
 
-    public static readonly boolean hasPrefixAll(final String prefix, final String... strs) {
+    public static boolean hasPrefixAll(String prefix, params String[] strs) {
         return doHasPrefixAll(false, prefix, strs);
     }
 
-    public static readonly boolean hasPrefixAllIgnoreCase(final String prefix, final String... strs) {
+    public static boolean hasPrefixAllIgnoreCase(String prefix, params String[] strs) {
         return doHasPrefixAll(true, prefix, strs);
     }
 
-    protected static readonly boolean doHasPrefixAll(boolean ignoreCase, String prefix, final String... strs) {
+    protected static boolean doHasPrefixAll(boolean ignoreCase, String prefix, params String[] strs) {
         assertPrefixNotNull(prefix);
         return doHasKeyword(true, ignoreCase, KeywordType.PREFIX, prefix, strs);
     }
 
-    public static readonly boolean hasPrefixAny(final String prefix, final String... strs) {
+    public static boolean hasPrefixAny(String prefix, params String[] strs) {
         return doHasPrefixAny(false, prefix, strs);
     }
 
-    public static readonly boolean hasPrefixAnyIgnoreCase(final String prefix, final String... strs) {
+    public static boolean hasPrefixAnyIgnoreCase(String prefix, params String[] strs) {
         return doHasPrefixAny(true, prefix, strs);
     }
 
-    protected static readonly boolean doHasPrefixAny(boolean ignoreCase, String prefix, final String... strs) {
+    protected static boolean doHasPrefixAny(boolean ignoreCase, String prefix, params String[] strs) {
         assertPrefixNotNull(prefix);
         return doHasKeyword(false, ignoreCase, KeywordType.PREFIX, prefix, strs);
     }
 
-    public static readonly boolean hasSuffixAll(final String suffix, final String... strs) {
+    public static boolean hasSuffixAll(String suffix, params String[] strs) {
         return doHasSuffixAll(false, suffix, strs);
     }
 
-    public static readonly boolean hasSuffixAllIgnoreCase(final String suffix, final String... strs) {
+    public static boolean hasSuffixAllIgnoreCase(String suffix, params String[] strs) {
         return doHasSuffixAll(true, suffix, strs);
     }
 
-    protected static readonly boolean doHasSuffixAll(boolean ignoreCase, String suffix, final String... strs) {
+    protected static boolean doHasSuffixAll(boolean ignoreCase, String suffix, params String[] strs) {
         assertSuffixNotNull(suffix);
         return doHasKeyword(true, ignoreCase, KeywordType.SUFFIX, suffix, strs);
     }
 
-    public static readonly boolean hasSuffixAny(final String suffix, final String... strs) {
+    public static boolean hasSuffixAny(String suffix, params String[] strs) {
         return doHasSuffixAny(false, suffix, strs);
     }
 
-    public static readonly boolean hasSuffixAnyIgnoreCase(final String suffix, final String... strs) {
+    public static boolean hasSuffixAnyIgnoreCase(String suffix, params String[] strs) {
         return doHasSuffixAny(true, suffix, strs);
     }
 
-    protected static readonly boolean doHasSuffixAny(boolean ignoreCase, String suffix, final String... strs) {
+    protected static boolean doHasSuffixAny(boolean ignoreCase, String suffix, params String[] strs) {
         assertSuffixNotNull(suffix);
         return doHasKeyword(false, ignoreCase, KeywordType.SUFFIX, suffix, strs);
     }
@@ -1249,7 +1328,7 @@ public class Srl {
             element = element.toLowerCase();
         }
         while (true) {
-            final int index = str.indexOf(element);
+            int index = str.indexOf(element);
             if (index < 0) {
                 break;
             }
@@ -1262,7 +1341,7 @@ public class Srl {
     // ===================================================================================
     //                                                                              Equals
     //                                                                              ======
-    public static boolean equalsIgnoreCase(String str1, String... strs) {
+    public static boolean equalsIgnoreCase(String str1, params String[] strs) {
         if (strs != null) {
             foreach (String element in strs) {
                 if ((str1 != null && str1.equalsIgnoreCase(element)) || (str1 == null && element == null)) {
@@ -1275,11 +1354,11 @@ public class Srl {
         }
     }
 
-    public static boolean equalsFlexible(String str1, String... strs) {
+    public static boolean equalsFlexible(String str1, params String[] strs) {
         if (strs != null) {
             str1 = str1 != null ? replace(str1, "_", "") : null;
-            foreach (String element in strs) {
-                element = element != null ? replace(element, "_", "") : null;
+            foreach (String str in strs) {
+                var element = str != null ? replace(str, "_", "") : null;
                 if ((str1 != null && str1.equalsIgnoreCase(element)) || (str1 == null && element == null)) {
                     return true; // found
                 }
@@ -1290,12 +1369,12 @@ public class Srl {
         }
     }
 
-    public static boolean equalsFlexibleTrimmed(String str1, String... strs) {
+    public static boolean equalsFlexibleTrimmed(String str1, params String[] strs) {
         str1 = str1 != null ? str1.trim() : null;
         if (strs != null) {
-            String[] trimmedStrs = new String[strs.length];
-            for (int i = 0; i < strs.length; i++) {
-                final String element = strs[i];
+            String[] trimmedStrs = new String[strs.length()];
+            for (int i = 0; i < strs.length(); i++) {
+                String element = strs[i];
                 trimmedStrs[i] = element != null ? element.trim() : null;
             }
             return equalsFlexible(str1, trimmedStrs);
@@ -1304,7 +1383,7 @@ public class Srl {
         }
     }
 
-    public static boolean equalsPlain(String str1, String... strs) {
+    public static boolean equalsPlain(String str1, params String[] strs) {
         if (strs != null) {
             foreach (String element in strs) {
                 if ((str1 != null && str1.equals(element)) || (str1 == null && element == null)) {
@@ -1333,7 +1412,7 @@ public class Srl {
 
     protected static String doConnectByDelimiter(Collection<String> strList, String delimiter, String quotation) {
         assertStringListNotNull(strList);
-        final StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         foreach (String str in strList) {
             if (sb.length() > 0) {
                 sb.append(delimiter);
@@ -1415,8 +1494,8 @@ public class Srl {
         if (str.length() >= size) {
             return str;
         }
-        final int addSize = size - str.length();
-        final StringBuilder sb = new StringBuilder();
+        int addSize = size - str.length();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < addSize; i++) {
             sb.append(addedChar);
         }
@@ -1507,21 +1586,21 @@ public class Srl {
     // ===================================================================================
     //                                                                  Delimiter Handling
     //                                                                  ==================
-    public static readonly List<DelimiterInfo> extractDelimiterList(final String str, final String delimiter) {
+        private static List<DelimiterInfo> extractDelimiterList(String str,String delimiter) {
         assertStringNotNull(str);
         assertDelimiterNotNull(delimiter);
-        final List<DelimiterInfo> delimiterList = new ArrayList<DelimiterInfo>();
+        List<DelimiterInfo> delimiterList = new ArrayList<DelimiterInfo>();
         DelimiterInfo previous = null;
         String rear = str;
         while (true) {
-            final int beginIndex = rear.indexOf(delimiter);
+            int beginIndex = rear.indexOf(delimiter);
             if (beginIndex < 0) {
                 break;
             }
-            final DelimiterInfo info = new DelimiterInfo();
+             DelimiterInfo info = new DelimiterInfo();
             info.setBaseString(str);
             info.setDelimiter(delimiter);
-            final int absoluteIndex = (previous != null ? previous.getEndIndex() : 0) + beginIndex;
+            int absoluteIndex = (previous != null ? previous.getEndIndex() : 0) + beginIndex;
             info.setBeginIndex(absoluteIndex);
             info.setEndIndex(absoluteIndex + delimiter.length());
             if (previous != null) {
@@ -1536,7 +1615,7 @@ public class Srl {
         return delimiterList;
     }
 
-    public static class DelimiterInfo {
+    public class DelimiterInfo {
         protected String _baseString;
         protected int _beginIndex;
         protected int _endIndex;
@@ -1568,55 +1647,67 @@ public class Srl {
             }
         }
 
-        public override String toString() {
+        public virtual String toString()
+        {
             return _delimiter + ":(" + _beginIndex + ", " + _endIndex + ")";
         }
 
-        public override String getBaseString() {
+        public virtual String getBaseString()
+        {
             return _baseString;
         }
 
-        public override void setBaseString(String baseStr) {
+        public virtual void setBaseString(String baseStr)
+        {
             this._baseString = baseStr;
         }
 
-        public override int getBeginIndex() {
+        public virtual int getBeginIndex()
+        {
             return _beginIndex;
         }
 
-        public override void setBeginIndex(int beginIndex) {
+        public virtual void setBeginIndex(int beginIndex)
+        {
             this._beginIndex = beginIndex;
         }
 
-        public override int getEndIndex() {
+        public virtual int getEndIndex()
+        {
             return _endIndex;
         }
 
-        public override void setEndIndex(int endIndex) {
+        public virtual void setEndIndex(int endIndex)
+        {
             this._endIndex = endIndex;
         }
 
-        public override String getDelimiter() {
+        public virtual String getDelimiter() {
             return _delimiter;
         }
 
-        public override void setDelimiter(String delimiter) {
+        public virtual void setDelimiter(String delimiter)
+        {
             this._delimiter = delimiter;
         }
 
-        public override DelimiterInfo getPrevious() {
+        public virtual DelimiterInfo getPrevious()
+        {
             return _previous;
         }
 
-        public override void setPrevious(DelimiterInfo previous) {
+        public virtual void setPrevious(DelimiterInfo previous)
+        {
             this._previous = previous;
         }
 
-        public override DelimiterInfo getNext() {
+        public virtual DelimiterInfo getNext()
+        {
             return _next;
         }
 
-        public override void setNext(DelimiterInfo next) {
+        public virtual void setNext(DelimiterInfo next)
+        {
             this._next = next;
         }
     }
@@ -1624,8 +1715,8 @@ public class Srl {
     // ===================================================================================
     //                                                                      Scope Handling
     //                                                                      ==============
-    public override static readonly ScopeInfo extractScopeFirst(final String str, final String beginMark, final String endMark) {
-        final List<ScopeInfo> scopeList = doExtractScopeList(str, beginMark, endMark, true);
+    public static ScopeInfo extractScopeFirst(String str, String beginMark, String endMark) {
+        List<ScopeInfo> scopeList = doExtractScopeList(str, beginMark, endMark, true);
         if (scopeList == null || scopeList.isEmpty()) {
             return null;
         }
@@ -1636,21 +1727,21 @@ public class Srl {
         return scopeList.get(0);
     }
 
-    public override static readonly ScopeInfo extractScopeLast(final String str, final String beginMark, final String endMark) {
-        final List<ScopeInfo> scopeList = doExtractScopeList(str, beginMark, endMark, false);
+    public static ScopeInfo extractScopeLast(String str, String beginMark, String endMark) {
+        List<ScopeInfo> scopeList = doExtractScopeList(str, beginMark, endMark, false);
         if (scopeList == null || scopeList.isEmpty()) {
             return null;
         }
         return scopeList.get(scopeList.size() - 1);
     }
 
-    public override static readonly List<ScopeInfo> extractScopeList(final String str, final String beginMark, final String endMark) {
-        final List<ScopeInfo> scopeList = doExtractScopeList(str, beginMark, endMark, false);
+    public static List<ScopeInfo> extractScopeList(String str, String beginMark, String endMark) {
+        List<ScopeInfo> scopeList = doExtractScopeList(str, beginMark, endMark, false);
         return scopeList != null ? scopeList : new ArrayList<ScopeInfo>();
     }
 
-    protected static readonly List<ScopeInfo> doExtractScopeList(final String str, final String beginMark, final String endMark,
-            final boolean firstOnly) {
+    protected static List<ScopeInfo> doExtractScopeList(String str, String beginMark, String endMark,
+            boolean firstOnly) {
         assertStringNotNull(str);
         assertBeginMarkNotNull(beginMark);
         assertEndMarkNotNull(endMark);
@@ -1658,7 +1749,7 @@ public class Srl {
         ScopeInfo previous = null;
         String rear = str;
         while (true) {
-            final int beginIndex = rear.indexOf(beginMark);
+            int beginIndex = rear.indexOf(beginMark);
             if (beginIndex < 0) {
                 break;
             }
@@ -1667,14 +1758,14 @@ public class Srl {
                 break;
             }
             rear = rear.substring(beginMark.length()); // skip begin-mark
-            final int endIndex = rear.indexOf(endMark);
+            int endIndex = rear.indexOf(endMark);
             if (endIndex < 0) {
                 break;
             }
-            final String scope = beginMark + rear.substring(0, endIndex + endMark.length());
-            final ScopeInfo info = new ScopeInfo();
+            String scope = beginMark + rear.substring(0, endIndex + endMark.length());
+             ScopeInfo info = new ScopeInfo();
             info.setBaseString(str);
-            final int absoluteIndex = (previous != null ? previous.getEndIndex() : 0) + beginIndex;
+            int absoluteIndex = (previous != null ? previous.getEndIndex() : 0) + beginIndex;
             info.setBeginIndex(absoluteIndex);
             info.setEndIndex(absoluteIndex + scope.length());
             info.setBeginMark(beginMark);
@@ -1698,20 +1789,20 @@ public class Srl {
         return resultList; // nullable if not found to suppress unneeded ArrayList creation
     }
 
-    public override static readonly ScopeInfo extractScopeWide(final String str, final String beginMark, final String endMark) {
+    public static ScopeInfo extractScopeWide(String str, String beginMark, String endMark) {
         assertStringNotNull(str);
         assertBeginMarkNotNull(beginMark);
         assertEndMarkNotNull(endMark);
-        final IndexOfInfo first = indexOfFirst(str, beginMark);
+        IndexOfInfo first = indexOfFirst(str, beginMark);
         if (first == null) {
             return null;
         }
-        final IndexOfInfo last = indexOfLast(str, endMark);
+        IndexOfInfo last = indexOfLast(str, endMark);
         if (last == null) {
             return null;
         }
-        final String content = str.substring(first.getIndex() + first.getDelimiter().length(), last.getIndex());
-        final ScopeInfo info = new ScopeInfo();
+        String content = str.substring(first.getIndex() + first.getDelimiter().length(), last.getIndex());
+         ScopeInfo info = new ScopeInfo();
         info.setBaseString(str);
         info.setBeginIndex(first.getIndex());
         info.setEndIndex(last.getIndex());
@@ -1722,7 +1813,7 @@ public class Srl {
         return info;
     }
 
-    public static class ScopeInfo {
+    public class ScopeInfo {
         protected String _baseString;
         protected int _beginIndex;
         protected int _endIndex;
@@ -1733,17 +1824,20 @@ public class Srl {
         protected ScopeInfo _previous;
         protected ScopeInfo _next;
 
-        public override boolean isBeforeScope(int index) {
+        public virtual boolean isBeforeScope(int index)
+        {
             return index < _beginIndex;
         }
 
-        public override boolean isInScope(int index) {
+        public virtual boolean isInScope(int index)
+        {
             return index >= _beginIndex && index <= _endIndex;
         }
 
-        public override String replaceContentOnBaseString(String toStr) {
-            final List<ScopeInfo> scopeList = takeScopeList();
-            final StringBuilder sb = new StringBuilder();
+        public virtual String replaceContentOnBaseString(String toStr)
+        {
+            List<ScopeInfo> scopeList = takeScopeList();
+            StringBuilder sb = new StringBuilder();
             foreach (ScopeInfo scope in scopeList) {
                 sb.append(scope.substringInterspaceToPrevious());
                 sb.append(scope.getBeginMark());
@@ -1756,9 +1850,10 @@ public class Srl {
             return sb.toString();
         }
 
-        public override String replaceContentOnBaseString(String fromStr, String toStr) {
-            final List<ScopeInfo> scopeList = takeScopeList();
-            final StringBuilder sb = new StringBuilder();
+        public virtual String replaceContentOnBaseString(String fromStr, String toStr)
+        {
+            List<ScopeInfo> scopeList = takeScopeList();
+            StringBuilder sb = new StringBuilder();
             foreach (ScopeInfo scope in scopeList) {
                 sb.append(scope.substringInterspaceToPrevious());
                 sb.append(scope.getBeginMark());
@@ -1771,9 +1866,10 @@ public class Srl {
             return sb.toString();
         }
 
-        public override String replaceInterspaceOnBaseString(String fromStr, String toStr) {
-            final List<ScopeInfo> scopeList = takeScopeList();
-            final StringBuilder sb = new StringBuilder();
+        public virtual String replaceInterspaceOnBaseString(String fromStr, String toStr)
+        {
+            List<ScopeInfo> scopeList = takeScopeList();
+            StringBuilder sb = new StringBuilder();
             foreach (ScopeInfo scope in scopeList) {
                 sb.append(Srl.replace(scope.substringInterspaceToPrevious(), fromStr, toStr));
                 sb.append(scope.getScope());
@@ -1784,19 +1880,20 @@ public class Srl {
             return sb.toString();
         }
 
-        protected override List<ScopeInfo> takeScopeList() {
+        protected virtual List<ScopeInfo> takeScopeList()
+        {
             ScopeInfo scope = this;
             while (true) {
-                final ScopeInfo previous = scope.getPrevious();
+                 ScopeInfo previous = scope.getPrevious();
                 if (previous == null) {
                     break;
                 }
                 scope = previous;
             }
-            final List<ScopeInfo> scopeList = new ArrayList<ScopeInfo>();
+            List<ScopeInfo> scopeList = new ArrayList<ScopeInfo>();
             scopeList.add(scope);
             while (true) {
-                final ScopeInfo next = scope.getNext();
+                 ScopeInfo next = scope.getNext();
                 if (next == null) {
                     break;
                 }
@@ -1806,7 +1903,8 @@ public class Srl {
             return scopeList;
         }
 
-        public override String substringInterspaceToPrevious() {
+        public virtual String substringInterspaceToPrevious()
+        {
             int previousEndIndex = -1;
             if (_previous != null) {
                 previousEndIndex = _previous.getEndIndex();
@@ -1818,7 +1916,8 @@ public class Srl {
             }
         }
 
-        public override String substringInterspaceToNext() {
+        public virtual String substringInterspaceToNext()
+        {
             int nextBeginIndex = -1;
             if (_next != null) {
                 nextBeginIndex = _next.getBeginIndex();
@@ -1830,7 +1929,8 @@ public class Srl {
             }
         }
 
-        public override String substringScopeToPrevious() {
+        public virtual String substringScopeToPrevious()
+        {
             int previousBeginIndex = -1;
             if (_previous != null) {
                 previousBeginIndex = _previous.getBeginIndex();
@@ -1842,7 +1942,8 @@ public class Srl {
             }
         }
 
-        public override String substringScopeToNext() {
+        public virtual String substringScopeToNext()
+        {
             int nextEndIndex = -1;
             if (_next != null) {
                 nextEndIndex = _next.getEndIndex();
@@ -1854,100 +1955,119 @@ public class Srl {
             }
         }
 
-        public override String toString() {
+        public virtual String toString()
+        {
             return _scope + ":(" + _beginIndex + ", " + _endIndex + ")";
         }
 
-        public override String getBaseString() {
+        public virtual String getBaseString()
+        {
             return _baseString;
         }
 
-        public override void setBaseString(String baseString) {
+        public virtual void setBaseString(String baseString)
+        {
             this._baseString = baseString;
         }
 
-        public override int getBeginIndex() {
+        public virtual int getBeginIndex()
+        {
             return _beginIndex;
         }
 
-        public override void setBeginIndex(int beginIndex) {
+        public virtual void setBeginIndex(int beginIndex)
+        {
             this._beginIndex = beginIndex;
         }
 
-        public override int getEndIndex() {
+        public virtual int getEndIndex()
+        {
             return _endIndex;
         }
 
-        public override void setEndIndex(int endIndex) {
+        public virtual void setEndIndex(int endIndex)
+        {
             this._endIndex = endIndex;
         }
 
-        public override String getBeginMark() {
+        public virtual String getBeginMark()
+        {
             return beginMark;
         }
 
-        public override void setBeginMark(String beginMark) {
+        public virtual void setBeginMark(String beginMark)
+        {
             this.beginMark = beginMark;
         }
 
-        public override String getEndMark() {
+        public virtual String getEndMark()
+        {
             return endMark;
         }
 
-        public override void setEndMark(String endMark) {
+        public virtual void setEndMark(String endMark)
+        {
             this.endMark = endMark;
         }
 
-        public override String getContent() {
+        public virtual String getContent()
+        {
             return _content;
         }
 
-        public override void setContent(String content) {
+        public virtual void setContent(String content)
+        {
             this._content = content;
         }
 
-        public override String getScope() {
+        public virtual String getScope()
+        {
             return _scope;
         }
 
-        public override void setScope(String scope) {
+        public virtual void setScope(String scope)
+        {
             this._scope = scope;
         }
 
-        public override ScopeInfo getPrevious() {
+        public virtual ScopeInfo getPrevious()
+        {
             return _previous;
         }
 
-        public override void setPrevious(ScopeInfo previous) {
+        public virtual void setPrevious(ScopeInfo previous)
+        {
             this._previous = previous;
         }
 
-        public override ScopeInfo getNext() {
+        public virtual ScopeInfo getNext()
+        {
             return _next;
         }
 
-        public override void setNext(ScopeInfo next) {
+        public virtual void setNext(ScopeInfo next)
+        {
             this._next = next;
         }
     }
 
-    public override static String removeScope(final String str, final String beginMark, final String endMark) {
+    public static String removeScope(String str, String beginMark, String endMark) {
         assertStringNotNull(str);
-        final StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         String rear = str;
         while (true) {
-            final int beginIndex = rear.indexOf(beginMark);
+            int beginIndex = rear.indexOf(beginMark);
             if (beginIndex < 0) {
                 sb.append(rear);
                 break;
             }
-            final int endIndex = rear.indexOf(endMark);
+            int endIndex = rear.indexOf(endMark);
             if (endIndex < 0) {
                 sb.append(rear);
                 break;
             }
             if (beginIndex > endIndex) {
-                final int borderIndex = endIndex + endMark.length();
+                int borderIndex = endIndex + endMark.length();
                 sb.append(rear.substring(0, borderIndex));
                 rear = rear.substring(borderIndex);
                 continue;
@@ -1967,25 +2087,26 @@ public class Srl {
      * @param str The target string. (NotNull)
      * @return The filtered string. (NotNull)
      */
-    public override static String removeEmptyLine(String str) {
+    public static String removeEmptyLine(String str) {
         assertStringNotNull(str);
-        final StringBuilder sb = new StringBuilder();
-        final List<String> splitList = splitList(str, "\n");
-        foreach (String line in splitList) {
-            if (Srl.is_Null_or_TrimmedEmpty(line)) {
+        StringBuilder sb = new StringBuilder();
+        List<String> splitStrList = splitList(str, "\n");
+        foreach (String splitLine in splitStrList) {
+            if (Srl.is_Null_or_TrimmedEmpty(splitLine))
+            {
                 continue; // skip
             }
-            line = removeCR(line); // remove CR!
+            var line = removeCR(splitLine); // remove CR!
             sb.append(line).append("\n");
         }
-        final String filtered = sb.toString();
+        String filtered = sb.toString();
         return filtered.substring(0, filtered.length() - "\n".length());
     }
 
     // ===================================================================================
     //                                                                    Initial Handling
     //                                                                    ================
-    public override static String initCap(String str) {
+    public static String initCap(String str) {
         assertStringNotNull(str);
         if (is_Null_or_Empty(str)) {
             return str;
@@ -1993,18 +2114,18 @@ public class Srl {
         if (str.length() == 1) {
             return str.toUpperCase();
         }
-        final char chars[] = str.toCharArray();
-        chars[0] = Character.toUpperCase(chars[0]);
+        char[] chars = str.toCharArray();
+        chars[0] = CharacterExtension.toUpperCase(chars[0]);
         return new String(chars);
     }
 
-    public override static String initCapTrimmed(String str) {
+    public static String initCapTrimmed(String str) {
         assertStringNotNull(str);
         str = str.trim();
         return initCap(str);
     }
 
-    public override static String initUncap(String str) {
+    public static String initUncap(String str) {
         assertStringNotNull(str);
         if (is_Null_or_Empty(str)) {
             return str;
@@ -2012,12 +2133,12 @@ public class Srl {
         if (str.length() == 1) {
             return str.toLowerCase();
         }
-        final char chars[] = str.toCharArray();
-        chars[0] = Character.toLowerCase(chars[0]);
+        char[] chars = str.toCharArray();
+        chars[0] = CharacterExtension.toLowerCase(chars[0]);
         return new String(chars);
     }
 
-    public override static String initUncapTrimmed(String str) {
+    public static String initUncapTrimmed(String str) {
         assertStringNotNull(str);
         str = str.trim();
         return initUncap(str);
@@ -2041,7 +2162,7 @@ public class Srl {
         return initUncap(capitalizedName);
     }
 
-    public override static boolean isInitLowerCase(String str) {
+    public static boolean isInitLowerCase(String str) {
         assertStringNotNull(str);
         if (is_Null_or_Empty(str)) {
             return false;
@@ -2049,7 +2170,7 @@ public class Srl {
         return isLowerCase(str.charAt(0));
     }
 
-    public override static boolean isInitTwoLowerCase(String str) {
+    public static boolean isInitTwoLowerCase(String str) {
         assertStringNotNull(str);
         if (str.length() < 2) {
             return false;
@@ -2057,7 +2178,7 @@ public class Srl {
         return isLowerCase(str.charAt(0), str.charAt(1));
     }
 
-    public override static boolean isInitUpperCase(String str) {
+    public static boolean isInitUpperCase(String str) {
         assertStringNotNull(str);
         if (is_Null_or_Empty(str)) {
             return false;
@@ -2065,7 +2186,7 @@ public class Srl {
         return isUpperCase(str.charAt(0));
     }
 
-    public override static boolean isInitTwoUpperCase(String str) {
+    public static boolean isInitTwoUpperCase(String str) {
         assertStringNotNull(str);
         if (str.length() < 2) {
             return false;
@@ -2076,12 +2197,12 @@ public class Srl {
     // ===================================================================================
     //                                                                       Name Handling
     //                                                                       =============
-    public override static String camelize(String decamelName) {
+    public static String camelize(String decamelName) {
         assertDecamelNameNotNull(decamelName);
         return doCamelize(decamelName, "_");
     }
 
-    public override static String camelize(String decamelName, String... delimiters) {
+    public static String camelize(String decamelName, params String[] delimiters) {
         assertDecamelNameNotNull(decamelName);
         String name = decamelName;
         foreach (String delimiter in delimiters) {
@@ -2090,16 +2211,17 @@ public class Srl {
         return name;
     }
 
-    protected override static String doCamelize(String decamelName, String delimiter) {
+    protected static String doCamelize(String decamelName, String delimiter) {
         assertDecamelNameNotNull(decamelName);
         assertDelimiterNotNull(delimiter);
         if (is_Null_or_TrimmedEmpty(decamelName)) {
             return decamelName;
         }
-        final StringBuilder sb = new StringBuilder();
-        final List<String> splitList = splitListTrimmed(decamelName, delimiter);
-        foreach (String part in splitList) {
+        StringBuilder sb = new StringBuilder();
+        List<String> splitList = splitListTrimmed(decamelName, delimiter);
+        foreach (String p in splitList) {
             boolean allUpperCase = true;
+            var part = p;
             for (int i = 1; i < part.length(); ++i) {
                 if (isLowerCase(part.charAt(i))) {
                     allUpperCase = false;
@@ -2115,18 +2237,18 @@ public class Srl {
 
     // *DBFlute doesn't decamelize a table and column name
     // (allowed to convert decamel name to a camel name in this world)
-    public override static String decamelize(String camelName) {
+    public static String decamelize(String camelName) {
         assertCamelNameNotNull(camelName);
         return doDecamelize(camelName, "_");
     }
 
-    public override static String decamelize(String camelName, String delimiter) {
+    public static String decamelize(String camelName, String delimiter) {
         assertCamelNameNotNull(camelName);
         assertDelimiterNotNull(delimiter);
         return doDecamelize(camelName, delimiter);
     }
 
-    protected override static String doDecamelize(String camelName, String delimiter) {
+    protected static String doDecamelize(String camelName, String delimiter) {
         assertCamelNameNotNull(camelName);
         if (is_Null_or_TrimmedEmpty(camelName)) {
             return camelName;
@@ -2134,11 +2256,11 @@ public class Srl {
         if (camelName.length() == 1) {
             return camelName.toUpperCase();
         }
-        final StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         boolean previousLower = false;
         int pos = 0;
         for (int i = 1; i < camelName.length(); i++) {
-            final char currentChar = camelName.charAt(i);
+            char currentChar = camelName.charAt(i);
             if (isUpperCase(currentChar)) {
                 if (sb.length() > 0 && previousLower) { // check target length not to be FOO -> F_O_O
                     sb.append(delimiter);
@@ -2154,7 +2276,7 @@ public class Srl {
             sb.append(delimiter);
         }
         sb.append(camelName.substring(pos, camelName.length()).toUpperCase());
-        final String generated = sb.toString();
+        String generated = sb.toString();
         return replace(generated, delimiter + delimiter, delimiter); // final adjustment
     }
 
@@ -2166,7 +2288,7 @@ public class Srl {
      * @param sql The string of SQL. (NotNull)
      * @return The filtered string. (NotNull)
      */
-    public override static String removeBlockComment(String sql) {
+    public static String removeBlockComment(String sql) {
         assertSqlNotNull(sql);
         return removeScope(sql, "/*", "*/");
     }
@@ -2179,27 +2301,28 @@ public class Srl {
      */
     public static String removeLineComment(String sql) { // with removing CR!
         assertSqlNotNull(sql);
-        final StringBuilder sb = new StringBuilder();
-        final List<String> splitList = splitList(sql, "\n");
-        foreach (String line in splitList) {
-            if (line == null) {
+        StringBuilder sb = new StringBuilder();
+        List<String> splitSqlList = splitList(sql, "\n");
+        foreach (String splitLine in splitSqlList) {
+            if (splitLine == null)
+            {
                 continue;
             }
-            line = removeCR(line); // remove CR!
+            var line = removeCR(splitLine); // remove CR!
             if (line.trim().startsWith("--")) {
                 continue;
             }
-            final List<DelimiterInfo> delimiterList = extractDelimiterList(line, "--");
+            List<DelimiterInfo> delimiterList = extractDelimiterList(line, "--");
             int realIndex = -1;
-            indexLoop: for (DelimiterInfo delimiter : delimiterList) {
-                final List<ScopeInfo> scopeList = extractScopeList(line, "/*", "*/");
-                final int delimiterIndex = delimiter.getBeginIndex();
+            indexLoop: foreach (DelimiterInfo delimiter in delimiterList) {
+                List<ScopeInfo> scopeList = extractScopeList(line, "/*", "*/");
+                int delimiterIndex = delimiter.getBeginIndex();
                 foreach (ScopeInfo scope in scopeList) {
                     if (scope.isBeforeScope(delimiterIndex)) {
                         break;
                     }
                     if (scope.isInScope(delimiterIndex)) {
-                        continue indexLoop;
+                        goto indexLoop;
                     }
                 }
                 // found
@@ -2210,11 +2333,11 @@ public class Srl {
             }
             sb.append(line).append("\n");
         }
-        final String filtered = sb.toString();
+        String filtered = sb.toString();
         return filtered.substring(0, filtered.length() - "\n".length());
     }
 
-    protected override static String removeCR(String str) {
+    protected static String removeCR(String str) {
         if (str == null) {
             return null;
         }
@@ -2224,19 +2347,19 @@ public class Srl {
     // ===================================================================================
     //                                                                     Indent Handling
     //                                                                     ===============
-    public override static String indent(int size) {
-        final StringBuilder sb = new StringBuilder();
+    public static String indent(int size) {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < size; i++) {
             sb.append(" ");
         }
         return sb.toString();
     }
 
-    public override static String indent(int size, String str) {
-        final List<String> splitList = splitList(removeCR(str), "\n");
-        final StringBuilder sb = new StringBuilder();
+    public static String indent(int size, String str) {
+        List<String> splitStrList = splitList(removeCR(str), "\n");
+        StringBuilder sb = new StringBuilder();
         int index = 0;
-        foreach (String element in splitList) {
+        foreach (String element in splitStrList) {
             if (index > 0) {
                 sb.append("\n");
             }
@@ -2249,49 +2372,49 @@ public class Srl {
     // ===================================================================================
     //                                                                  Character Handling
     //                                                                  ==================
-    public override static boolean isAlphabetHarfAll(String str) {
+    public static boolean isAlphabetHarfAll(String str) {
         return isAnyCharAll(str, _alphabetHarfCharSet);
     }
 
-    public override static boolean isAlphabetHarfLowerAll(String str) {
+    public static boolean isAlphabetHarfLowerAll(String str) {
         return isAnyCharAll(str, _alphabetHarfLowerCharSet);
     }
 
-    public override static boolean isAlphabetHarfUpperAll(String str) {
+    public static boolean isAlphabetHarfUpperAll(String str) {
         return isAnyCharAll(str, _alphabetHarfUpperCharSet);
     }
 
-    public override static boolean isNumberHarfAll(String str) {
+    public static boolean isNumberHarfAll(String str) {
         return isAnyCharAll(str, _numberHarfCharSet);
     }
 
-    public override static boolean isAlphabetNumberHarfAll(String str) {
+    public static boolean isAlphabetNumberHarfAll(String str) {
         return isAnyCharAll(str, _alphabetHarfNumberHarfCharSet);
     }
 
-    public override static boolean isAlphabetNumberHarfAllOr(String str, Character... addedChars) {
-        final Set<Character> charSet = new HashSet<Character>(_alphabetHarfNumberHarfCharSet);
+    public static boolean isAlphabetNumberHarfAllOr(String str, params Character[] addedChars) {
+        Set<Character> charSet = new HashSet<Character>(_alphabetHarfNumberHarfCharSet);
         foreach (Character ch in addedChars) {
             charSet.add(ch);
         }
         return isAnyCharAll(str, charSet);
     }
 
-    public override static boolean isAlphabetNumberHarfLowerAll(String str) {
+    public static boolean isAlphabetNumberHarfLowerAll(String str) {
         return isAnyCharAll(str, _alphabetNumberHarfLowerCharSet);
     }
 
-    public override static boolean isAlphabetNumberHarfUpperAll(String str) {
+    public static boolean isAlphabetNumberHarfUpperAll(String str) {
         return isAnyCharAll(str, _alphabetNumberHarfUpperCharSet);
     }
 
-    protected override static boolean isAnyCharAll(String str, Set<Character> charSet) {
+    protected static boolean isAnyCharAll(String str, Set<Character> charSet) {
         if (is_Null_or_Empty(str)) {
             return false;
         }
-        final char[] chAry = str.toCharArray();
-        for (int i = 0; i < chAry.length; i++) {
-            final char ch = chAry[i];
+         char[] chAry = str.toCharArray();
+        for (int i = 0; i < chAry.length(); i++) {
+            char ch = chAry[i];
             if (!charSet.contains(ch)) {
                 return false;
             }
@@ -2302,17 +2425,17 @@ public class Srl {
     // -----------------------------------------------------
     //                                            Lower Case
     //                                            ----------
-    protected override static boolean isLowerCase(char ch) {
-        return Character.isLowerCase(ch);
+    protected static boolean isLowerCase(char ch) {
+        return CharacterExtension.isLowerCase(ch);
     }
 
-    protected override static boolean isLowerCase(char ch1, char ch2) {
+    protected static boolean isLowerCase(char ch1, char ch2) {
         return isLowerCase(ch1) && isLowerCase(ch2);
     }
 
-    public override static boolean isLowerCaseAll(String str) {
+    public static boolean isLowerCaseAll(String str) {
         assertStringNotNull(str);
-        final int length = str.length();
+        int length = str.length();
         if (length == 0) {
             return false;
         }
@@ -2324,9 +2447,9 @@ public class Srl {
         return true;
     }
 
-    public override static boolean isLowerCaseAny(String str) {
+    public static boolean isLowerCaseAny(String str) {
         assertStringNotNull(str);
-        final int length = str.length();
+        int length = str.length();
         if (length == 0) {
             return false;
         }
@@ -2341,17 +2464,17 @@ public class Srl {
     // -----------------------------------------------------
     //                                            Upper Case
     //                                            ----------
-    protected override static boolean isUpperCase(char ch) {
-        return Character.isUpperCase(ch);
+    protected static boolean isUpperCase(char ch) {
+        return CharacterExtension.isUpperCase(ch);
     }
 
-    protected override static boolean isUpperCase(char ch1, char ch2) {
+    protected static boolean isUpperCase(char ch1, char ch2) {
         return isUpperCase(ch1) && isUpperCase(ch2);
     }
 
-    public override static boolean isUpperCaseAll(String str) {
+    public static boolean isUpperCaseAll(String str) {
         assertStringNotNull(str);
-        final int length = str.length();
+        int length = str.length();
         if (length == 0) {
             return false;
         }
@@ -2363,9 +2486,9 @@ public class Srl {
         return true;
     }
 
-    public override static boolean isUpperCaseAny(String str) {
+    public static boolean isUpperCaseAny(String str) {
         assertStringNotNull(str);
-        final int length = str.length();
+        int length = str.length();
         if (length == 0) {
             return false;
         }
@@ -2380,75 +2503,75 @@ public class Srl {
     // ===================================================================================
     //                                                                       Assert Helper
     //                                                                       =============
-    protected override static void assertStringNotNull(String str) {
+    protected static void assertStringNotNull(String str) {
         assertObjectNotNull("str", str);
     }
 
-    protected override static void assertStringListNotNull(Collection<String> strList) {
+    protected static void assertStringListNotNull(Collection<String> strList) {
         assertObjectNotNull("strList", strList);
     }
 
-    protected override static void assertElementNotNull(String element) {
+    protected static void assertElementNotNull(String element) {
         assertObjectNotNull("element", element);
     }
 
-    protected override static void assertElementVaryingNotNull(String[] elements) {
+    protected static void assertElementVaryingNotNull(String[] elements) {
         assertObjectNotNull("elements", elements);
     }
 
-    protected override static void assertKeywordNotNull(String keyword) {
+    protected static void assertKeywordNotNull(String keyword) {
         assertObjectNotNull("keyword", keyword);
     }
 
-    protected override static void assertKeywordVaryingNotNull(String[] keywords) {
+    protected static void assertKeywordVaryingNotNull(String[] keywords) {
         assertObjectNotNull("keywords", keywords);
     }
 
-    protected override static void assertPrefixNotNull(String prefix) {
+    protected static void assertPrefixNotNull(String prefix) {
         assertObjectNotNull("prefix", prefix);
     }
 
-    protected override static void assertSuffixNotNull(String suffix) {
+    protected static void assertSuffixNotNull(String suffix) {
         assertObjectNotNull("suffix", suffix);
     }
 
-    protected override static void assertFromToMapNotNull(Map<String, String> fromToMap) {
+    protected static void assertFromToMapNotNull(Map<String, String> fromToMap) {
         assertObjectNotNull("fromToMap", fromToMap);
     }
 
-    protected override static void assertDelimiterNotNull(String delimiter) {
+    protected static void assertDelimiterNotNull(String delimiter) {
         assertObjectNotNull("delimiter", delimiter);
     }
 
-    protected override static void assertFromStringNotNull(String fromStr) {
+    protected static void assertFromStringNotNull(String fromStr) {
         assertObjectNotNull("fromStr", fromStr);
     }
 
-    protected override static void assertToStringNotNull(String toStr) {
+    protected static void assertToStringNotNull(String toStr) {
         assertObjectNotNull("toStr", toStr);
     }
 
-    protected override static void assertQuotationNotNull(String quotation) {
+    protected static void assertQuotationNotNull(String quotation) {
         assertObjectNotNull("quotation", quotation);
     }
 
-    protected override static void assertBeginMarkNotNull(String beginMark) {
+    protected static void assertBeginMarkNotNull(String beginMark) {
         assertObjectNotNull("beginMark", beginMark);
     }
 
-    protected override static void assertEndMarkNotNull(String endMark) {
+    protected static void assertEndMarkNotNull(String endMark) {
         assertObjectNotNull("endMark", endMark);
     }
 
-    protected override static void assertDecamelNameNotNull(String decamelName) {
+    protected static void assertDecamelNameNotNull(String decamelName) {
         assertObjectNotNull("decamelName", decamelName);
     }
 
-    protected override static void assertCamelNameNotNull(String camelName) {
+    protected static void assertCamelNameNotNull(String camelName) {
         assertObjectNotNull("camelName", camelName);
     }
 
-    protected override static void assertSqlNotNull(String sql) {
+    protected static void assertSqlNotNull(String sql) {
         assertObjectNotNull("sql", sql);
     }
 
@@ -2458,7 +2581,7 @@ public class Srl {
      * @param value The checked value. (NotNull)
      * @throws IllegalArgumentException When the argument is null.
      */
-    protected override static void assertObjectNotNull(String variableName, Object value) {
+    protected static void assertObjectNotNull(String variableName, Object value) {
         if (variableName == null) {
             String msg = "The value should not be null: variableName=null value=" + value;
             throw new IllegalArgumentException(msg);
@@ -2474,7 +2597,7 @@ public class Srl {
      * @param variableName The check name of variable for message. (NotNull)
      * @param value The checked value. (NotNull)
      */
-    protected override static void assertStringNotNullAndNotTrimmedEmpty(String variableName, String value) {
+    protected static void assertStringNotNullAndNotTrimmedEmpty(String variableName, String value) {
         assertObjectNotNull("variableName", variableName);
         assertObjectNotNull("value", value);
         if (value.trim().length() == 0) {

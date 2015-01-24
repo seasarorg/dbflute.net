@@ -69,11 +69,14 @@
     <Compile Include="DBFlute\JavaLike\IO\StringReader.cs" />
     <Compile Include="DBFlute\JavaLike\IO\StringWriter.cs" />
     <Compile Include="DBFlute\JavaLike\IO\Writer.cs" />
-    <Compile Include="DBFlute\JavaLike\Lang\boolean.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\ArrayExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\BooleanExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\CharacterExtension.cs" />
     <Compile Include="DBFlute\JavaLike\Lang\ClassNotFoundException.cs" />
     <Compile Include="DBFlute\JavaLike\Lang\Comparable.cs" />
     <Compile Include="DBFlute\JavaLike\Lang\ConcurrentModificationException.cs" />
     <Compile Include="DBFlute\JavaLike\Lang\ExceptionExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\IllegalArgumentException.cs" />
     <Compile Include="DBFlute\JavaLike\Lang\Long.cs" />
     <Compile Include="DBFlute\JavaLike\Lang\Integer.cs" />
     <Compile Include="DBFlute\JavaLike\Helper\JavaBasicValueCache.cs" />
@@ -93,6 +96,7 @@
     <Compile Include="DBFlute\JavaLike\Lang\StringBuilder.cs" />
     <Compile Include="DBFlute\JavaLike\Lang\StringExtension.cs" />
     <Compile Include="DBFlute\JavaLike\Lang\ClassExtension.cs" />
+    <Compile Include="DBFlute\JavaLike\Lang\StringIndexOutOfBoundsException.cs" />
     <Compile Include="DBFlute\JavaLike\Math\BigDecimal.cs" />
     <Compile Include="DBFlute\JavaLike\Math\BigInteger.cs" />
     <Compile Include="DBFlute\JavaLike\Net\JarURLConnection.cs" />
@@ -155,6 +159,9 @@
     <Compile Include="DBFlute\JavaLike\Util\TreeSet.cs" />
     <Compile Include="DBFlute\JavaLike\Util\UUID.cs" />
     <Compile Include="DBFlute\JavaLike\Util\Zip\ZipEntry.cs" />
+    <Compile Include="DBFlute\Util\DfCollectionUtil.cs" />
+    <Compile Include="DBFlute\Util\DfTraceViewUtil.cs" />
+    <Compile Include="DBFlute\Util\Srl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DBFlute\DfSystem\DBFluteSystem.cs" />
     <Compile Include="DBFlute\DfSystem\Provider\DfCurrentDateProvider.cs" />

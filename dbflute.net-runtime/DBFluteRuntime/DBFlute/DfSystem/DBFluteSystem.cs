@@ -19,6 +19,7 @@ using DBFlute.JavaLike.Time;
 using DBFlute.JavaLike.Util;
 using slf4net;
 using System;
+using boolean = System.Boolean;
 
 namespace DBFlute.DfSystem {
 

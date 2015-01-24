@@ -1,3 +1,5 @@
+using DBFlute.JavaLike.Lang;
+using slf4net;
 /*
  * Copyright 2014-2015 the original author or authors.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,9 +13,7 @@
  * governing permissions and limitations under the License.
  */
 using System;
-using DBFlute.JavaLike.Lang;
-using DBFlute.JavaLike.Util;
-using slf4net;
+using boolean = System.Boolean;
 
 namespace DBFlute.DfSystem {
 

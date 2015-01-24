@@ -1,8 +1,8 @@
-﻿using DBFlute.JavaLike.Lang;
-using DBFlute.JavaLike.Math;
+﻿using DBFlute.JavaLike.Math;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using boolean = System.Boolean;
 
 namespace DBFlute.JavaLike.Sql
 {

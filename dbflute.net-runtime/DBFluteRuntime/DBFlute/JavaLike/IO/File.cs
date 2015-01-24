@@ -1,6 +1,6 @@
-﻿using DBFlute.JavaLike.Lang;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
+using boolean = System.Boolean;
 
 namespace DBFlute.JavaLike.IO
 {

@@ -30,7 +30,7 @@ public class DBFluteSystem {
     //                                                                          Definition
     //                                                                          ==========
     /** The logger instance for this class. (NotNull) */
-    private static readonly ILogger _log = ILoggerFactory.getLogger(DBFluteSystem.class);LoggerFactory.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+    private static readonly ILogger _log = LoggerFactory.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     // ===================================================================================
     //                                                                    Option Attribute
@@ -54,7 +54,7 @@ public class DBFluteSystem {
      * e.g. DisplaySql, Date conversion, LocalDate mapping and so on... <br>
      * (NullAllowed: if null, server zone might be used)
      */
-    protected static DfFinalDBFlute.JavaLike.Util.TimeZoneProvider _finalDBFlute.JavaLike.Util.TimeZoneProvider;
+    protected static DfFinalDBFlute.JavaLike.Util.TimeZoneProvider _finalDBFluteTimeZoneProvider;
 
     /** Is this system adjustment locked? */
     protected static boolean _locked = true;
@@ -84,7 +84,7 @@ public class DBFluteSystem {
      * @return The new-created zoned date instance as current date. (NotNull)
      */
     public static ZonedDateTime currentZonedDateTime() {
-        final DBFlute.JavaLike.Util.TimeZone timeZone = getFinalDBFlute.JavaLike.Util.TimeZone();
+        DBFlute.JavaLike.Util.TimeZone timeZone = getFinalDBFlute.JavaLike.Util.TimeZone();
         return ZonedDateTime.ofInstant(currentDate().toInstant(), timeZone.toZoneId());
     }
 
@@ -109,7 +109,7 @@ public class DBFluteSystem {
      * @return The long value as milliseconds.
      */
     public static long currentTimeMillis() {
-        final long millis;
+        long millis;
         if (_currentDateProvider != null) {
             millis = _currentDateProvider.currentTimeMillis();
         } else {
@@ -204,12 +204,12 @@ public class DBFluteSystem {
         return _finalDBFlute.JavaLike.Util.TimeZoneProvider != null;
     }
 
-    public static void setFinalDBFlute.JavaLike.Util.TimeZoneProvider(DfFinalDBFlute.JavaLike.Util.TimeZoneProvider finalDBFlute.JavaLike.Util.TimeZoneProvider) {
+    public static void setFinalDBFlute.JavaLike.Util.TimeZoneProvider(DfFinalDBFlute.JavaLike.Util.TimeZoneProvider finalDBFluteTimeZoneProvider) {
         assertUnlocked();
         if (_log.IsInfoEnabled) {
             _log.Info("...Setting finalDBFlute.JavaLike.Util.TimeZoneProvider: " + finalDBFlute.JavaLike.Util.TimeZoneProvider);
         }
-        _finalDBFlute.JavaLike.Util.TimeZoneProvider = finalDBFlute.JavaLike.Util.TimeZoneProvider;
+        _finalDBFluteTimeZoneProvider = finalDBFluteTimeZoneProvider;
         doLock(); // auto-lock here, because of deep world
     }
 

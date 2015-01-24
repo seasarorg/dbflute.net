@@ -16,5 +16,10 @@ namespace DBFlute.JavaLike.Util
         {
             throw new NotSupportedException();
         }
+
+        public static Set<T> unmodifiableSet<T>(Set<T> s)
+        {
+            throw new NotSupportedException();
+        }
     }
 }

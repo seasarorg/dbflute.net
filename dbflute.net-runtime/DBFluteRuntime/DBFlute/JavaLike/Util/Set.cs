@@ -8,6 +8,7 @@ namespace DBFlute.JavaLike.Util
     public interface Set<ELEMENT> : Collection<ELEMENT>
     {
         bool contains(ELEMENT element);
+        void add(ELEMENT element);
     }
 
     /// <summary>

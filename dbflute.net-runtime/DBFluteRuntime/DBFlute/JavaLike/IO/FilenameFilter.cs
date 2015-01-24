@@ -1,4 +1,5 @@
 ﻿using DBFlute.JavaLike.Lang;
+using boolean = System.Boolean;
 
 namespace DBFlute.JavaLike.IO
 {

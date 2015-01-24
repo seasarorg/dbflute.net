@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using boolean = System.Boolean;
 
 namespace DBFlute.JavaLike.Lang.Reflect
 {

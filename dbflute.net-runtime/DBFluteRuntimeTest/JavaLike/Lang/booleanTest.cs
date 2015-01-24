@@ -1,5 +1,6 @@
 ﻿using DBFlute.JavaLike.Lang;
 using NUnit.Framework;
+using boolean = System.Boolean;
 
 namespace DBFluteRuntimeTest.JavaLike.Lang
 {
@@ -16,7 +17,7 @@ namespace DBFluteRuntimeTest.JavaLike.Lang
         [Test]
         public void TestTrue()
         {
-            boolean actual = boolean.BOOLEAN_TRUE;
+            boolean actual = BooleanExtension.BOOLEAN_TRUE;
             Assert.IsTrue(actual);
         }
 
@@ -26,7 +27,7 @@ namespace DBFluteRuntimeTest.JavaLike.Lang
         [Test]
         public void TestFalse()
         {
-            boolean actual = boolean.BOOLEAN_FALSE;
+            boolean actual = BooleanExtension.BOOLEAN_FALSE;
             Assert.IsFalse(actual);
         }
 

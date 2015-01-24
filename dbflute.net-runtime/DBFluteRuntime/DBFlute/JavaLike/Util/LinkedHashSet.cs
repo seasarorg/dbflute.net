@@ -143,5 +143,17 @@ namespace DBFlute.JavaLike.Util
         {
             return StringHelper.collectionToString(this);
         }
+
+
+        void Set<ELEMENT>.add(ELEMENT element)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public Set<ELEMENT> unmodifiableSet(Set<ELEMENT> element)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
