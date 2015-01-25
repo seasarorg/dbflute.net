@@ -13,7 +13,7 @@
 	<inceptionYear>2006</inceptionYear>
 
 	<properties>
-		<dbflute.version>1.1.0</dbflute.version>
+		<dbflute.version>1.1.0-sp1-RC2</dbflute.version>
 		<utflute.version>0.5.0</utflute.version>
 	</properties>
 
