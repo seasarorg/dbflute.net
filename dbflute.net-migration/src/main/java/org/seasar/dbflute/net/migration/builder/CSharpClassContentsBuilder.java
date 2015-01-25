@@ -36,6 +36,9 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
         map.put("log.debug", "log.Debug");
         map.put("log.info", "log.Info");
         map.put("TimeZone", "DBFlute.JavaLike.Util.TimeZone");
+        map.put("String.", "StringExtension.");
+        map.put("boolean.", "BooleanExtension.");
+        map.put(".length", ".length()");
         _basicClassElementReplaceMap = Collections.unmodifiableMap(map);
     }
 
@@ -109,10 +112,15 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
             if (_foundOverride) {
                 work = doConvertMethodOverride(work);
             }
+        } else if (isMethodLine(line)) {
+            if (_foundOverride) {
+                work = doConvertMethodOverride(work);
+            }
         } else if (isForeachLine(line)) {
             work = doConvertForeach(work);
         }
         work = doConvertInstanceOf(work);
+        work = doConvertFinalLocalVariable(work);
         return doConvertBasicElement(work);
     }
 
@@ -186,6 +194,13 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
     protected String doConvertInstanceOf(String work) {
         if (work != null && work.contains(" instanceof ")) {
             return replace(work, " instanceof ", " is ");
+        }
+        return work;
+    }
+
+    protected String doConvertFinalLocalVariable(String work) {
+        if (work != null && work.contains("    final ")) {
+            return replace(work, "    final ", "    ");
         }
         return work;
     }
