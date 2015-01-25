@@ -70,7 +70,7 @@ public class DfCollectionUtil {
 
     @SafeVarargs
     public static <ELEMENT> ArrayList<ELEMENT> newArrayList(ELEMENT... elements) {
-        ArrayList<ELEMENT> list = newArrayListSized(elements.length());
+        ArrayList<ELEMENT> list = newArrayListSized(elements.length);
         foreach (ELEMENT element in elements) {
             list.add(element);
         }
@@ -346,7 +346,7 @@ public class DfCollectionUtil {
 
     @SafeVarargs
     public static <ELEMENT> HashSet<ELEMENT> newHashSet(ELEMENT... elements) {
-        HashSet<ELEMENT> set = newHashSetSized(elements.length());
+        HashSet<ELEMENT> set = newHashSetSized(elements.length);
         foreach (ELEMENT element in elements) {
             set.add(element);
         }
@@ -369,7 +369,7 @@ public class DfCollectionUtil {
 
     @SafeVarargs
     public static <ELEMENT> LinkedHashSet<ELEMENT> newLinkedHashSet(ELEMENT... elements) {
-        LinkedHashSet<ELEMENT> set = newLinkedHashSetSized(elements.length());
+        LinkedHashSet<ELEMENT> set = newLinkedHashSetSized(elements.length);
         foreach (ELEMENT element in elements) {
             set.add(element);
         }

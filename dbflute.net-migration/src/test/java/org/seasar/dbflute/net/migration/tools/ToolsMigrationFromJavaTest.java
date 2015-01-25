@@ -39,7 +39,7 @@ public class ToolsMigrationFromJavaTest extends UnitContainerTestCase {
         policeStoryOfJavaClassChase(new PoliceStoryJavaClassHandler() {
             public void handle(File srcFile, Class<?> clazz) {
                 String name = clazz.getName();
-                if (Srl.containsAny(name, "org.dbflute.util.DfCollectionUtil")) {
+                if (Srl.containsAny(name, "org.dbflute.util.DfCollectionUtil", "org.dbflute.util.DfAssertUtil")) {
                     migrateToCSharp(srcFile, clazz);
                 }
             }

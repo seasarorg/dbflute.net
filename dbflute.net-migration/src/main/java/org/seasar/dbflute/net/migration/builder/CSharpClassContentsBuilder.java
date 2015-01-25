@@ -38,7 +38,7 @@ public class CSharpClassContentsBuilder extends CSharpBuilderBase {
         map.put("TimeZone", "DBFlute.JavaLike.Util.TimeZone");
         map.put("String.", "StringExtension.");
         map.put("boolean.", "BooleanExtension.");
-        map.put(".length", ".length()");
+        map.put(".length ", ".length() ");
         _basicClassElementReplaceMap = Collections.unmodifiableMap(map);
     }
 
