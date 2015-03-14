@@ -1,8 +1,6 @@
 ﻿using DBFlute.JavaLike.Helper;
-using DBFlute.JavaLike.Lang;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DBFlute.JavaLike.Util
 {
@@ -13,18 +11,25 @@ namespace DBFlute.JavaLike.Util
     [Serializable]
     public class ArrayList<ELEMENT> : List<ELEMENT>, NgList
     {
-        IList<ELEMENT> _res = new System.Collections.Generic.List<ELEMENT>();
+        private readonly IList<ELEMENT> _res;
 
         public ArrayList()
         {
+            _res = new System.Collections.Generic.List<ELEMENT>();
         }
 
-        public ArrayList(Collection<ELEMENT> col)
+        public ArrayList(ICollection<ELEMENT> col)
         {
+            _res = new System.Collections.Generic.List<ELEMENT>();
             foreach (ELEMENT element in col)
             {
                 add(element);
             }
+        }
+
+        public ArrayList(int size)
+        {
+            _res = new System.Collections.Generic.List<ELEMENT>(size);
         }
 
         public bool add(ELEMENT element)
@@ -170,11 +175,75 @@ namespace DBFlute.JavaLike.Util
 
         public override String ToString()
         {
-            return StringHelper.collectionToString(this);
+            return StringHelper.collectionToString<ELEMENT>(this);
         }
 
 
         public Set<ELEMENT> unmodifiableSet(Set<ELEMENT> element)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public bool addAll(ICollection<ELEMENT> elements)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(ELEMENT item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(ELEMENT item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(ELEMENT[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Count
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool IsReadOnly
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool Remove(ELEMENT item)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator<ELEMENT> IEnumerable<ELEMENT>.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void removeAll()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void removeAll(ICollection<ELEMENT> elements)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public int indexOf(ELEMENT element)
         {
             throw new NotImplementedException();
         }

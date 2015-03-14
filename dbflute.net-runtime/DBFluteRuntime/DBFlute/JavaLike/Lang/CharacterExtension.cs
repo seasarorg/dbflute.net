@@ -6,26 +6,6 @@ namespace DBFlute.JavaLike.Lang
     /// </summary>
     public static class CharacterExtension
     {
-        //public static bool isLowerCase(this char target)
-        //{
-        //    return char.IsLower(target);
-        //}
-
-        //public static bool isUpperCase(this char target)
-        //{
-        //    return char.IsUpper(target);
-        //}
-
-        //public static char toLowerCase(this char target)
-        //{
-        //    return char.ToLower(target);
-        //}
-
-        //public static char toUpperCase(this char target)
-        //{
-        //    return char.ToUpper(target);
-        //}
-
         public static bool isLowerCase(System.Char target)
         {
             return char.IsLower(target);

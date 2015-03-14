@@ -47,7 +47,6 @@
     <Compile Include="DBFlute\JavaLike\Extensions\ConnectionExtension.cs" />
     <Compile Include="DBFlute\JavaLike\Extensions\DateTimeExtensions.cs" />
     <Compile Include="DBFlute\JavaLike\Helper\ClassUtils.cs" />
-    <Compile Include="DBFlute\JavaLike\Helper\ComparatorAdapter.cs" />
     <Compile Include="DBFlute\JavaLike\Helper\EnumeratorExtension.cs" />
     <Compile Include="DBFlute\JavaLike\Helper\AdoSQLExceptionHandlerFactory.cs" />
     <Compile Include="DBFlute\JavaLike\Helper\StringHelper.cs" />

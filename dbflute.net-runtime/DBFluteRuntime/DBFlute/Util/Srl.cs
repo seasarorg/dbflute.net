@@ -44,7 +44,7 @@ public class Srl {
         Srl7();
     }
     private static Set<Character> Srl1() {
-        Set<Character> setupSet = DfCollectionUtil.newHashSet();
+        Set<Character> setupSet = DfCollectionUtil.newHashSet<Character>();
         StringBuilder sb = new StringBuilder();
         sb.append(HARF_LOWER_ALPHABET);
         sb.append(sb.toString().toUpperCase());
@@ -56,7 +56,7 @@ public class Srl {
     }
     protected static Set<Character> _alphabetHarfLowerCharSet;
     private static void Srl2() {
-        Set<Character> setupSet = DfCollectionUtil.newHashSet();
+        Set<Character> setupSet = DfCollectionUtil.newHashSet<Character>();
         StringBuilder sb = new StringBuilder();
         sb.append(HARF_LOWER_ALPHABET);
         char[] chAry = sb.toString().toCharArray();
@@ -67,7 +67,7 @@ public class Srl {
     }
     protected static Set<Character> _alphabetHarfUpperCharSet;
     private static void Srl3() {
-        Set<Character> setupSet = DfCollectionUtil.newHashSet();
+        Set<Character> setupSet = DfCollectionUtil.newHashSet<Character>();
         StringBuilder sb = new StringBuilder();
         sb.append(HARF_LOWER_ALPHABET.toUpperCase());
         char[] chAry = sb.toString().toCharArray();
@@ -78,7 +78,7 @@ public class Srl {
     }
     protected static Set<Character> _numberHarfCharSet;
     private static void Srl4() {
-        Set<Character> setupSet = DfCollectionUtil.newHashSet();
+        Set<Character> setupSet = DfCollectionUtil.newHashSet<Character>();
         String chStr = HARF_NUMBER;
         char[] chAry = chStr.toCharArray();
         foreach (char ch in chAry) {
@@ -88,14 +88,14 @@ public class Srl {
     }
     protected static Set<Character> _alphabetHarfNumberHarfCharSet;
     private static void Srl5() {
-        Set<Character> setupSet = DfCollectionUtil.newHashSet();
+        Set<Character> setupSet = DfCollectionUtil.newHashSet<Character>();
         setupSet.addAll(_alphabetHarfCharSet);
         setupSet.addAll(_numberHarfCharSet);
         _alphabetHarfNumberHarfCharSet = Collections.unmodifiableSet(setupSet);
     }
     protected static Set<Character> _alphabetNumberHarfLowerCharSet;
     private static void Srl6() {
-        Set<Character> setupSet = DfCollectionUtil.newHashSet();
+        Set<Character> setupSet = DfCollectionUtil.newHashSet<Character>();
         setupSet.addAll(_alphabetHarfLowerCharSet);
         setupSet.addAll(_numberHarfCharSet);
         _alphabetNumberHarfLowerCharSet = Collections.unmodifiableSet(setupSet);
@@ -103,7 +103,7 @@ public class Srl {
     protected static Set<Character> _alphabetNumberHarfUpperCharSet;
     private static void Srl7()
     {
-        Set<Character> setupSet = DfCollectionUtil.newHashSet();
+        Set<Character> setupSet = DfCollectionUtil.newHashSet<Character>();
         setupSet.addAll(_alphabetHarfUpperCharSet);
         setupSet.addAll(_numberHarfCharSet);
         _alphabetNumberHarfUpperCharSet = Collections.unmodifiableSet(setupSet);

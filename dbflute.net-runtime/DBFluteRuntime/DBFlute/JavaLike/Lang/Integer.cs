@@ -178,6 +178,32 @@ namespace DBFlute.JavaLike.Lang
         }
 
         /// <summary>
+        /// 数値の比較
+        /// </summary>
+        /// <param name="target">比較対象（null禁止）</param>
+        /// <returns>引数よりも小さい：-1, 大きい：+1, 同じ：0</returns>
+        public int compareTo(Integer target)
+        {
+            if (target == null)
+            {
+                throw new ArgumentNullException("target");
+            }
+
+            if(innerValue.Value > target.intValue())
+            {
+                return 1;
+            }
+            else if(innerValue.Value < target.intValue())
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>
         /// 文字列化した場合は実際のフラグを返す
         /// </summary>
         /// <returns></returns>

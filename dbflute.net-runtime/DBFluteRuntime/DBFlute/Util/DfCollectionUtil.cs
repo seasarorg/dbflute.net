@@ -16,6 +16,7 @@ using DBFlute.JavaLike.Extensions;
 using DBFlute.JavaLike.Lang;
 using DBFlute.JavaLike.Time;
 using DBFlute.JavaLike.Util;
+using boolean = System.Boolean;
 
 namespace DBFlute.Util {
 
@@ -30,25 +31,25 @@ public class DfCollectionUtil {
     //                                                                          ==========
     // Collections's empty collections can be called clear()
     // (unmodifiable used before 1.1)
-    private static readonly List<?> EMPTY_LIST = Collections.emptyList();
-    private static readonly Map<?, ?> EMPTY_MAP = Collections.emptyMap();
-    private static readonly Set<?> EMPTY_SET = Collections.emptySet();
+    private static readonly List<object> EMPTY_LIST = Collections.emptyList<object>();
+    private static readonly Map<object, object> EMPTY_MAP = Collections.emptyMap<object, object>();
+    private static readonly Set<object> EMPTY_SET = Collections.emptySet<object>();
 
     // ===================================================================================
     //                                                                          Collection
     //                                                                          ==========
-    public static Class<?> findFirstElementType(Collection<?> collection) {
-        foreach (Object object in collection) {
-            if (object != null) {
-                return object.getClass();
+    public static Type findFirstElementType(Collection<object> collection) {
+        foreach (Object obj in collection) {
+            if (obj != null) {
+                return obj.getClass();
             }
         }
         return null;
     }
 
-    public static boolean hasValidElement(Collection<?> collection) {
-        foreach (Object object in collection) {
-            if (object != null) {
+    public static boolean hasValidElement(Collection<object> collection) {
+        foreach (Object obj in collection) {
+            if (obj != null) {
                 return true;
             }
         }
@@ -58,39 +59,39 @@ public class DfCollectionUtil {
     // ===================================================================================
     //                                                                                List
     //                                                                                ====
-    public static <ELEMENT> ArrayList<ELEMENT> newArrayList() {
+    public static ArrayList<ELEMENT> newArrayList<ELEMENT>() {
         return new ArrayList<ELEMENT>();
     }
 
-    public static <ELEMENT> ArrayList<ELEMENT> newArrayList(Collection<ELEMENT> elements) {
-        ArrayList<ELEMENT> list = newArrayListSized(elements.size());
+    public static ArrayList<ELEMENT> newArrayList<ELEMENT>(System.Collections.Generic.ICollection<ELEMENT> elements) {
+        ArrayList<ELEMENT> list = newArrayListSized<ELEMENT>(elements.size());
         list.addAll(elements);
         return list;
     }
 
-    @SafeVarargs
-    public static <ELEMENT> ArrayList<ELEMENT> newArrayList(ELEMENT... elements) {
-        ArrayList<ELEMENT> list = newArrayListSized(elements.length);
+    public static ArrayList<ELEMENT> newArrayList<ELEMENT>(params ELEMENT[] elements) {
+        ArrayList<ELEMENT> list = newArrayListSized<ELEMENT>(elements.length());
         foreach (ELEMENT element in elements) {
             list.add(element);
         }
         return list;
     }
 
-    public static <ELEMENT> ArrayList<ELEMENT> newArrayListSized(int size) {
+    public static ArrayList<ELEMENT> newArrayListSized<ELEMENT>(int size) {
         return new ArrayList<ELEMENT>(size);
     }
 
-    @SuppressWarnings("unchecked")
-    public static <ELEMENT> List<ELEMENT> emptyList() {
+    public static List<ELEMENT> emptyList<ELEMENT>()
+    {
         return (List<ELEMENT>) EMPTY_LIST;
     }
 
     // -----------------------------------------------------
     //                                               Utility
     //                                               -------
-    public static <ELEMENT extends Object> List<List<ELEMENT>> splitByLimit(List<ELEMENT> elementList, int limit) {
-        List<List<ELEMENT>> valueList = newArrayList();
+    public static List<List<ELEMENT>> splitByLimit<ELEMENT>(List<ELEMENT> elementList, int limit)
+    {
+        List<List<ELEMENT>> valueList = new ArrayList<List<ELEMENT>>();
         int valueSize = elementList.size();
         int index = 0;
         int remainderSize = valueSize;
@@ -98,7 +99,7 @@ public class DfCollectionUtil {
             int beginIndex = limit * index;
             int endPoint = beginIndex + limit;
             int endIndex = limit <= remainderSize ? endPoint : valueSize;
-            List<ELEMENT> splitList = newArrayList();
+            List<ELEMENT> splitList = newArrayList<ELEMENT>();
             splitList.addAll(elementList.subList(beginIndex, endIndex));
             valueList.add(splitList);
             remainderSize = valueSize - endIndex;
@@ -110,13 +111,14 @@ public class DfCollectionUtil {
     // -----------------------------------------------------
     //                                               Advance
     //                                               -------
-    public static <ELEMENT> OrderDiff<ELEMENT> analyzeOrderDiff(List<ELEMENT> beforeUniqueList, List<ELEMENT> afterUniqueList) {
-        LinkedHashSet<ELEMENT> linkedBeforeSet = newLinkedHashSet(beforeUniqueList);
+    public static OrderDiff<ELEMENT> analyzeOrderDiff<ELEMENT>(List<ELEMENT> beforeUniqueList, List<ELEMENT> afterUniqueList) where ELEMENT : class
+    {
+        LinkedHashSet<ELEMENT> linkedBeforeSet = newLinkedHashSet<ELEMENT>(beforeUniqueList);
         if (beforeUniqueList.size() != linkedBeforeSet.size()) {
             String msg = "The argument 'beforeList' should be unique: " + beforeUniqueList;
             throw new IllegalArgumentException(msg);
         }
-        LinkedHashSet<ELEMENT> linkedAfterSet = newLinkedHashSet(afterUniqueList);
+        LinkedHashSet<ELEMENT> linkedAfterSet = newLinkedHashSet<ELEMENT>(afterUniqueList);
         if (afterUniqueList.size() != linkedAfterSet.size()) {
             String msg = "The argument 'afterList' should be unique: " + afterUniqueList;
             throw new IllegalArgumentException(msg);
@@ -124,9 +126,9 @@ public class DfCollectionUtil {
         ElementDiff<ELEMENT> elementDiff = analyzeElementDiff(linkedBeforeSet, linkedAfterSet);
         Set<ELEMENT> addedSet = elementDiff.getAddedSet();
         Set<ELEMENT> deletedSet = elementDiff.getDeletedSet();
-        List<ELEMENT> beforeRemainingList = newArrayList(beforeUniqueList);
+        List<ELEMENT> beforeRemainingList = newArrayList<ELEMENT>(beforeUniqueList);
         beforeRemainingList.removeAll(deletedSet);
-        List<ELEMENT> afterRemainingList = newArrayList(afterUniqueList);
+        List<ELEMENT> afterRemainingList = newArrayList<ELEMENT>(afterUniqueList);
         afterRemainingList.removeAll(addedSet);
         if (beforeRemainingList.size() != afterRemainingList.size()) {
             String msg = "The beforeRemainingList.size() should be the same as the afterRemainingList's:";
@@ -134,7 +136,7 @@ public class DfCollectionUtil {
             msg = msg + " afterRemainingList.size()=" + afterRemainingList.size();
             throw new IllegalStateException(msg);
         }
-        Map<ELEMENT, OrderDiffDetail<ELEMENT>> movedMap = newLinkedHashMap();
+        Map<ELEMENT, OrderDiffDetail<ELEMENT>> movedMap = newLinkedHashMap<ELEMENT, OrderDiffDetail<ELEMENT>>();
         doAnalyzeOrderChange(beforeRemainingList, afterRemainingList, movedMap);
         foreach (Entry<ELEMENT, OrderDiffDetail<ELEMENT>> entry in movedMap.entrySet()) {
             ELEMENT movedElement = entry.getKey();
@@ -150,8 +152,7 @@ public class DfCollectionUtil {
         return orderDiff;
     }
 
-    protected static <ELEMENT> void doAnalyzeOrderChange(List<ELEMENT> beforeRemainingList, List<ELEMENT> afterRemainingList,
-            Map<ELEMENT, OrderDiffDetail<ELEMENT>> movedMap) {
+    protected static void doAnalyzeOrderChange<ELEMENT>(List<ELEMENT> beforeRemainingList, List<ELEMENT> afterRemainingList,  Map<ELEMENT, OrderDiffDetail<ELEMENT>> movedMap) where ELEMENT : class {
         ELEMENT movedElement = null;
         ELEMENT previousElement = null;
         for (int i = 0; i < beforeRemainingList.size(); i++) {
@@ -175,7 +176,7 @@ public class DfCollectionUtil {
         }
     }
 
-    public static class OrderDiff<ELEMENT> {
+    public class OrderDiff<ELEMENT> {
         protected Map<ELEMENT, OrderDiffDetail<ELEMENT>> _movedMap;
 
         public Map<ELEMENT, OrderDiffDetail<ELEMENT>> getMovedMap() {
@@ -187,7 +188,7 @@ public class DfCollectionUtil {
         }
     }
 
-    public static class OrderDiffDetail<ELEMENT> {
+    public class OrderDiffDetail<ELEMENT> {
         protected ELEMENT _movedElement;
         protected ELEMENT _previousElement;
 
@@ -208,14 +209,14 @@ public class DfCollectionUtil {
         }
     }
 
-    public static <ELEMENT> List<ELEMENT> moveElementToIndex(List<ELEMENT> list, ELEMENT fromElement, ELEMENT toElement) {
+    public static List<ELEMENT> moveElementToIndex<ELEMENT>(List<ELEMENT> list, ELEMENT fromElement, ELEMENT toElement) {
         assertObjectNotNull("list", list);
         int fromIndex = list.indexOf(fromElement);
         int toIndex = list.indexOf(toElement);
         return moveElementToIndex(list, fromIndex, toIndex);
     }
 
-    public static <ELEMENT> List<ELEMENT> moveElementToIndex(List<ELEMENT> list, int fromIndex, int toIndex) {
+    public static List<ELEMENT> moveElementToIndex<ELEMENT>(List<ELEMENT> list, int fromIndex, int toIndex) {
         assertObjectNotNull("list", list);
         if (fromIndex == toIndex) {
             String msg = "The argument 'fromIndex' and 'toIndex' should not be same:";
@@ -251,147 +252,148 @@ public class DfCollectionUtil {
     // ===================================================================================
     //                                                                                 Map
     //                                                                                 ===
-    public static <KEY, VALUE> HashMap<KEY, VALUE> newHashMap() {
+    public static HashMap<KEY, VALUE> newHashMap<KEY, VALUE>() {
         return new HashMap<KEY, VALUE>();
     }
 
-    public static <KEY, VALUE> HashMap<KEY, VALUE> newHashMap(Map<KEY, VALUE> map) {
+    public static HashMap<KEY, VALUE> newHashMap<KEY, VALUE>(Map<KEY, VALUE> map) {
         return new HashMap<KEY, VALUE>(map);
     }
 
-    public static <KEY, VALUE> HashMap<KEY, VALUE> newHashMap(KEY key, VALUE value) {
-        HashMap<KEY, VALUE> map = newHashMapSized(1);
+    public static HashMap<KEY, VALUE> newHashMap<KEY, VALUE>(KEY key, VALUE value) {
+        HashMap<KEY, VALUE> map = newHashMapSized<KEY, VALUE>(1);
         map.put(key, value);
         return map;
     }
 
-    public static <KEY, VALUE> HashMap<KEY, VALUE> newHashMap(KEY key1, VALUE value1, KEY key2, VALUE value2) {
-        HashMap<KEY, VALUE> map = newHashMapSized(2);
+    public static HashMap<KEY, VALUE> newHashMap<KEY, VALUE>(KEY key1, VALUE value1, KEY key2, VALUE value2) {
+        HashMap<KEY, VALUE> map = newHashMapSized<KEY, VALUE>(2);
         map.put(key1, value1);
         map.put(key2, value2);
         return map;
     }
 
-    public static <KEY, VALUE> HashMap<KEY, VALUE> newHashMapSized(int size) {
+    public static HashMap<KEY, VALUE> newHashMapSized<KEY, VALUE>(int size) {
         return new HashMap<KEY, VALUE>(size);
     }
 
-    public static <KEY, VALUE> LinkedHashMap<KEY, VALUE> newLinkedHashMap() {
+    public static LinkedHashMap<KEY, VALUE> newLinkedHashMap<KEY, VALUE>() {
         return new LinkedHashMap<KEY, VALUE>();
     }
 
-    public static <KEY, VALUE> LinkedHashMap<KEY, VALUE> newLinkedHashMap(Map<KEY, VALUE> map) {
+    public static LinkedHashMap<KEY, VALUE> newLinkedHashMap<KEY, VALUE>(Map<KEY, VALUE> map) {
         return new LinkedHashMap<KEY, VALUE>(map);
     }
 
-    public static <KEY, VALUE> LinkedHashMap<KEY, VALUE> newLinkedHashMap(KEY key, VALUE value) {
-        LinkedHashMap<KEY, VALUE> map = newLinkedHashMapSized(1);
+    public static LinkedHashMap<KEY, VALUE> newLinkedHashMap<KEY, VALUE>(KEY key, VALUE value) {
+        LinkedHashMap<KEY, VALUE> map = newLinkedHashMapSized<KEY, VALUE>(1);
         map.put(key, value);
         return map;
     }
 
-    public static <KEY, VALUE> LinkedHashMap<KEY, VALUE> newLinkedHashMap(KEY key1, VALUE value1, KEY key2, VALUE value2) {
-        LinkedHashMap<KEY, VALUE> map = newLinkedHashMapSized(2);
+    public static LinkedHashMap<KEY, VALUE> newLinkedHashMap<KEY, VALUE>(KEY key1, VALUE value1, KEY key2, VALUE value2) {
+        LinkedHashMap<KEY, VALUE> map = newLinkedHashMapSized<KEY, VALUE>(2);
         map.put(key1, value1);
         map.put(key2, value2);
         return map;
     }
 
-    public static <KEY, VALUE> LinkedHashMap<KEY, VALUE> newLinkedHashMapSized(int size) {
+    public static LinkedHashMap<KEY, VALUE> newLinkedHashMapSized<KEY, VALUE>(int size) {
         return new LinkedHashMap<KEY, VALUE>(size);
     }
 
-    public static <KEY, VALUE> ConcurrentHashMap<KEY, VALUE> newConcurrentHashMap() {
+    public static ConcurrentHashMap<KEY, VALUE> newConcurrentHashMap<KEY, VALUE>() {
         return new ConcurrentHashMap<KEY, VALUE>();
     }
 
-    public static <KEY, VALUE> ConcurrentHashMap<KEY, VALUE> newConcurrentHashMap(Map<KEY, VALUE> map) {
+    public static ConcurrentHashMap<KEY, VALUE> newConcurrentHashMap<KEY, VALUE>(Map<KEY, VALUE> map) {
         return new ConcurrentHashMap<KEY, VALUE>(map);
     }
 
-    public static <KEY, VALUE> ConcurrentHashMap<KEY, VALUE> newConcurrentHashMap(KEY key, VALUE value) {
-        ConcurrentHashMap<KEY, VALUE> map = newConcurrentHashMapSized(1);
+    public static ConcurrentHashMap<KEY, VALUE> newConcurrentHashMap<KEY, VALUE>(KEY key, VALUE value) {
+        ConcurrentHashMap<KEY, VALUE> map = newConcurrentHashMapSized<KEY, VALUE>(1);
         map.put(key, value);
         return map;
     }
 
-    public static <KEY, VALUE> ConcurrentHashMap<KEY, VALUE> newConcurrentHashMap(KEY key1, VALUE value1, KEY key2, VALUE value2) {
-        ConcurrentHashMap<KEY, VALUE> map = newConcurrentHashMapSized(2);
+    public static ConcurrentHashMap<KEY, VALUE> newConcurrentHashMap<KEY, VALUE>(KEY key1, VALUE value1, KEY key2, VALUE value2) {
+        ConcurrentHashMap<KEY, VALUE> map = newConcurrentHashMapSized<KEY, VALUE>(2);
         map.put(key1, value1);
         map.put(key2, value2);
         return map;
     }
 
-    public static <KEY, VALUE> ConcurrentHashMap<KEY, VALUE> newConcurrentHashMapSized(int size) {
+    public static ConcurrentHashMap<KEY, VALUE> newConcurrentHashMapSized<KEY, VALUE>(int size) {
         return new ConcurrentHashMap<KEY, VALUE>(size);
     }
 
-    @SuppressWarnings("unchecked")
-    public static <KEY, VALUE> Map<KEY, VALUE> emptyMap() {
+    
+    public static Map<KEY, VALUE> emptyMap<KEY, VALUE>() {
         return (Map<KEY, VALUE>) EMPTY_MAP;
     }
 
     // ===================================================================================
     //                                                                                 Set
     //                                                                                 ===
-    public static <ELEMENT> HashSet<ELEMENT> newHashSet() {
+    public static HashSet<ELEMENT> newHashSet<ELEMENT>() {
         return new HashSet<ELEMENT>();
     }
 
-    public static <ELEMENT> HashSet<ELEMENT> newHashSet(Collection<ELEMENT> elements) {
-        HashSet<ELEMENT> set = newHashSetSized(elements.size());
+    public static HashSet<ELEMENT> newHashSet<ELEMENT>(Collection<ELEMENT> elements)
+    {
+        HashSet<ELEMENT> set = newHashSetSized<ELEMENT>(elements.size());
         set.addAll(elements);
         return set;
     }
 
-    @SafeVarargs
-    public static <ELEMENT> HashSet<ELEMENT> newHashSet(ELEMENT... elements) {
-        HashSet<ELEMENT> set = newHashSetSized(elements.length);
+    
+    public static HashSet<ELEMENT> newHashSet<ELEMENT>(params ELEMENT[] elements) {
+        HashSet<ELEMENT> set = newHashSetSized<ELEMENT>(elements.length());
         foreach (ELEMENT element in elements) {
             set.add(element);
         }
         return set;
     }
 
-    public static <ELEMENT> HashSet<ELEMENT> newHashSetSized(int size) {
+    public static HashSet<ELEMENT> newHashSetSized<ELEMENT>(int size) {
         return new HashSet<ELEMENT>(size);
     }
 
-    public static <ELEMENT> LinkedHashSet<ELEMENT> newLinkedHashSet() {
+    public static LinkedHashSet<ELEMENT> newLinkedHashSet<ELEMENT>() {
         return new LinkedHashSet<ELEMENT>();
     }
 
-    public static <ELEMENT> LinkedHashSet<ELEMENT> newLinkedHashSet(Collection<ELEMENT> elements) {
-        LinkedHashSet<ELEMENT> set = newLinkedHashSetSized(elements.size());
+    public static LinkedHashSet<ELEMENT> newLinkedHashSet<ELEMENT>(System.Collections.Generic.ICollection<ELEMENT> elements) {
+        LinkedHashSet<ELEMENT> set = newLinkedHashSetSized<ELEMENT>(elements.size());
         set.addAll(elements);
         return set;
     }
 
-    @SafeVarargs
-    public static <ELEMENT> LinkedHashSet<ELEMENT> newLinkedHashSet(ELEMENT... elements) {
-        LinkedHashSet<ELEMENT> set = newLinkedHashSetSized(elements.length);
+    
+    public static LinkedHashSet<ELEMENT> newLinkedHashSet<ELEMENT>(params ELEMENT[] elements) {
+        LinkedHashSet<ELEMENT> set = newLinkedHashSetSized<ELEMENT>(elements.length());
         foreach (ELEMENT element in elements) {
             set.add(element);
         }
         return set;
     }
 
-    public static <ELEMENT> LinkedHashSet<ELEMENT> newLinkedHashSetSized(int size) {
+    public static LinkedHashSet<ELEMENT> newLinkedHashSetSized<ELEMENT>(int size) {
         return new LinkedHashSet<ELEMENT>(size);
     }
 
-    @SuppressWarnings("unchecked")
-    public static <ELEMENT> Set<ELEMENT> emptySet() {
+    
+    public static Set<ELEMENT> emptySet<ELEMENT>() {
         return (Set<ELEMENT>) EMPTY_SET;
     }
 
     // -----------------------------------------------------
     //                                               Advance
     //                                               -------
-    public static <ELEMENT> ElementDiff<ELEMENT> analyzeElementDiff(Set<ELEMENT> beforeCol, Set<ELEMENT> afterCol) {
-        Set<ELEMENT> addedSet = newLinkedHashSet();
-        Set<ELEMENT> deletedSet = newLinkedHashSet();
-        Set<ELEMENT> remainingSet = newLinkedHashSet();
+    public static ElementDiff<ELEMENT> analyzeElementDiff<ELEMENT>(Set<ELEMENT> beforeCol, Set<ELEMENT> afterCol) {
+        Set<ELEMENT> addedSet = newLinkedHashSet<ELEMENT>();
+        Set<ELEMENT> deletedSet = newLinkedHashSet<ELEMENT>();
+        Set<ELEMENT> remainingSet = newLinkedHashSet<ELEMENT>();
         foreach (ELEMENT beforeElement in beforeCol) {
             if (afterCol.contains(beforeElement)) {
                 remainingSet.add(beforeElement);
@@ -411,7 +413,7 @@ public class DfCollectionUtil {
         return elementDiff;
     }
 
-    public static class ElementDiff<ELEMENT> {
+    public class ElementDiff<ELEMENT> {
         protected Set<ELEMENT> _addedSet;
         protected Set<ELEMENT> _deletedSet;
         protected Set<ELEMENT> _remainingSet;
@@ -451,8 +453,7 @@ public class DfCollectionUtil {
      * @param unorderedList The unordered list. (NotNull)
      * @param resource The resource of according-to-order. (NotNull)
      */
-    public static <ELEMENT_TYPE, ID_TYPE> void orderAccordingTo(List<ELEMENT_TYPE> unorderedList,
-            AccordingToOrderResource<ELEMENT_TYPE, ID_TYPE> resource) {
+    public static void orderAccordingTo<ELEMENT_TYPE, ID_TYPE>(List<ELEMENT_TYPE> unorderedList, AccordingToOrderResource<ELEMENT_TYPE, ID_TYPE> resource) {
         assertObjectNotNull("unorderedList", unorderedList);
         if (unorderedList.isEmpty()) {
             return;
@@ -476,27 +477,26 @@ public class DfCollectionUtil {
             idIndexMap.put(id, index);
             ++index;
         }
-        Comparator<ELEMENT_TYPE> comp = new Comparator<ELEMENT_TYPE>() {
-            public int compare(ELEMENT_TYPE o1, ELEMENT_TYPE o2) {
-                ID_TYPE id1 = idExtractor.extractId(o1);
-                ID_TYPE id2 = idExtractor.extractId(o2);
-                assertObjectNotNull("id1 of " + o1, id1);
-                assertObjectNotNull("id2 of " + o2, id2);
-                Integer index1 = idIndexMap.get(id1);
-                Integer index2 = idIndexMap.get(id2);
-                if (index1 != null && index2 != null) {
-                    return index1.compareTo(index2);
-                }
-                if (index1 == null && index2 == null) {
-                    return 0;
-                }
-                return index1 == null ? 1 : -1;
+
+        Comparater<ELEMENT_TYPE> comp = ((o1, o2) => {
+            ID_TYPE id1 = idExtractor.extractId(o1);
+            ID_TYPE id2 = idExtractor.extractId(o2);
+            assertObjectNotNull("id1 of " + o1, id1);
+            assertObjectNotNull("id2 of " + o2, id2);
+            Integer index1 = idIndexMap.get(id1);
+            Integer index2 = idIndexMap.get(id2);
+            if (index1 != null && index2 != null) {
+                return index1.compareTo(index2);
             }
-        };
+            if (index1 == null && index2 == null) {
+                return 0;
+            }
+            return index1 == null ? 1 : -1;
+        });
         Collections.sort(unorderedList, comp);
     }
 
-    public static interface AccordingToOrderIdExtractor<ELEMENT_TYPE, ID_TYPE> {
+    public interface AccordingToOrderIdExtractor<ELEMENT_TYPE, ID_TYPE> {
 
         /**
          * Extract ID from the element instance.
@@ -506,7 +506,7 @@ public class DfCollectionUtil {
         ID_TYPE extractId(ELEMENT_TYPE element);
     }
 
-    public static class AccordingToOrderResource<ELEMENT_TYPE, ID_TYPE> {
+    public class AccordingToOrderResource<ELEMENT_TYPE, ID_TYPE> {
         protected List<ID_TYPE> _orderedUniqueIdList;
         protected AccordingToOrderIdExtractor<ELEMENT_TYPE, ID_TYPE> _idExtractor;
 
@@ -517,11 +517,13 @@ public class DfCollectionUtil {
             return this;
         }
 
-        public List<ID_TYPE> getOrderedUniqueIdList() {
+        public List<ID_TYPE> getOrderedUniqueIdList()
+        {
             return _orderedUniqueIdList;
         }
 
-        public void setOrderedUniqueIdList(List<ID_TYPE> orderedUniqueIdList) {
+        public void setOrderedUniqueIdList(List<ID_TYPE> orderedUniqueIdList)
+        {
             _orderedUniqueIdList = orderedUniqueIdList;
         }
 

@@ -79,10 +79,11 @@ namespace DBFlute.JavaLike.Util
         /// <typeparam name="ELEMENT"></typeparam>
         /// <param name="a"></param>
         /// <param name="c"></param>
-        public static void sort<ELEMENT>(ELEMENT[] a, Comparator<ELEMENT> c)
+        public static void sort<ELEMENT>(ELEMENT[] a, Comparater<ELEMENT> c)
         {
             System.Collections.Generic.List<ELEMENT> sortList = asListCS(a);
-            sortList.Sort(new ComparatorAdapter<ELEMENT>(c));
+
+            sortList.Sort((x, y) => c(x, y));
             for(int i = 0; i < sortList.Count(); i++)
             {
                 // ソート後の順番で配列を再設定

@@ -65,8 +65,8 @@ namespace DBFluteRuntimeTest.JavaLike.Util
             string[] actuals2 = { "dbflute", "runtime", "test" };
 
             // ## Act ##
-            Arrays.sort(actuals1, new ComparatorImpl<string>());
-            Arrays.sort(actuals2, new ComparatorImpl<string>());
+            Arrays.sort(actuals1, Compare);
+            Arrays.sort(actuals2, Compare);
 
             // ## Assert ##
             Assert.AreEqual(expects.Length, actuals1.Length);
@@ -81,26 +81,14 @@ namespace DBFluteRuntimeTest.JavaLike.Util
                 Assert.AreEqual(expects[i], actuals2[i]);
             }
         }
-    }
 
-    /// <summary>
-    /// テスト用比較クラス
-    /// </summary>
-    /// <typeparam name="?"></typeparam>
-    public class ComparatorImpl<T> : Comparator<T>
-    {
-        public int compare(T o1, T o2)
+        private int Compare<T>(T o1, T o2)
         {
             if (typeof(T) == typeof(string))
             {
                 return o1.ToString().CompareTo(o2.ToString());
             }
             return 0;
-        }
-
-        public bool equals(object obj)
-        {
-            return true;
         }
     }
 }

@@ -9,8 +9,26 @@ namespace DBFlute.JavaLike.Util
     [Serializable]
     public class LinkedHashMap<KEY, VALUE> : Map<KEY, VALUE>, NgMap
     {
-        protected Map<KEY, VALUE> _res = new HashMap<KEY, VALUE>();
-        protected LinkedHashSet<KEY> _seq = new LinkedHashSet<KEY>();
+        protected readonly Map<KEY, VALUE> _res;
+        protected readonly LinkedHashSet<KEY> _seq;
+
+        public LinkedHashMap()
+        {
+            _res = new HashMap<KEY, VALUE>();
+            _seq = new LinkedHashSet<KEY>();
+        }
+
+        public LinkedHashMap(int size)
+        {
+            _res = new HashMap<KEY, VALUE>(size);
+            _seq = new LinkedHashSet<KEY>(size);
+        }
+
+        public LinkedHashMap(Map<KEY, VALUE> res)
+        {
+            _res = new HashMap<KEY, VALUE>(res);
+            _seq = new LinkedHashSet<KEY>(res.keySet());
+        }
 
         public VALUE get(KEY key)
         {
@@ -76,12 +94,13 @@ namespace DBFlute.JavaLike.Util
 
         public Collection<VALUE> values()
         {
-            List<VALUE> valueList = new ArrayList<VALUE>();
-            foreach (KEY key in _seq.getCollection())
-            {
-                valueList.add(_res.get(key));
-            }
-            return valueList;
+            //List<VALUE> valueList = new ArrayList<VALUE>();
+            //foreach (KEY key in _seq.getCollection())
+            //{
+            //    valueList.add(_res.get(key));
+            //}
+            //return valueList;
+            throw new NotSupportedException();
         }
 
         public Set<Entry<KEY, VALUE>> entrySet()

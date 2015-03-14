@@ -17,6 +17,20 @@ namespace DBFlute.JavaLike.Util
             _res = createDictionary();
         }
 
+        public HashMap(int size)
+        {
+            _res = createDictionary(size);
+        }
+
+        public HashMap(Map<KEY, VALUE> res)
+        {
+            _res = createDictionary();
+            foreach (var key in res.keySet())
+            {
+                _res.Add(key, res.get(key));
+            }
+        }
+
         public VALUE get(KEY key)
         {
             return _res.ContainsKey(key) ? _res[key] : default(VALUE);
@@ -77,13 +91,7 @@ namespace DBFlute.JavaLike.Util
 
         public Collection<VALUE> values()
         {
-            List<VALUE> valueList = new ArrayList<VALUE>();
-            ICollection<VALUE> keyCol = _res.Values;
-            foreach (VALUE value in keyCol)
-            {
-                valueList.add(value);
-            }
-            return valueList;
+            return new Collection<VALUE>(_res.Values);
         }
 
         public Set<Entry<KEY, VALUE>> entrySet()
@@ -125,6 +133,11 @@ namespace DBFlute.JavaLike.Util
         protected virtual IDictionary<KEY, VALUE> createDictionary()
         {
             return new Dictionary<KEY, VALUE>();
+        }
+
+        protected virtual IDictionary<KEY, VALUE> createDictionary(int size)
+        {
+            return new Dictionary<KEY, VALUE>(size);
         }
     }
 }

@@ -11,16 +11,26 @@ namespace DBFlute.JavaLike.Util
     [Serializable]
     public class HashSet<ELEMENT> : Set<ELEMENT>, NgSet
     {
-        protected IDictionary<ELEMENT, Object> _res = new Dictionary<ELEMENT, Object>();
+        protected readonly IDictionary<ELEMENT, Object> _res;
 
         public HashSet()
         {
-            throw new NotSupportedException();
+            _res = new Dictionary<ELEMENT, Object>();
         }
 
-        public HashSet(Set<ELEMENT> element)
+        public HashSet(Set<ELEMENT> elements)
         {
-            throw new NotSupportedException();
+            var res = new Dictionary<ELEMENT, Object>(elements.size());
+            foreach(var element in elements)
+            {
+                res.Add(element, element);
+            }
+            _res = res;
+        }
+
+        public HashSet(int size)
+        {
+            _res = new Dictionary<ELEMENT, Object>(size);
         }
 
         public bool add(ELEMENT element)
@@ -33,7 +43,7 @@ namespace DBFlute.JavaLike.Util
             return true;
         }
 
-        public bool addAll(Collection<ELEMENT> elementList)
+        public bool addAll(ICollection<ELEMENT> elementList)
         {
             bool result = false;
             foreach (ELEMENT element in elementList)
@@ -141,7 +151,7 @@ namespace DBFlute.JavaLike.Util
 
         public override String ToString()
         {
-            return StringHelper.collectionToString(this);
+            return StringHelper.collectionToString<ELEMENT>(this);
         }
 
 
@@ -152,6 +162,47 @@ namespace DBFlute.JavaLike.Util
 
 
         public Set<ELEMENT> unmodifiableSet(Set<ELEMENT> element)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        IEnumerator<ELEMENT> IEnumerable<ELEMENT>.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(ELEMENT item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(ELEMENT item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(ELEMENT[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Count
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool IsReadOnly
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool Remove(ELEMENT item)
         {
             throw new NotImplementedException();
         }

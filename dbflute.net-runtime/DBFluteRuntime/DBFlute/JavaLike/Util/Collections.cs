@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DBFlute.JavaLike.Util
 {
@@ -18,6 +14,26 @@ namespace DBFlute.JavaLike.Util
         }
 
         public static Set<T> unmodifiableSet<T>(Set<T> s)
+        {
+            throw new NotSupportedException();
+        }
+
+        public static List<T> emptyList<T>()
+        {
+            return new ArrayList<T>();
+        }
+
+        public static Set<T> emptySet<T>()
+        {
+            return new HashSet<T>();
+        }
+
+        public static Map<K, V> emptyMap<K, V>()
+        {
+            return new HashMap<K, V>();
+        }
+
+        public static void sort<T>(List<T> unorderedList, Comparater<T> comp)
         {
             throw new NotSupportedException();
         }

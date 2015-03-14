@@ -1,4 +1,5 @@
 ﻿using DBFlute.JavaLike.Util;
+using System.Collections.Generic;
 
 namespace DBFlute.JavaLike.Helper
 {
@@ -13,7 +14,7 @@ namespace DBFlute.JavaLike.Helper
         /// <typeparam name="ELEMENT"></typeparam>
         /// <param name="elements"></param>
         /// <returns></returns>
-        public static string collectionToString<ELEMENT>(Collection<ELEMENT> elements)
+        public static string collectionToString<ELEMENT>(IEnumerable<ELEMENT> elements)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             sb.Append("{");

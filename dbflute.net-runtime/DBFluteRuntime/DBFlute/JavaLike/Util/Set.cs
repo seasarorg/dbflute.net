@@ -1,14 +1,17 @@
 ﻿
+using System.Collections.Generic;
 namespace DBFlute.JavaLike.Util
 {
     /// <summary>
     /// [Java]Setインターフェース
     /// </summary>
     /// <typeparam name="E"></typeparam>
-    public interface Set<ELEMENT> : Collection<ELEMENT>
+    public interface Set<ELEMENT> : IEnumerable<ELEMENT>, ICollection<ELEMENT>
     {
         bool contains(ELEMENT element);
         void add(ELEMENT element);
+        bool addAll(ICollection<ELEMENT> element);
+        int size();
     }
 
     /// <summary>

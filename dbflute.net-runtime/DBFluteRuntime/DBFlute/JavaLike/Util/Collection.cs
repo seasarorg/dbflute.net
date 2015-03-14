@@ -7,17 +7,68 @@ namespace DBFlute.JavaLike.Util
     /// Javaコレクションインターフェース
     /// </summary>
     /// <typeparam name="E"></typeparam>
-    public interface Collection<ELEMENT> : System.Collections.IEnumerable
+    public class Collection<ELEMENT> : System.Collections.IEnumerable, ICollection<ELEMENT>
     {
-        bool add(ELEMENT element);
-        bool addAll(Collection<ELEMENT> element);
-        bool remove(ELEMENT element);
-        int size();
-        bool isEmpty();
-        void clear();
-        Iterator<ELEMENT> iterator();
-        ICollection<ELEMENT> getCollection();
-        Set<ELEMENT> unmodifiableSet(Set<ELEMENT> element);
+        private readonly ICollection<ELEMENT> _res;
+        public Collection(ICollection<ELEMENT> res)
+        {
+            _res = res;
+        }
+
+        public static List<ELEMENT> emptyList()
+        {
+            return new ArrayList<ELEMENT>();
+        }
+
+        public int size()
+        {
+            return _res.Count;
+        }
+
+        public System.Collections.IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(ELEMENT item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(ELEMENT item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(ELEMENT[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Count
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool IsReadOnly
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool Remove(ELEMENT item)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator<ELEMENT> IEnumerable<ELEMENT>.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     /// <summary>
@@ -28,5 +79,16 @@ namespace DBFlute.JavaLike.Util
         bool addAsNg(Object element);
         bool removeAsNg(Object element);
         System.Collections.ICollection getCollectionAsNg();
+    }
+
+    /// <summary>
+    /// Collection拡張定義クラス
+    /// </summary>
+    public static class CollectionExtension
+    {
+        public static int size<ELEMENT>(this ICollection<ELEMENT> elements)
+        {
+            return elements.Count;
+        }
     }
 }
